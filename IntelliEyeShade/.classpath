@@ -11,5 +11,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/mysql-core"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/servlet-core"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/structs2-core"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/log4j-core"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

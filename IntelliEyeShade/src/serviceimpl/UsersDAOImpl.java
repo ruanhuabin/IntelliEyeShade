@@ -276,6 +276,7 @@ public class UsersDAOImpl implements UsersDAO {
 	public List<Users> queryByPage(String hql, int offset, int pageSize) {
 		// TODO Auto-generated method stub
 		
+		
 		Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
         Transaction tx = null;
         List<Users> list = null;
@@ -285,6 +286,48 @@ public class UsersDAOImpl implements UsersDAO {
             tx = session.beginTransaction();
             
             Query query = session.createQuery(hql).setFirstResult(offset).setMaxResults(pageSize);
+            
+            list = query.list();
+            
+            tx.commit();
+            
+        }
+        catch (Exception e)
+        {
+            if(tx != null)
+            {
+                tx.rollback();
+            }
+            
+            e.printStackTrace();
+        }
+        finally
+        {
+        	if(tx != null)
+            {
+                tx = null;
+            }
+        }
+        
+        
+        return list;
+	}
+	
+	
+	public List<Users> queryByCondition(String hql, String condition, int offset, int pageSize) {
+		// TODO Auto-generated method stub
+		
+		
+		Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+        Transaction tx = null;
+        List<Users> list = null;
+        
+        try
+        {
+            tx = session.beginTransaction();
+            
+            Query query = session.createQuery(hql).setFirstResult(offset).setMaxResults(pageSize);
+            query.setString("name", "%" + condition +"%");
             
             list = query.list();
             
@@ -326,6 +369,49 @@ public class UsersDAOImpl implements UsersDAO {
             Query query = session.createQuery(hql);
             
             allRows = query.list().size();
+            
+            tx.commit();
+            
+        }
+        catch (Exception e)
+        {
+            if(tx != null)
+            {
+                tx.rollback();
+            }
+            
+            e.printStackTrace();
+        }
+        finally
+        {
+            if(tx != null)
+            {
+            	tx = null;
+            }
+        }
+        
+        return allRows;
+		
+	}
+
+	@Override
+	public int getAllRowCountByCondition(String condition) {
+		// TODO Auto-generated method stub
+		
+		String hql = "from Users as u where u.username like :name";
+		Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+        Transaction tx = null;
+        int allRows = 0;
+        try
+        {
+            tx = session.beginTransaction();
+            
+            Query query = session.createQuery(hql);
+            query.setString("name", "%" + condition +"%");
+            
+            List<Users> list =query.list();
+            allRows = list.size();
+            System.out.println("In Search by condition: list = " + list);
             
             tx.commit();
             

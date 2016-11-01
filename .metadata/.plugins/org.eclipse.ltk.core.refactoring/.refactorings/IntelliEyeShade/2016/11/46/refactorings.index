@@ -21,3 +21,18 @@
 1478751010554	Delete elements
 1478751031069	Rename resource 'Students_query_success.jsp'
 1478760128017	Copy file
+1478837262103	Rename type 'PageBean'
+1478837310496	Rename type 'PageBeanDAO'
+1478837327813	Rename type 'PageBeanDAOImpl'
+1478837375667	Rename method 'getPageBean'
+1478844056116	Rename field 'personDAO'
+1478851605701	Rename field 'personService'
+1478853501798	Copy file
+1478938767784	Rename field 'userDataDAO'
+1478940533178	Move file
+1478940730218	Move file
+1478941053667	Delete element
+1478941159156	Move file
+1478941167027	Move file
+1478941283450	Move file
+1478942516000	Move file

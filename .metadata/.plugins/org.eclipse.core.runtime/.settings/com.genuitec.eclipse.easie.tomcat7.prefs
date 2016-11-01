@@ -1,8 +1,8 @@
-#Thu Nov 10 11:10:53 CST 2016
+#Wed Nov 16 16:43:47 CST 2016
 SERVER_ENABLEMENT=true
-LIBRARY_PATH="D\:\\MyEclipse10\\Common\\binary\\com.sun.java.jdk.win32.x86_64_1.6.0.013\\bin;C\:\\tomcat-7.0.72\\bin"
+LIBRARY_PATH="D\:\\MyEclipse10\\Common\\binary\\com.sun.java.jdk.win32.x86_1.6.0.013\\bin;C\:\\tomcat-7.0.72\\bin"
 eclipse.preferences.version=1
-JDK_HOME=D\:\\MyEclipse10\\Common\\binary\\com.sun.java.jdk.win32.x86_64_1.6.0.013
+JDK_HOME=D\:\\MyEclipse10\\Common\\binary\\com.sun.java.jdk.win32.x86_1.6.0.013
 TOMCAT_BASE=C\:\\tomcat-7.0.72
 ENDORSED_DIRS="C\:\\tomcat-7.0.72/common/endorsed"
 TOMCAT_HOME=C\:\\tomcat-7.0.72

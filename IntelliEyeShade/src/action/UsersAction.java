@@ -5,11 +5,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import entity.PageBean;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
+
+import entity.UserDataPage;
 import entity.Users;
-import service.PageBeanDAO;
+import service.UserDataPageDAO;
 import service.UsersDAO;
-import serviceimpl.PageBeanDAOImpl;
+import serviceimpl.UserDataPageDAOImpl;
 import serviceimpl.UsersDAOImpl;
 
 public class UsersAction extends SuperAction {
@@ -17,35 +22,61 @@ public class UsersAction extends SuperAction {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	 private PageBeanDAO personService = new PageBeanDAOImpl();
-	    
-	    private int page;
-	    
-	    public int getPage()
-	    {
-	        return page;
-	    }
+	private static final long serialVersionUID = 1L;	    
+    private int page;
+    private String keyword;
+    
+    private static final Logger logger = LogManager.getLogger(UsersAction.class.getName());
+    
+    public int getPage()
+    {
+        return page;
+    }
 
-	    public void setPage(int page)
-	    {
-	        this.page = page;
-	    }
+    public void setPage(int page)
+    {
+        this.page = page;
+    }
+        
+    public String getKeyword() {
+		return keyword;
+	}
 
-	    
-	    public String queryByPage() throws Exception
-	    {
-	        //表示每页显示5条记录，page表示当前网页
-	        PageBean pageBean = personService.getPageBean(5, page);	        
-	        request.setAttribute("pageBean", pageBean);
-	        
-	        System.out.println("pageBean = " + pageBean);
-	        
-	        System.out.println("====>page = " + page);
-	        
-	        return "querybypage_success";
-	    }
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	public String queryByCondition()
+    {
+    	UserDataPageDAO userDataDAO = new UserDataPageDAOImpl();
+    	String keyword = request.getParameter("keyword");
+    	System.out.println("keyword = " + keyword);
+    	UserDataPage pageBean = userDataDAO.getUserPageDataByCondition(5, page, keyword);
+    	request.setAttribute("pageBean", pageBean);
+    	request.setAttribute("keyword", keyword);
+    	        
+        logger.info("In queryByCondition(): pageBean = " + pageBean);
+        logger.info("In queryByCondition(): pageIndex = " + page);
+    	
+    	return "querybycondition_success";
+    }
+    
+    public String queryByPage() throws Exception
+    {
+    	UserDataPageDAO userDataPageDAO = new UserDataPageDAOImpl();
+        //表示每页显示5条记录，page表示当前网页
+        UserDataPage pageBean = userDataPageDAO.getUserPageData(5, page);	        
+        request.setAttribute("pageBean", pageBean);
+        
+        System.out.println("pageBean = " + pageBean);
+        
+        System.out.println("====>page = " + page);
+        
+        logger.info("In queryByPage(): pageBean = " + pageBean);
+        logger.info("In queryByPage(): pageIndex = " + page);
+        
+        return "querybypage_success";
+    }
 	
 	
 	public String query()
@@ -54,12 +85,8 @@ public class UsersAction extends SuperAction {
 		
 		List<Users> list = sdao.queryAllUsers();
 		
-//		if(list != null && list.size() > 0)
-//		{
-//			session.setAttribute("sers_list", list);
-//		
-//			
-//		}
+		logger.info("In query(): list = " + list);
+
 		
 		if(list != null && list.size() > 0)
 		{
@@ -76,13 +103,30 @@ public class UsersAction extends SuperAction {
 		String uid = request.getParameter("uid");
 		String pageNum = request.getParameter("pageNum");
 		
-		System.out.println("===>pageNum = " + pageNum);
+		
+		logger.info("In delete(): pageIndex = " + pageNum);
 		
 		setPage(Integer.parseInt(pageNum));
 		
 		sdao.deleteUsers(uid);
 		
 		return "delete_success";
+	}
+	
+	public String deleteInSearch()
+	{
+		UsersDAO sdao = new UsersDAOImpl();
+		String uid = request.getParameter("uid");
+		String pageNum = request.getParameter("pageNum");
+		
+//		System.out.println("===>pageNum = " + pageNum);
+		logger.info("In deleteInSearch(): pageIndex = " + pageNum);
+		
+		setPage(Integer.parseInt(pageNum));
+		
+		sdao.deleteUsers(uid);
+		
+		return "deleteinsearch_success";
 	}
 	
 	public String add()

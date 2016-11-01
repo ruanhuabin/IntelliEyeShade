@@ -130,7 +130,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <br>
 <div align=center>
-<form>
+<form action="users/Users_queryByCondition.action">
         <select name="keywordSelect">
                 <option value="username" selected>用户名</option>
                 <option value="bindStatus">绑定状态</option>
@@ -146,10 +146,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <br>
 
-<div id="mainContainer">
+<div id="mainContainer1">
 <!-- 从session中获取学生集合 -->
 
-<table class="default" width="100%">
+<!-- <table class="default" width="100%"> -->
+<table  width="100%">
 	<col width="10%">
 	<col width="15%">
 	<col width="5%">

@@ -5,10 +5,13 @@
 <fullyQualifiedTypeName name="entity.Administrator"/>
 <fullyQualifiedTypeName name="org.hibernate.Transaction"/>
 <fullyQualifiedTypeName name="db.MyHibernateSessionFactory"/>
-<fullyQualifiedTypeName name="service.UsersDAO"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="entity.Users"/>
 <fullyQualifiedTypeName name="service.PageBeanDAO"/>
 <fullyQualifiedTypeName name="serviceimpl.PageBeanDAOImpl"/>
 <fullyQualifiedTypeName name="entity.PageBean"/>
+<fullyQualifiedTypeName name="serviceimpl.UsersDAOImpl"/>
+<fullyQualifiedTypeName name="service.UsersDAO"/>
+<fullyQualifiedTypeName name="org.apache.log4j.Logger"/>
+<fullyQualifiedTypeName name="org.apache.logging.log4j.core.Logger"/>
 </qualifiedTypeNameHistroy>

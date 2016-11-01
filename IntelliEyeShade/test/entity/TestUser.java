@@ -12,6 +12,9 @@ import org.hibernate.service.ServiceRegistryBuilder;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.junit.Test;
 
+import service.UsersDAO;
+import serviceimpl.UsersDAOImpl;
+
 import db.MyHibernateSessionFactory;
 public class TestUser {
 	
@@ -53,5 +56,22 @@ public class TestUser {
 		tx.commit();
 		MyHibernateSessionFactory.getSessionFactory().close();
 	}
+
+	@Test
+	public void testSearchUserCountByCondition()
+	{
+		
+		UsersDAO udao = new UsersDAOImpl();
+		udao.getAllRowCountByCondition("wen");
+	}
+	
+	@Test
+	public void testSearchUserDataByCondition()
+	{
+		
+		UsersDAO udao = new UsersDAOImpl();
+		udao.getAllRowCountByCondition("wen");
+	}
+	
 
 }

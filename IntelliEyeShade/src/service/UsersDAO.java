@@ -19,4 +19,8 @@ public interface UsersDAO {
 	public List<Users> queryByPage(String hql, int offset, int pageSize);
 	    
 	public int getAllRowCount(String hql);
+	public int getAllRowCountByCondition(String condition);
+
+	public List<Users> queryByCondition(String hql, String condition,
+			int offset, int pageSize);
 }
