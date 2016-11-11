@@ -1,0 +1,8 @@
+package entity;
+
+public class Manager {
+	private int mid;
+	private String username;
+	private String password;
+
+}

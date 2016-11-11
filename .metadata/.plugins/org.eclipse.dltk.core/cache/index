@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<cache:CacheIndex xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:cache="http://eclipse.org/dltk/cache_model" environment="org.eclipse.dltk.core.environment.localEnvironment">
+  <entries path="C:/workspace-eyeshade/IntelliEyeShade/WebRoot/components/dtree/dtree.js" timestamp="1478745342734" lastAccessTime="1478745344000"/>
+  <entries path="C:/workspace-eyeshade/IntelliEyeShade/WebRoot/js/Calendar3.js" timestamp="1478745402794" lastAccessTime="1478745403514"/>
+</cache:CacheIndex>

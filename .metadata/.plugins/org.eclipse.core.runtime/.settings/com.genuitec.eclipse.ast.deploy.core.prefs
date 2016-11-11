@@ -1,0 +1,14 @@
+#Thu Nov 10 11:22:11 CST 2016
+tomcat7Server.IntelliEyeShade.deploymentPath=C\:\\tomcat-7.0.72\\webapps\\IntelliEyeShade
+tomcat7Server.IntelliEyeShade.contextRoot=/IntelliEyeShade
+tomcat7Server.IntelliEyeShade.isDeployed=true
+tomcat7Server.IntelliEyeShade.noFileCopy=false
+tomcat7Server.IntelliEyeShade.shouldBackup=false
+tomcat7Server.IntelliEyeShade.shouldOverwrite=false
+tomcat7Server.IntelliEyeShade.type=WebDeployment
+tomcat7Server.IntelliEyeShade.isUptoDate=true
+tomcat7Server.IntelliEyeShade.IEARProjectName=
+tomcat7Server.IntelliEyeShade.deployIsOverProject=false
+eclipse.preferences.version=1
+tomcat7Server.IntelliEyeShade.isExploded=true
+tomcat7Server.IntelliEyeShade.altContextRoot=

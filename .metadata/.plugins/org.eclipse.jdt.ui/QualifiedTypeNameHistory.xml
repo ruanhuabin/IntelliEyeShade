@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="service.AdministratorDAO"/>
+<fullyQualifiedTypeName name="serviceimpl.AdministratorDAOImpl"/>
+<fullyQualifiedTypeName name="entity.Administrator"/>
+<fullyQualifiedTypeName name="org.hibernate.Transaction"/>
+<fullyQualifiedTypeName name="db.MyHibernateSessionFactory"/>
+<fullyQualifiedTypeName name="service.UsersDAO"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="entity.Users"/>
+<fullyQualifiedTypeName name="service.PageBeanDAO"/>
+<fullyQualifiedTypeName name="serviceimpl.PageBeanDAOImpl"/>
+<fullyQualifiedTypeName name="entity.PageBean"/>
+</qualifiedTypeNameHistroy>

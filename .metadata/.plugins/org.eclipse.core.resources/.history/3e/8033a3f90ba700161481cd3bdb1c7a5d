@@ -1,0 +1,6 @@
+package service;
+
+public class PageBeanDAO {
+	public PageBean getPageBean(int pageSize, int page);
+
+}

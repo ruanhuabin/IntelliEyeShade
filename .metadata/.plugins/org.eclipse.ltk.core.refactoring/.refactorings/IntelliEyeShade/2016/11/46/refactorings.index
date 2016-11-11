@@ -1,0 +1,23 @@
+1478745848711	Rename type 'Manager'
+1478746395707	Rename resource 'users.hbm.xml'
+1478746598869	Rename type 'UsersAction'
+1478746682827	Rename type 'UserDAO'
+1478746772657	Rename compilation unit 'UsersDAOImple.java'
+1478747189691	Copy folder
+1478747201302	Rename resource 'Users_login_main.jsp'
+1478747207965	Rename resource 'Users_login_success.jsp'
+1478747217598	Rename resource 'Users_login.jsp'
+1478747229814	Rename resource 'Users_query_success.jsp'
+1478747592743	Delete element
+1478747661992	Delete element
+1478749398020	Rename resource 'users.hbm.xml'
+1478750263040	Rename type 'StudentDAOImpl'
+1478750315364	Rename type 'StudentDAO'
+1478750595722	Rename type 'StudentAction'
+1478750886684	Rename resource 'Students_add_success.jsp'
+1478750893587	Rename resource 'Students_modify_success.jsp'
+1478750965217	Delete elements
+1478750983633	Rename resource 'Users_login_main.jsp'
+1478751010554	Delete elements
+1478751031069	Rename resource 'Students_query_success.jsp'
+1478760128017	Copy file

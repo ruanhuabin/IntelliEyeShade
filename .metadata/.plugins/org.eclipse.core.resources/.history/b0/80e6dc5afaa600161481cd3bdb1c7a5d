@@ -1,0 +1,18 @@
+package service;
+
+import java.util.List;
+
+import entity.Student;
+
+public interface UsersDAO {
+
+	public List<Student> queryAllStudents();
+	
+	public Student queryStudentBySid(String sid);
+	
+	public boolean addStudents(Student s);
+	
+	public boolean updateStudents(Student s);
+	
+	public boolean deleteStudent(String sid);
+}

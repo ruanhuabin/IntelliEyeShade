@@ -1,0 +1,34 @@
+<Beans>
+    <Bean Class="com.genuitec.eclipse.sqlexplorer.utils.ConnectionProfile">
+        <activate>false</activate>
+        <driverIdentifier Class="net.sourceforge.squirrel_sql.fw.id.UidIdentifier">
+            <string>7d2a2f75:1584c13e1ff:-7fde</string>
+        </driverIdentifier>
+        <identifier Class="net.sourceforge.squirrel_sql.fw.id.UidIdentifier">
+            <string>7d2a2f75:1584c13e1ff:-7fdd</string>
+        </identifier>
+        <name>MyEclipse Derby</name>
+        <password encryption="true">gFOjO/OmrJ8m4/rtM2cMIw==</password>
+        <promptForPassword>false</promptForPassword>
+        <schema Indexed="true"/>
+        <schemaDisplayPolicy>0</schemaDisplayPolicy>
+        <url>jdbc:derby://localhost:1527/myeclipse</url>
+        <userName>classiccars</userName>
+    </Bean>
+    <Bean Class="com.genuitec.eclipse.sqlexplorer.utils.ConnectionProfile">
+        <activate>false</activate>
+        <driverIdentifier Class="net.sourceforge.squirrel_sql.fw.id.UidIdentifier">
+            <string>7d2a2f75:1584c13e1ff:-7f95</string>
+        </driverIdentifier>
+        <identifier Class="net.sourceforge.squirrel_sql.fw.id.UidIdentifier">
+            <string>7d2a2f75:1584c13e1ff:-7fdb</string>
+        </identifier>
+        <name>eyeshade-DB</name>
+        <password encryption="true">+87R4SQ28Hg=</password>
+        <promptForPassword>false</promptForPassword>
+        <schema Indexed="true"/>
+        <schemaDisplayPolicy>0</schemaDisplayPolicy>
+        <url>jdbc:mysql://localhost:3306/intellieyeshade</url>
+        <userName>root</userName>
+    </Bean>
+</Beans>

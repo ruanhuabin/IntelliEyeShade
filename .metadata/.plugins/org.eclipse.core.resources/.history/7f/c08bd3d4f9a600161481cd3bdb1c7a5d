@@ -1,0 +1,122 @@
+package action;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import entity.Student;
+import service.StudentDAO;
+import serviceimple.StudentDAOImpl;
+
+public class StudentAction extends SuperAction {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	public String query()
+	{
+		StudentDAO sdao = new StudentDAOImpl();
+		
+		List<Student> list = sdao.queryAllStudents();
+		
+		if(list != null && list.size() > 0)
+		{
+			session.setAttribute("students_list", list);
+			
+		}
+		
+		return "query_success";
+	}
+
+	
+	public String delete()
+	{
+		StudentDAO sdao = new StudentDAOImpl();
+		String sid = request.getParameter("sid");
+		sdao.deleteStudent(sid);
+		
+		return "delete_success";
+	}
+	
+	public String add()
+	{
+		String address = request.getParameter("address");
+		//Date birthday = new Date(request.getParameter("birthday"));
+		String gender = request.getParameter("gender");
+		String name = request.getParameter("sname");
+		
+		String birthday = request.getParameter("birthday");
+		Student stu = new Student();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date;
+		try {
+			date = sdf.parse(birthday);
+			stu.setBirthday(date);
+			//System.out.println(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//System.out.println("birthday = " + birthday);
+		
+		
+		stu.setAddress(address);
+		
+		stu.setGender(gender);
+		stu.setSname(name);
+		
+		StudentDAO sdao = new StudentDAOImpl();
+		sdao.addStudents(stu);
+		
+		
+		return "add_success";
+	}
+	
+	public String modify()
+	{
+		String sid = request.getParameter("sid");
+		StudentDAO sdao = new StudentDAOImpl();
+		Student stu = sdao.queryStudentBySid(sid);
+		
+		session.setAttribute("modify_students", stu);
+		return "modify_success";
+	}
+	
+	public String save()
+	{
+		String address = request.getParameter("address");
+		//Date birthday = new Date(request.getParameter("birthday"));
+		String gender = request.getParameter("gender");
+		String name = request.getParameter("sname");
+		
+		String birthday = request.getParameter("birthday");
+		Student stu = new Student();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date;
+		try {
+			date = sdf.parse(birthday);
+			stu.setBirthday(date);
+			//System.out.println(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//System.out.println("birthday = " + birthday);
+		
+		
+		stu.setAddress(address);
+		
+		stu.setGender(gender);
+		stu.setSname(name);
+		stu.setSid(request.getParameter("sid"));
+		StudentDAO sdao = new StudentDAOImpl();
+		sdao.updateStudents(stu);
+		
+		return "save_success";
+		
+		
+	}
+}
