@@ -6,12 +6,21 @@
 <fullyQualifiedTypeName name="org.hibernate.Transaction"/>
 <fullyQualifiedTypeName name="db.MyHibernateSessionFactory"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="entity.Users"/>
 <fullyQualifiedTypeName name="service.PageBeanDAO"/>
 <fullyQualifiedTypeName name="serviceimpl.PageBeanDAOImpl"/>
 <fullyQualifiedTypeName name="entity.PageBean"/>
-<fullyQualifiedTypeName name="serviceimpl.UsersDAOImpl"/>
-<fullyQualifiedTypeName name="service.UsersDAO"/>
-<fullyQualifiedTypeName name="org.apache.log4j.Logger"/>
 <fullyQualifiedTypeName name="org.apache.logging.log4j.core.Logger"/>
+<fullyQualifiedTypeName name="serviceimpl.DevicesDAOImpl"/>
+<fullyQualifiedTypeName name="service.UsersDAO"/>
+<fullyQualifiedTypeName name="serviceimpl.UsersDAOImpl"/>
+<fullyQualifiedTypeName name="entity.Users"/>
+<fullyQualifiedTypeName name="service.DevicesDAO"/>
+<fullyQualifiedTypeName name="entity.Devices"/>
+<fullyQualifiedTypeName name="service.DeviceDataPageDAO"/>
+<fullyQualifiedTypeName name="serviceimpl.DeviceDataPageDAOImpl"/>
+<fullyQualifiedTypeName name="entity.DeviceDataPage"/>
+<fullyQualifiedTypeName name="java.util.logging.Logger"/>
+<fullyQualifiedTypeName name="java.util.logging.Level"/>
+<fullyQualifiedTypeName name="org.apache.log4j.Logger"/>
+<fullyQualifiedTypeName name="org.apache.log4j.Level"/>
 </qualifiedTypeNameHistroy>

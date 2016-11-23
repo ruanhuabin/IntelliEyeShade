@@ -22,7 +22,9 @@
 		<property name="username" type="java.lang.String"/>
 		<property name="gender" type="java.lang.String"/>
 		<property name="bindingStatus" type="java.lang.String"/>
+		<property name="deviceID" type="java.lang.String"/>
 		<property name="phoneNum" type="java.lang.String"/>
+		<property name="registerDate" type="java.lang.String"/>
 		<property name="testTimes" type="int"/>
 		<property name="age" type="int"/>
 		

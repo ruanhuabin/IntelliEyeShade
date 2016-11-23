@@ -1,0 +1,13 @@
+package entity;
+
+public class Devices {
+	private String deviceID;
+	private String deviceVersion;
+	private String romVersion;
+	private String deviceStatus;
+	private String bindingStatus;
+	private Users user;
+	
+	
+
+}

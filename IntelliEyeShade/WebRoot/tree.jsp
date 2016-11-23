@@ -25,8 +25,8 @@ var treeMenu = [
 	{ level:1, name:"系统邮件", ico:"images/icon_default.gif"},
 	{ level:1, name:"网络文件", ico:"images/icon_default.gif",link:"complaint_list.html"}, */
 	{ level:1, name:"用户管理", ico:"images/icon_default.gif",link:"users/Users_queryByPage.action"},
-	{ level:1, name:"硬件管理", ico:"images/icon_default.gif",link:"complaint_list.html"},
-	{ level:1, name:"统计管理", ico:"images/icon_default.gif",link:"complaint_list.html"},
+	{ level:1, name:"硬件管理", ico:"images/icon_default.gif",link:"devices/Devices_queryByPage.action"},
+	{ level:1, name:"统计管理", ico:"images/icon_default.gif",link:"statistics/statistics_filter.jsp"},
 ];
 </script>
 <style>

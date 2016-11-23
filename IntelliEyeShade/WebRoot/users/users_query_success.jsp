@@ -105,11 +105,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             
             return true;
         }
+        
+        function checkfilter(sel)
+        {
+        	var currentSelect = sel.value;
+        	
+        	if(currentSelect == "binded" || currentSelect == "unbinded")
+        	{
+        		document.user_filter.starttime.style.display="none";
+        		document.user_filter.endtime.style.display="none";
+        		document.getElementById('sl').style.display="none";
+        		document.getElementById('el').style.display="none";
+        		
+        	}
+        	else
+        	{
+        		document.user_filter.starttime.style.display="";
+        		document.user_filter.endtime.style.display="";
+        		document.getElementById('sl').style.display="";
+        		document.getElementById('el').style.display="";
+        	}
+        	
+        	
+        }
     
     </script>
+<!--     <script type="text/javascript" src="../js/Calendar3.js"></script> -->
 </head>
 <body>
-
+ <script type="text/javascript" src="<%=path%>/js/Calendar3.js"></script>  
+ 
 
 <%-- <div id="navi">
 	<div id='naviDiv'>
@@ -129,20 +154,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div> --%>
 
 <br>
-<div align=center>
+<p>
+<div style="width:20px; display:inline-block;">
+</div>
+<div style="width:600px; display:inline-block;">
 <form action="users/Users_queryByCondition.action">
         <select name="keywordSelect">
                 <option value="username" selected>用户名</option>
-                <option value="bindStatus">绑定状态</option>
+                <option value="gender">性别</option>                
                 <option value="age">年龄</option>
-                <option value="testTimes">使用次数</option>
+                <option value="phoneNum">手机号</option>
+                <option value="testTimes">检测情况</option>
         </select>
         
         <input type=text name="keyword" size=20/>
+        
         <input type="submit" value="搜索"/> 
 </form>
-
 </div>
+<div style="width:800px; display:inline-block;">
+<form name = "user_filter" action="users/Users_filterByPage.action">
+<select name="UserFilterType" onchange="return checkfilter(this)">
+
+<option value="timerange" selected>时间段</option>
+<option value="binded"> 已绑定</option>
+<option value="unbinded">未绑定</option>
+</select>
+<label id="sl">开始时间：</label><input name="starttime" type="text" id="control_date" size="20"
+      maxlength="10" onclick="new Calendar().show(this);" readonly="readonly" />
+
+<label id="el">
+结束时间：</label><input name="endtime" type="text" id="control_date" size="20"
+      maxlength="10" onclick="new Calendar().show(this);" readonly="readonly" />
+<input type="submit" value="筛选"/> 
+
+</form>
+</div>
+</p>
 
 <br>
 
@@ -155,10 +203,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<col width="15%">
 	<col width="5%">
 	<col width="10%">
-	<col width="15%">
-	<col width="15%">
-	<col width="15%"> 
-	<col width="15%"> 
+	<col width="12%">
+	<col width="12%">
+	<col width="12%"> 
+	<col width="12%"> 
+	<col width="12%"> 
 	<tr class="title">
 	
 		<td>ID</td>
@@ -168,6 +217,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<td>手机号</td>
 		<td>硬件绑定</td>
 		<td>检测情况</td>
+		<td>注册时间</td>
 		<td>操作</td>
 	</tr>
 	
@@ -177,12 +227,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<tr class="list">
 		 <td><s:property value="#usr.uid"/></td>
 		
-		<td><a href="<%=path%>/usrs/Users_modify.action?uid=<s:property value="#usr.uid"/>"><s:property value="#usr.username"/></a></td>
+		<td><a href="<%=path%>/users/Users_modify.action?uid=<s:property value="#usr.uid"/>"><s:property value="#usr.username"/></a></td>
 		<td><s:property value="#usr.gender"/></td>
 		<td><s:property value="#usr.age"/></td>
 		<td><s:property value="#usr.phoneNum"/></td>
-		<td><s:property value="#usr.bindingStatus"/></td>
-		<td><s:property value="#usr.testTimes"/></td>
+		<td><a href="<%=path%>/devices/Devices_listDeviceDetails.action?uid=<s:property value="#usr.uid"/>&deviceID=<s:property value="#usr.deviceID"/>" ><s:property value="#usr.bindingStatus"/></a></td>
+		<td><a href="<%=path%>/users/Users_getTestInfo.action?uid=<s:property value="#usr.uid"/>&pageNum=<s:property value="#request.pageBean.currentPage"/>"><s:property value="#usr.testTimes"/></a></td>
+		<td><s:property value="#usr.registerDate"/></td>
 		<td><a href="<%=path%>/users/Users_delete.action?uid=<s:property value="#usr.uid"/>&pageNum=<s:property value="#request.pageBean.currentPage"/>" onclick="javascript: return confirm('真的要删除吗？');">删除</a></td>
 	</tr>
 	</s:iterator>

@@ -1,0 +1,12 @@
+package entity;
+
+import java.util.Date;
+
+public class TestInfo {
+	
+	private String uid;
+	private Date date;
+	
+
+	
+}

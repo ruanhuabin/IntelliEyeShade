@@ -1,0 +1,16 @@
+package serviceimpl;
+
+import entity.Devices;
+import service.DevicesDAO;
+
+public class DevicesDAOImpl implements DevicesDAO {
+
+	@Override
+	public Devices listDetails(String deviceID) {
+		// TODO Auto-generated method stub
+		
+		
+		return null;
+	}
+
+}

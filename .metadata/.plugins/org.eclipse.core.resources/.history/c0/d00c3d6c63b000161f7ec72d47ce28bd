@@ -1,0 +1,29 @@
+package action;
+
+import org.apache.struts2.interceptor.validation.SkipValidation;
+
+import service.AdministratorDAO;
+import serviceimpl.AdministratorDAOImpl;
+
+
+import com.opensymphony.xwork2.ModelDriven;
+
+import entity.Administrator;
+import entity.Users;
+
+public class StatisticsAction extends SuperAction {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	public String query()
+	{
+		String startTime = request.getParameter("starttime");
+		String endTime = request.getParameter("endtime");
+	}
+	
+	
+	
+}

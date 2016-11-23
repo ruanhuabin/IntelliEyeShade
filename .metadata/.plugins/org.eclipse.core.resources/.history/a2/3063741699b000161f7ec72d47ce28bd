@@ -1,0 +1,10 @@
+package entity;
+
+public class TestInfo {
+	
+	private String uid;
+	private Date date;
+	
+
+	
+}

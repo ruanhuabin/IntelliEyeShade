@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="TestAdministrator.testSchemaExport" project="IntelliEyeShade" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testcase name="testSchemaExport" classname="entity.TestAdministrator" time="2.556"/>
+</testrun>

@@ -1,0 +1,124 @@
+<%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<!DOCTYPE html>
+<html>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="../css/default.css" />
+<head>
+<script type="text/javascript">
+function check()
+{
+	//alert("check body");
+	
+	var startDate = document.filter.starttime.value;
+	var endDate = document.filter.endtime.value;
+	
+	var t1 = new Date(startDate.replace(/\-/g, "\/"));
+	var t2 = new Date(endDate.replace(/\-/g, "\/"));
+	
+	if(startDate == "" || endDate == "")
+	{
+		alert("请选择开始时间或者结束时间");
+		return false;
+		
+	}
+	
+	 if(startDate!="" && endDate!="" && t1 >=t2)  
+	 {  
+		  alert("开始时间不能大于结束时间！");  
+		  return false;  
+	 }
+	
+	
+	
+	return false;
+}
+
+
+function getSelectFilter(sel)
+{
+	
+	
+	var typeSelect = sel.value;
+	
+	//alert(typeSelect);
+	
+	if(typeSelect == "deviceID")
+	{
+		
+		//alert("You select: " + typeSelect);
+		document.filter.starttime.style.display = "none";
+	}
+	
+	if(typeSelect == "bindingStatus")
+	{
+		document.filter.starttime.style.display = "";
+		document.filter.keyword.style.display="";
+	}
+	
+	
+	
+	
+	return false;
+}
+</script>
+
+</head>
+
+
+
+<body>
+
+
+<script type="text/javascript" src="../js/Calendar3.js"></script>
+<br>
+<br>
+<div style="width:40px; display:inline-block;">
+</div>
+<div style="width:600px; display:inline-block;">
+<form name="filter" action="<%=path%>/statistics/Statistics_query.action" method="post">
+开始时间：<input name="starttime" type="text" id="control_date" size="20"
+      maxlength="10" onclick="new Calendar().show(this);" readonly="readonly" />
+      
+      <input name="keyword" size="20" type="text" style="display:none" value="abc"/>
+
+结束时间：<input name="endtime" type="text" id="control_date" size="20"
+      maxlength="10" onclick="new Calendar().show(this);" readonly="readonly" />
+
+<input type="submit" value="筛选" onclick="return check()"/>
+</form>
+</div>
+
+<br>
+<br>
+<div style="width:40px; display:inline-block;">
+</div>
+
+<div style="width:600px; display:inline-block;">
+<label>用户统计：</label>
+<br><br>
+
+<label>总人数：<s:property value="#request.statisticsinfo.totalUsers"/></label>
+<br>
+<label>日人均注册人数：30</label>
+<br>
+<label>日人均登录人数：50</label>
+<br>
+<label>使用统计：10086</label>
+<br>
+<br>
+<label>总次数： 100</label>
+<br>
+<label>总时长：68907</label>
+<br>
+</div>
+
+
+
+
+</body>
+</html>

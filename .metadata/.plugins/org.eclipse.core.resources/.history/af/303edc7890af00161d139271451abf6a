@@ -1,0 +1,8 @@
+package action;
+
+public class DevicesAction extends SuperAction {
+	
+	public String listDeviceDetails()
+	{}
+
+}

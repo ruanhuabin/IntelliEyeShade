@@ -1,0 +1,5 @@
+package action;
+
+public class DevicesAction extends SuperAction {
+
+}

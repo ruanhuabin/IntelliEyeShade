@@ -9,17 +9,12 @@ public class Users {
 	private int age;
 	private int testTimes;
 	private String bindingStatus;
+	private String deviceID;
+	private String registerDate;
 	
-	
-	public Users()
-	{
-		
-		
-	}
-
-
 	public Users(String uid, String username, String gender, String phoneNum,
-			int age, int testTimes, String bindingStatus) {
+			int age, int testTimes, String bindingStatus, String deviceID,
+			String registerDate) {
 		super();
 		this.uid = uid;
 		this.username = username;
@@ -28,7 +23,52 @@ public class Users {
 		this.age = age;
 		this.testTimes = testTimes;
 		this.bindingStatus = bindingStatus;
+		this.deviceID = deviceID;
+		this.registerDate = registerDate;
 	}
+
+
+	public String getRegisterDate() {
+		return registerDate;
+	}
+
+
+	public void setRegisterDate(String registerDate) {
+		this.registerDate = registerDate;
+	}
+
+
+	public String getDeviceID() {
+		return deviceID;
+	}
+
+
+	public void setDeviceID(String deviceID) {
+		this.deviceID = deviceID;
+	}
+
+
+	public Users()
+	{
+		
+		
+	}
+
+
+	
+
+
+//	public Users(String uid, String username, String gender, String phoneNum,
+//			int age, int testTimes, String bindingStatus) {
+//		super();
+//		this.uid = uid;
+//		this.username = username;
+//		this.gender = gender;
+//		this.phoneNum = phoneNum;
+//		this.age = age;
+//		this.testTimes = testTimes;
+//		this.bindingStatus = bindingStatus;
+//	}
 
 
 	@Override
@@ -36,7 +76,8 @@ public class Users {
 		return "Users [uid=" + uid + ", username=" + username + ", gender="
 				+ gender + ", phoneNum=" + phoneNum + ", age=" + age
 				+ ", testTimes=" + testTimes + ", bindingStatus="
-				+ bindingStatus + "]";
+				+ bindingStatus + ", deviceID=" + deviceID + ", registerDate="
+				+ registerDate + "]";
 	}
 
 

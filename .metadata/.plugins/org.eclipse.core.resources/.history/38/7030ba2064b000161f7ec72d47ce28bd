@@ -1,0 +1,10 @@
+package entity;
+
+public class StatisticsInfo {
+	private int totalUsers;
+	private int avgRegisterUsers;
+	private int avgLoginUsers;
+	private int totalTestTimes;
+	private int totalTestMiniutes;
+
+}

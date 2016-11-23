@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="85" version="2.0">
+<workbench progressCount="86" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="208" y="208">
 <fastViewData fastViewLocation="1024"/>
@@ -76,6 +76,20 @@
 <part id="27"/>
 <part id="28"/>
 <part id="29"/>
+<part id="30"/>
+<part id="31"/>
+<part id="32"/>
+<part id="33"/>
+<part id="34"/>
+<part id="35"/>
+<part id="36"/>
+<part id="37"/>
+<part id="38"/>
+<part id="39"/>
+<part id="40"/>
+<part id="41"/>
+<part id="42"/>
+<part id="43"/>
 </presentation>
 </folder>
 </info>
@@ -92,7 +106,7 @@
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Users.java" partName="Users.java" path="C:/workspace-eyeshade/IntelliEyeShade/src/entity/Users.java" title="Users.java" tooltip="IntelliEyeShade/src/entity/Users.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/src/entity/Users.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="940" selectionTopPixel="270"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="959" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Administrator.java" partName="Administrator.java" path="C:/workspace-eyeshade/IntelliEyeShade/src/entity/Administrator.java" title="Administrator.java" tooltip="IntelliEyeShade/src/entity/Administrator.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/src/entity/Administrator.java"/>
@@ -135,29 +149,29 @@
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestUser.java" partName="TestUser.java" path="C:/workspace-eyeshade/IntelliEyeShade/test/entity/TestUser.java" title="TestUser.java" tooltip="IntelliEyeShade/test/entity/TestUser.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/test/entity/TestUser.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1560" selectionTopPixel="374"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="879" selectionTopPixel="0"/>
 </editor>
 <editor id="com.genuitec.eclipse.hibernate.editor.multipage.hibernatemappingeditor" name="Users.hbm.xml" partName="Users.hbm.xml" path="C:/workspace-eyeshade/IntelliEyeShade/src/entity/Users.hbm.xml" title="Users.hbm.xml" tooltip="C:/workspace-eyeshade/IntelliEyeShade/src/entity/Users.hbm.xml" workbook="DefaultEditorWorkbook">
 <input factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" path="/IntelliEyeShade/src/entity/Users.hbm.xml"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UsersAction.java" partName="UsersAction.java" path="C:/workspace-eyeshade/IntelliEyeShade/src/action/UsersAction.java" title="UsersAction.java" tooltip="IntelliEyeShade/src/action/UsersAction.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/src/action/UsersAction.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="641" selectionTopPixel="462"/>
+<editorState selectionHorizontalPixel="0" selectionLength="603" selectionOffset="957" selectionTopPixel="1078"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UsersDAOImpl.java" partName="UsersDAOImpl.java" path="C:/workspace-eyeshade/IntelliEyeShade/src/serviceimpl/UsersDAOImpl.java" title="UsersDAOImpl.java" tooltip="IntelliEyeShade/src/serviceimpl/UsersDAOImpl.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/src/serviceimpl/UsersDAOImpl.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="16" selectionOffset="5359" selectionTopPixel="6446"/>
+<editorState selectionHorizontalPixel="0" selectionLength="949" selectionOffset="4385" selectionTopPixel="6021"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UsersDAO.java" partName="UsersDAO.java" path="C:/workspace-eyeshade/IntelliEyeShade/src/service/UsersDAO.java" title="UsersDAO.java" tooltip="IntelliEyeShade/src/service/UsersDAO.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/src/service/UsersDAO.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="595" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="96" selectionOffset="496" selectionTopPixel="164"/>
 </editor>
 <editor id="com.genuitec.eclipse.webdesigner3.editors.jsp" name="users_query_success.jsp" partName="users_query_success.jsp" path="C:/workspace-eyeshade/IntelliEyeShade/WebRoot/users/users_query_success.jsp" title="users_query_success.jsp" tooltip="IntelliEyeShade/WebRoot/users/users_query_success.jsp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/WebRoot/users/users_query_success.jsp"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UserDataPage.java" partName="UserDataPage.java" path="C:/workspace-eyeshade/IntelliEyeShade/src/entity/UserDataPage.java" title="UserDataPage.java" tooltip="IntelliEyeShade/src/entity/UserDataPage.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/src/entity/UserDataPage.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="10" selectionOffset="1839" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1728" selectionTopPixel="1218"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UserDataPageDAO.java" partName="UserDataPageDAO.java" path="C:/workspace-eyeshade/IntelliEyeShade/src/service/UserDataPageDAO.java" title="UserDataPageDAO.java" tooltip="IntelliEyeShade/src/service/UserDataPageDAO.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/src/service/UserDataPageDAO.java"/>
@@ -165,10 +179,7 @@
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UserDataPageDAOImpl.java" partName="UserDataPageDAOImpl.java" path="C:/workspace-eyeshade/IntelliEyeShade/src/serviceimpl/UserDataPageDAOImpl.java" title="UserDataPageDAOImpl.java" tooltip="IntelliEyeShade/src/serviceimpl/UserDataPageDAOImpl.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/src/serviceimpl/UserDataPageDAOImpl.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1972" selectionTopPixel="770"/>
-</editor>
-<editor id="com.genuitec.eclipse.webdesigner3.editors.jsp" name="users_pageuser.jsp" partName="users_pageuser.jsp" path="C:/workspace-eyeshade/IntelliEyeShade/WebRoot/users/users_pageuser.jsp" title="users_pageuser.jsp" tooltip="IntelliEyeShade/WebRoot/users/users_pageuser.jsp" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/WebRoot/users/users_pageuser.jsp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1972" selectionTopPixel="0"/>
 </editor>
 <editor id="com.genuitec.eclipse.jsf.designer.editor" name="users_query_success.jsp" partName="users_query_success.jsp" path="C:/workspace-eyeshade/IntelliEyeShade/WebRoot/users/users_query_success.jsp" title="users_query_success.jsp" tooltip="IntelliEyeShade/WebRoot/users/users_query_success.jsp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/WebRoot/users/users_query_success.jsp"/>
@@ -183,18 +194,76 @@
 <editor id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="log4j2.xml" partName="log4j2.xml" path="C:/workspace-eyeshade/IntelliEyeShade/WebRoot/WEB-INF/lib/log4j2.xml" title="log4j2.xml" tooltip="IntelliEyeShade/WebRoot/WEB-INF/lib/log4j2.xml" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/WebRoot/WEB-INF/lib/log4j2.xml"/>
 </editor>
-<editor activePart="true" focus="true" id="org.jboss.tools.common.model.ui.editor.EditorPartWrapper" name="web.xml" partName="web.xml" path="C:/workspace-eyeshade/IntelliEyeShade/WebRoot/WEB-INF/web.xml" title="web.xml" tooltip="C:/workspace-eyeshade/IntelliEyeShade/WebRoot/WEB-INF/web.xml" workbook="DefaultEditorWorkbook">
+<editor id="org.jboss.tools.common.model.ui.editor.EditorPartWrapper" name="web.xml" partName="web.xml" path="C:/workspace-eyeshade/IntelliEyeShade/WebRoot/WEB-INF/web.xml" title="web.xml" tooltip="C:/workspace-eyeshade/IntelliEyeShade/WebRoot/WEB-INF/web.xml" workbook="DefaultEditorWorkbook">
 <input factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" path="/IntelliEyeShade/WebRoot/WEB-INF/web.xml"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Devices.java" partName="Devices.java" path="C:/workspace-eyeshade/IntelliEyeShade/src/entity/Devices.java" title="Devices.java" tooltip="IntelliEyeShade/src/entity/Devices.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/src/entity/Devices.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1737" selectionTopPixel="1254"/>
+</editor>
+<editor id="com.genuitec.eclipse.hibernate.editor.multipage.hibernatemappingeditor" name="Devices.hbm.xml" partName="Devices.hbm.xml" path="C:/workspace-eyeshade/IntelliEyeShade/src/entity/Devices.hbm.xml" title="Devices.hbm.xml" tooltip="C:/workspace-eyeshade/IntelliEyeShade/src/entity/Devices.hbm.xml" workbook="DefaultEditorWorkbook">
+<input factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" path="/IntelliEyeShade/src/entity/Devices.hbm.xml"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DevicesDAO.java" partName="DevicesDAO.java" path="C:/workspace-eyeshade/IntelliEyeShade/src/service/DevicesDAO.java" title="DevicesDAO.java" tooltip="IntelliEyeShade/src/service/DevicesDAO.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/src/service/DevicesDAO.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="25" selectionOffset="220" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DevicesDAOImpl.java" partName="DevicesDAOImpl.java" path="C:/workspace-eyeshade/IntelliEyeShade/src/serviceimpl/DevicesDAOImpl.java" title="DevicesDAOImpl.java" tooltip="IntelliEyeShade/src/serviceimpl/DevicesDAOImpl.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/src/serviceimpl/DevicesDAOImpl.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="484" selectionTopPixel="22"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SuperAction.java" partName="SuperAction.java" path="C:/workspace-eyeshade/IntelliEyeShade/src/action/SuperAction.java" title="SuperAction.java" tooltip="IntelliEyeShade/src/action/SuperAction.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/src/action/SuperAction.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DevicesAction.java" partName="DevicesAction.java" path="C:/workspace-eyeshade/IntelliEyeShade/src/action/DevicesAction.java" title="DevicesAction.java" tooltip="IntelliEyeShade/src/action/DevicesAction.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/src/action/DevicesAction.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2064" selectionTopPixel="1115"/>
+</editor>
+<editor id="org.eclipse.jst.jsp.core.jspsource.source" name="devices_list_success.jsp" partName="devices_list_success.jsp" path="C:/workspace-eyeshade/IntelliEyeShade/WebRoot/devices/devices_list_success.jsp" title="devices_list_success.jsp" tooltip="IntelliEyeShade/WebRoot/devices/devices_list_success.jsp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/WebRoot/devices/devices_list_success.jsp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3300" selectionTopPixel="2039"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestDevice.java" partName="TestDevice.java" path="C:/workspace-eyeshade/IntelliEyeShade/test/entity/TestDevice.java" title="TestDevice.java" tooltip="IntelliEyeShade/test/entity/TestDevice.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/test/entity/TestDevice.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="826" selectionTopPixel="0"/>
+</editor>
+<editor id="com.genuitec.eclipse.webdesigner3.editors.jsp" name="devices_query_success.jsp" partName="devices_query_success.jsp" path="C:/workspace-eyeshade/IntelliEyeShade/WebRoot/devices/devices_query_success.jsp" title="devices_query_success.jsp" tooltip="IntelliEyeShade/WebRoot/devices/devices_query_success.jsp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/WebRoot/devices/devices_query_success.jsp"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DeviceDataPage.java" partName="DeviceDataPage.java" path="C:/workspace-eyeshade/IntelliEyeShade/src/entity/DeviceDataPage.java" title="DeviceDataPage.java" tooltip="IntelliEyeShade/src/entity/DeviceDataPage.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/src/entity/DeviceDataPage.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="10" selectionOffset="435" selectionTopPixel="418"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DeviceDataPageDAO.java" partName="DeviceDataPageDAO.java" path="C:/workspace-eyeshade/IntelliEyeShade/src/service/DeviceDataPageDAO.java" title="DeviceDataPageDAO.java" tooltip="IntelliEyeShade/src/service/DeviceDataPageDAO.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/src/service/DeviceDataPageDAO.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="101" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DeviceDataPageDAOImpl.java" partName="DeviceDataPageDAOImpl.java" path="C:/workspace-eyeshade/IntelliEyeShade/src/serviceimpl/DeviceDataPageDAOImpl.java" title="DeviceDataPageDAOImpl.java" tooltip="IntelliEyeShade/src/serviceimpl/DeviceDataPageDAOImpl.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/src/serviceimpl/DeviceDataPageDAOImpl.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2807" selectionTopPixel="1511"/>
+</editor>
+<editor id="com.genuitec.eclipse.webdesigner3.editors.jsp" name="devices_querybycondition_success.jsp" partName="devices_querybycondition_success.jsp" path="C:/workspace-eyeshade/IntelliEyeShade/WebRoot/devices/devices_querybycondition_success.jsp" title="devices_querybycondition_success.jsp" tooltip="IntelliEyeShade/WebRoot/devices/devices_querybycondition_success.jsp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/WebRoot/devices/devices_querybycondition_success.jsp"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jst.jsp.core.jspsource.source" name="statistics_filter.jsp" partName="statistics_filter.jsp" path="C:/workspace-eyeshade/IntelliEyeShade/WebRoot/statistics/statistics_filter.jsp" title="statistics_filter.jsp" tooltip="IntelliEyeShade/WebRoot/statistics/statistics_filter.jsp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IntelliEyeShade/WebRoot/statistics/statistics_filter.jsp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
-<view id="com.genuitec.eclipse.ui.HTMLView" partName="Web Browser"/>
+<view id="com.genuitec.eclipse.ui.HTMLView" partName="Web Browser">
+<viewState/>
+</view>
 <view id="org.eclipse.jdt.junit.ResultView" partName="JUnit">
 <viewState failuresOnly="false" layout="1" orientation="2" ratio="333" scroll="false" time="true"/>
 </view>
 <view id="org.eclipse.jdt.ui.TypeHierarchy" partName="Type Hierarchy"/>
 <view id="uky.article.imageviewer.views.ImageView" partName="Image Preview">
 <viewState/>
+</view>
+<view id="org.eclipse.jdt.callhierarchy.view" partName="Call Hierarchy">
+<viewState search_scope_type="1"/>
 </view>
 <view id="org.eclipse.ui.views.TaskList" partName="Tasks"/>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
@@ -209,6 +278,11 @@
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
+<expanded>
+<category IMemento.internal.id="Warnings (31 items)"/>
+<category IMemento.internal.id="Warnings"/>
+<category IMemento.internal.id="Errors"/>
+</expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
@@ -254,7 +328,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.jboss.tools.common.model.ui.editor.EditorPartWrapper" activePerspective="com.genuitec.myeclipse.perspective.myeclipseperspective">
+<perspectives activePart="org.eclipse.ui.console.ConsoleView" activePerspective="com.genuitec.myeclipse.perspective.myeclipseperspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="com.genuitec.myeclipse.perspective.MyEclipsePerspectiveFactory" id="com.genuitec.myeclipse.perspective.myeclipseperspective" label="MyEclipse Java Enterprise"/>
 <alwaysOnActionSet id="com.genuitec.myeclipse.actions.deploytools"/>
@@ -361,6 +435,7 @@
 <view id="org.eclipse.ui.views.PropertySheet"/>
 <view id="com.genuitec.eclipse.sqlexplorer.views.DatabaseView"/>
 <view id="org.eclipse.jdt.junit.ResultView"/>
+<view id="org.eclipse.jdt.callhierarchy.view"/>
 <fastViewBars/>
 <layout>
 <mainWindow>
@@ -376,7 +451,7 @@
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.234154" ratioLeft="447" ratioRight="1462" relationship="2" relative="cvslocation"/>
+<info part="org.eclipse.ui.editorss" ratio="0.20324777" ratioLeft="388" ratioRight="1521" relationship="2" relative="cvslocation"/>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@3c214a7a" ratio="0.58200735" ratioLeft="951" ratioRight="683" relationship="2" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
@@ -386,18 +461,20 @@
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@2da0ae6d" ratio="0.54953563" ratioLeft="355" ratioRight="291" relationship="4" relative="org.eclipse.ui.internal.ViewStack@3c214a7a">
-<folder activePageID="org.eclipse.jdt.junit.ResultView" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.jdt.callhierarchy.view" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.PropertySheet" label="Properties"/>
 <page content="com.genuitec.eclipse.sqlexplorer.views.DatabaseView" label="DB Browser"/>
 <page content="org.eclipse.jdt.junit.ResultView" label="JUnit"/>
+<page content="org.eclipse.jdt.callhierarchy.view" label="Call Hierarchy"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
+<part id="3"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="bottom" ratio="0.5946237" ratioLeft="553" ratioRight="377" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="bottom" ratio="0.772043" ratioLeft="718" ratioRight="212" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
@@ -444,152 +521,154 @@
 <workingSets/>
 <navigationHistory>
 <editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/IntelliEyeShade/src/service/DevicesDAO.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/IntelliEyeShade/src/service/UsersDAO.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/IntelliEyeShade/src/action/DevicesAction.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/IntelliEyeShade/src/action/UsersAction.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/IntelliEyeShade/src/serviceimpl/UserDataPageDAOImpl.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.webdesigner3.editors.jsp" path="/IntelliEyeShade/WebRoot/users/users_query_success.jsp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.struts2.editor" path="/IntelliEyeShade/src/struts.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.webdesigner3.editors.jsp" path="/IntelliEyeShade/WebRoot/users/users_querybycondition_success.jsp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" path="/IntelliEyeShade/WebRoot/users/users_querybycondition_success.jsp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/IntelliEyeShade/src/entity/UserDataPage.java"/>
-<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="org.jboss.tools.common.propertieseditor.PropertiesCompoundEditor" path="/IntelliEyeShade/src/log4j.properties"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="" path="/IntelliEyeShade/WebRoot/WEB-INF/log4j.properties"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.core.runtime.xml.source" path="/IntelliEyeShade/src/log4j2.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.core.runtime.xml.source" path="/IntelliEyeShade/WebRoot/log4j2.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.core.runtime.xml.source" path="/IntelliEyeShade/WebRoot/WEB-INF/log4j2.xml"/>
-<editor factoryID="org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory" id="" path="/IntelliEyeShade/WebRoot/WEB-INF/web.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.core.runtime.xml.source" path="/IntelliEyeShade/WebRoot/WEB-INF/lib/log4j2.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.common.model.ui.editor.EditorPartWrapper" path="/IntelliEyeShade/WebRoot/WEB-INF/web.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/IntelliEyeShade/src/service/UserDataPageDAO.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/IntelliEyeShade/src/service/DeviceDataPageDAO.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.webdesigner3.editors.jsp" path="/IntelliEyeShade/WebRoot/devices/devices_querybycondition_success.jsp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/IntelliEyeShade/src/entity/DeviceDataPage.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/IntelliEyeShade/src/serviceimpl/DeviceDataPageDAOImpl.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/IntelliEyeShade/src/serviceimpl/DevicesDAOImpl.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.webdesigner3.editors.jsp" path="/IntelliEyeShade/WebRoot/tree.jsp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" path="/IntelliEyeShade/WebRoot/statistics/statistics_filter.jsp"/>
 </editors>
-<item historyLabel="UserDataPageDAOImpl.java" index="1">
-<position info="not_deleted" x="1972" y="0"/>
+<item historyLabel="UsersDAO.java" index="1">
+<position info="not_deleted" x="496" y="96"/>
 </item>
-<item historyLabel="struts.xml" index="3"/>
-<item historyLabel="users_querybycondition_success.jsp" index="4"/>
-<item historyLabel="UsersAction.java" index="0">
-<position info="not_deleted" x="1386" y="0"/>
+<item historyLabel="DevicesDAO.java" index="0">
+<position info="not_deleted" x="293" y="0"/>
 </item>
-<item historyLabel="UsersAction.java" index="0">
-<position info="not_deleted" x="1377" y="0"/>
+<item historyLabel="UsersAction.java" index="3">
+<position info="not_deleted" x="724" y="0"/>
 </item>
-<item historyLabel="UsersAction.java" index="0">
-<position info="not_deleted" x="1379" y="0"/>
+<item historyLabel="UsersAction.java" index="3">
+<position info="not_deleted" x="957" y="603"/>
 </item>
-<item historyLabel="users_querybycondition_success.jsp" index="4">
-<position info="not_deleted" x="6931" y="0"/>
+<item historyLabel="DevicesAction.java" index="2">
+<position info="not_deleted" x="1993" y="0"/>
 </item>
-<item historyLabel="users_querybycondition_success.jsp" index="5">
-<position info="not_deleted" x="6946" y="0"/>
+<item historyLabel="UserDataPageDAO.java" index="5">
+<position info="not_deleted" x="240" y="0"/>
 </item>
-<item historyLabel="users_querybycondition_success.jsp" index="5">
-<position info="not_deleted" x="6994" y="0"/>
+<item historyLabel="DeviceDataPageDAO.java" index="6">
+<position info="not_deleted" x="101" y="0"/>
 </item>
-<item historyLabel="UsersAction.java" index="0">
-<position info="not_deleted" x="3260" y="0"/>
+<item historyLabel="DevicesAction.java" index="2">
+<position info="not_deleted" x="1993" y="0"/>
 </item>
-<item historyLabel="struts.xml" index="3"/>
-<item historyLabel="users_querybycondition_success.jsp" index="4"/>
-<item historyLabel="UsersAction.java" index="0">
-<position info="not_deleted" x="3260" y="0"/>
+<item historyLabel="DevicesAction.java" index="2">
+<position info="not_deleted" x="2046" y="24"/>
 </item>
-<item historyLabel="users_querybycondition_success.jsp" index="4"/>
-<item historyLabel="struts.xml" index="3"/>
-<item historyLabel="users_querybycondition_success.jsp" index="4"/>
-<item historyLabel="users_query_success.jsp" index="2"/>
-<item historyLabel="users_querybycondition_success.jsp" index="4"/>
-<item historyLabel="users_query_success.jsp" index="2"/>
-<item historyLabel="users_querybycondition_success.jsp" index="4"/>
-<item historyLabel="UserDataPage.java" index="6">
-<position info="not_deleted" x="1839" y="10"/>
+<item historyLabel="struts.xml" index="4"/>
+<item historyLabel="DeviceDataPageDAO.java" index="6">
+<position info="not_deleted" x="101" y="0"/>
 </item>
-<item historyLabel="UsersAction.java" index="0">
-<position info="not_deleted" x="3260" y="0"/>
+<item historyLabel="DevicesAction.java" index="2">
+<position info="not_deleted" x="2189" y="0"/>
 </item>
-<item historyLabel="UsersAction.java" index="0">
-<position info="not_deleted" x="848" y="0"/>
+<item historyLabel="struts.xml" index="4"/>
+<item historyLabel="devices_querybycondition_success.jsp" index="7"/>
+<item historyLabel="struts.xml" index="4"/>
+<item historyLabel="devices_querybycondition_success.jsp" index="7"/>
+<item historyLabel="DevicesAction.java" index="2">
+<position info="not_deleted" x="2074" y="0"/>
 </item>
-<item historyLabel="log4j.properties" index="7"/>
-<item historyLabel="UsersAction.java" index="0">
-<position info="not_deleted" x="1039" y="0"/>
+<item historyLabel="devices_querybycondition_success.jsp" index="7"/>
+<item historyLabel="DeviceDataPage.java" index="8">
+<position info="not_deleted" x="21" y="0"/>
 </item>
-<item historyLabel="UsersAction.java" index="0">
+<item historyLabel="DeviceDataPage.java" index="8">
+<position info="not_deleted" x="1258" y="13"/>
+</item>
+<item historyLabel="DeviceDataPage.java" index="8">
+<position info="not_deleted" x="595" y="12"/>
+</item>
+<item historyLabel="DeviceDataPage.java" index="8">
+<position info="not_deleted" x="435" y="10"/>
+</item>
+<item historyLabel="DeviceDataPageDAOImpl.java" index="9">
+<position info="not_deleted" x="510" y="0"/>
+</item>
+<item historyLabel="DeviceDataPageDAOImpl.java" index="9">
+<position info="not_deleted" x="2957" y="0"/>
+</item>
+<item historyLabel="DevicesAction.java" index="2">
+<position info="not_deleted" x="1992" y="0"/>
+</item>
+<item historyLabel="DeviceDataPageDAOImpl.java" index="9">
+<position info="not_deleted" x="3445" y="0"/>
+</item>
+<item historyLabel="devices_querybycondition_success.jsp" index="7"/>
+<item historyLabel="DeviceDataPageDAOImpl.java" index="9">
+<position info="not_deleted" x="2787" y="0"/>
+</item>
+<item historyLabel="DevicesDAO.java" index="0">
+<position info="not_deleted" x="220" y="25"/>
+</item>
+<item historyLabel="DeviceDataPageDAOImpl.java" index="9">
+<position info="not_deleted" x="2807" y="0"/>
+</item>
+<item historyLabel="DevicesDAOImpl.java" index="10">
+<position info="not_deleted" x="3954" y="49"/>
+</item>
+<item historyLabel="DevicesDAOImpl.java" index="10">
+<position info="not_deleted" x="484" y="0"/>
+</item>
+<item historyLabel="devices_querybycondition_success.jsp" index="7"/>
+<item historyLabel="DevicesAction.java" index="2">
+<position info="not_deleted" x="1992" y="0"/>
+</item>
+<item historyLabel="devices_querybycondition_success.jsp" index="7"/>
+<item historyLabel="DevicesAction.java" index="2">
+<position info="not_deleted" x="1992" y="0"/>
+</item>
+<item historyLabel="DevicesAction.java" index="2">
+<position info="not_deleted" x="1825" y="0"/>
+</item>
+<item historyLabel="devices_querybycondition_success.jsp" index="7"/>
+<item historyLabel="DevicesAction.java" index="2">
+<position info="not_deleted" x="1825" y="0"/>
+</item>
+<item historyLabel="DevicesAction.java" index="2">
+<position info="not_deleted" x="1935" y="0"/>
+</item>
+<item historyLabel="DevicesAction.java" index="2">
+<position info="not_deleted" x="2064" y="0"/>
+</item>
+<item historyLabel="devices_querybycondition_success.jsp" index="7"/>
+<item historyLabel="tree.jsp" index="11"/>
+<item historyLabel="statistics_filter.jsp" index="12">
 <position/>
 </item>
-<item historyLabel="UsersAction.java" index="0">
+<item historyLabel="tree.jsp" index="11"/>
+<item historyLabel="statistics_filter.jsp" index="12">
 <position/>
 </item>
-<item historyLabel="UsersAction.java" index="0">
-<position info="not_deleted" x="1451" y="0"/>
-</item>
-<item historyLabel="UsersAction.java" index="0">
-<position info="not_deleted" x="2379" y="0"/>
-</item>
-<item historyLabel="UsersAction.java" index="0">
-<position info="not_deleted" x="2371" y="0"/>
-</item>
-<item historyLabel="UsersAction.java" index="0">
-<position info="not_deleted" x="2749" y="0"/>
-</item>
-<item historyLabel="UsersAction.java" index="0">
-<position info="not_deleted" x="3886" y="0"/>
-</item>
-<item historyLabel="log4j.properties" index="7">
+<item historyLabel="tree.jsp" index="11"/>
+<item historyLabel="statistics_filter.jsp" index="12">
 <position/>
 </item>
-<item historyLabel="log4j.properties" index="8">
-<position info="not_deleted" x="678" y="89"/>
-</item>
-<item historyLabel="UsersAction.java" index="0">
-<position info="not_deleted" x="3886" y="0"/>
-</item>
-<item historyLabel="log4j2.xml" index="9">
-<position info="not_deleted" x="506" y="0"/>
-</item>
-<item historyLabel="log4j2.xml" index="10">
+<item historyLabel="tree.jsp" index="11"/>
+<item active="true" historyLabel="statistics_filter.jsp" index="12">
 <position/>
 </item>
-<item historyLabel="log4j2.xml" index="11">
-<position/>
-</item>
-<item historyLabel="log4j2.xml" index="9">
-<position/>
-</item>
-<item historyLabel="UsersAction.java" index="0">
-<position info="not_deleted" x="3886" y="0"/>
-</item>
-<item historyLabel="UsersAction.java" index="0">
-<position info="not_deleted" x="2101" y="6"/>
-</item>
-<item historyLabel="UsersAction.java" index="0">
-<position info="not_deleted" x="2035" y="6"/>
-</item>
-<item historyLabel="UsersAction.java" index="0">
-<position info="not_deleted" x="2025" y="0"/>
-</item>
-<item historyLabel="UsersAction.java" index="0">
-<position/>
-</item>
-<item historyLabel="UsersAction.java" index="0">
-<position/>
-</item>
-<item historyLabel="UsersAction.java" index="0">
-<position info="not_deleted" x="690" y="0"/>
-</item>
-<item historyLabel="UsersAction.java" index="0">
-<position info="not_deleted" x="641" y="0"/>
-</item>
-<item historyLabel="web.xml" index="12">
-<position info="not_deleted" x="40" y="343"/>
-</item>
-<item historyLabel="log4j2.xml" index="13">
-<position/>
-</item>
-<item active="true" historyLabel="web.xml" index="14"/>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
+<trimArea IMemento.internal.id="16384">
+<trimItem IMemento.internal.id="topleft"/>
+</trimArea>
+<trimArea IMemento.internal.id="131072">
+<trimItem IMemento.internal.id="org.eclipse.ui.editorss"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@3c214a7a"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@2da0ae6d"/>
+</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -597,54 +676,56 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+<trimItem IMemento.internal.id="bottomleft"/>
+<trimItem IMemento.internal.id="bottom"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.common.model.ui.editor.EditorPartWrapper" name="web.xml" tooltip="IntelliEyeShade/WebRoot/WEB-INF/web.xml">
-<persistable path="/IntelliEyeShade/WebRoot/WEB-INF/web.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" name="statistics_filter.jsp" tooltip="IntelliEyeShade/WebRoot/statistics/statistics_filter.jsp">
+<persistable path="/IntelliEyeShade/WebRoot/statistics/statistics_filter.jsp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="log4j2.xml" tooltip="IntelliEyeShade/src/log4j2.xml">
-<persistable path="/IntelliEyeShade/src/log4j2.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" name="statistics_filter.jsp" tooltip="IntelliEyeShade/WebRoot/Statistics/statistics_filter.jsp">
+<persistable path="/IntelliEyeShade/WebRoot/Statistics/statistics_filter.jsp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.common.propertieseditor.PropertiesCompoundEditor" name="log4j.properties" tooltip="IntelliEyeShade/src/log4j.properties">
-<persistable path="/IntelliEyeShade/src/log4j.properties"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.webdesigner3.editors.jsp" name="devices_querybycondition_success.jsp" tooltip="IntelliEyeShade/WebRoot/devices/devices_querybycondition_success.jsp">
+<persistable path="/IntelliEyeShade/WebRoot/devices/devices_querybycondition_success.jsp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.webdesigner3.editors.jsp" name="users_querybycondition_success.jsp" tooltip="IntelliEyeShade/WebRoot/users/users_querybycondition_success.jsp">
-<persistable path="/IntelliEyeShade/WebRoot/users/users_querybycondition_success.jsp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.common.propertieseditor.PropertiesCompoundEditor" name="log4j.properties" tooltip="IntelliEyeShade/WebRoot/WEB-INF/lib/log4j.properties">
+<persistable path="/IntelliEyeShade/WebRoot/WEB-INF/lib/log4j.properties"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" name="admin_query_success.jsp" tooltip="IntelliEyeShade/WebRoot/admin/admin_query_success.jsp">
-<persistable path="/IntelliEyeShade/WebRoot/admin/admin_query_success.jsp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DeviceDataPageDAOImpl.java" tooltip="IntelliEyeShade/src/serviceimpl/DeviceDataPageDAOImpl.java">
+<persistable path="/IntelliEyeShade/src/serviceimpl/DeviceDataPageDAOImpl.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.jsf.designer.editor" name="users_query_success.jsp" tooltip="IntelliEyeShade/WebRoot/users/users_query_success.jsp">
-<persistable path="/IntelliEyeShade/WebRoot/users/users_query_success.jsp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DeviceDataPageDAO.java" tooltip="IntelliEyeShade/src/service/DeviceDataPageDAO.java">
+<persistable path="/IntelliEyeShade/src/service/DeviceDataPageDAO.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.webdesigner3.editors.jsp" name="users_pageuser.jsp" tooltip="IntelliEyeShade/WebRoot/users/users_pageuser.jsp">
-<persistable path="/IntelliEyeShade/WebRoot/users/users_pageuser.jsp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DeviceDataPage.java" tooltip="IntelliEyeShade/src/entity/DeviceDataPage.java">
+<persistable path="/IntelliEyeShade/src/entity/DeviceDataPage.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PageBeanDAOImpl.java" tooltip="IntelliEyeShade/src/serviceimpl/PageBeanDAOImpl.java">
-<persistable path="/IntelliEyeShade/src/serviceimpl/PageBeanDAOImpl.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.webdesigner3.editors.jsp" name="devices_query_success.jsp" tooltip="IntelliEyeShade/WebRoot/devices/devices_query_success.jsp">
+<persistable path="/IntelliEyeShade/WebRoot/devices/devices_query_success.jsp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PageBeanDAO.java" tooltip="IntelliEyeShade/src/service/PageBeanDAO.java">
-<persistable path="/IntelliEyeShade/src/service/PageBeanDAO.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestDevice.java" tooltip="IntelliEyeShade/test/entity/TestDevice.java">
+<persistable path="/IntelliEyeShade/test/entity/TestDevice.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PageBean.java" tooltip="IntelliEyeShade/src/entity/PageBean.java">
-<persistable path="/IntelliEyeShade/src/entity/PageBean.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" name="list_device_success.jsp" tooltip="IntelliEyeShade/WebRoot/devices/list_device_success.jsp">
+<persistable path="/IntelliEyeShade/WebRoot/devices/list_device_success.jsp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.webdesigner3.editors.jsp" name="Students_query_success.jsp" tooltip="IntelliEyeShade/WebRoot/users/Students_query_success.jsp">
-<persistable path="/IntelliEyeShade/WebRoot/users/Students_query_success.jsp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" name="devices_list_details_success.jsp" tooltip="IntelliEyeShade/WebRoot/devices/devices_list_details_success.jsp">
+<persistable path="/IntelliEyeShade/WebRoot/devices/devices_list_details_success.jsp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.webdesigner3.editors.jsp" name="Users_query_success.jsp" tooltip="IntelliEyeShade/WebRoot/users/Users_query_success.jsp">
-<persistable path="/IntelliEyeShade/WebRoot/users/Users_query_success.jsp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.webdesigner3.editors.jsp" name="users_query_success.jsp" tooltip="IntelliEyeShade/WebRoot/devices/users_query_success.jsp">
+<persistable path="/IntelliEyeShade/WebRoot/devices/users_query_success.jsp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="StudentAction.java" tooltip="IntelliEyeShade/src/action/StudentAction.java">
-<persistable path="/IntelliEyeShade/src/action/StudentAction.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DevicesAction.java" tooltip="IntelliEyeShade/src/action/DevicesAction.java">
+<persistable path="/IntelliEyeShade/src/action/DevicesAction.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.hibernate.editor.multipage.hibernatemappingeditor" name="Users.hbm.xml" tooltip="IntelliEyeShade/src/entity/Users.hbm.xml">
-<persistable path="/IntelliEyeShade/src/entity/Users.hbm.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SuperAction.java" tooltip="IntelliEyeShade/src/action/SuperAction.java">
+<persistable path="/IntelliEyeShade/src/action/SuperAction.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestUser.java" tooltip="IntelliEyeShade/test/entity/TestUser.java">
-<persistable path="/IntelliEyeShade/test/entity/TestUser.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DevicesDAOImpl.java" tooltip="IntelliEyeShade/src/serviceimpl/DevicesDAOImpl.java">
+<persistable path="/IntelliEyeShade/src/serviceimpl/DevicesDAOImpl.java"/>
 </file>
 </mruList>
 </workbench>

@@ -36,6 +36,9 @@
 	<mapping resource="entity/Users.hbm.xml" />
 	 
 	<mapping resource="entity/Administrator.hbm.xml" />
+	
+	<mapping resource="entity/Devices.hbm.xml" />
+	<mapping resource="entity/TestInfo.hbm.xml" />
 
 </session-factory>
 </hibernate-configuration>

@@ -110,16 +110,6 @@
     <Bean Class="net.sourceforge.squirrel_sql.fw.sql.SQLDriver">
         <driverClassName>com.mysql.jdbc.Driver</driverClassName>
         <identifier Class="net.sourceforge.squirrel_sql.fw.id.UidIdentifier">
-            <string>-26</string>
-        </identifier>
-        <jarFileName/>
-        <jarFileNames Indexed="true"/>
-        <name>MySQL Connector/J</name>
-        <url>jdbc:mysql://&lt;hostname&gt;[&lt;:3306&gt;]/&lt;dbname&gt;</url>
-    </Bean>
-    <Bean Class="net.sourceforge.squirrel_sql.fw.sql.SQLDriver">
-        <driverClassName>com.mysql.jdbc.Driver</driverClassName>
-        <identifier Class="net.sourceforge.squirrel_sql.fw.id.UidIdentifier">
             <string>7d2a2f75:1584c13e1ff:-7f95</string>
         </identifier>
         <jarFileName/>
@@ -130,6 +120,16 @@
         </jarFileNames>
         <name>MySQL Connector/J01</name>
         <url>jdbc:mysql://localhost:3306/intellieyeshade</url>
+    </Bean>
+    <Bean Class="net.sourceforge.squirrel_sql.fw.sql.SQLDriver">
+        <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+        <identifier Class="net.sourceforge.squirrel_sql.fw.id.UidIdentifier">
+            <string>-26</string>
+        </identifier>
+        <jarFileName/>
+        <jarFileNames Indexed="true"/>
+        <name>MySQL Connector/J</name>
+        <url>jdbc:mysql://&lt;hostname&gt;[&lt;:3306&gt;]/&lt;dbname&gt;</url>
     </Bean>
     <Bean Class="net.sourceforge.squirrel_sql.fw.sql.SQLDriver">
         <driverClassName>org.firebirdsql.jdbc.FBDriver</driverClassName>
@@ -262,16 +262,6 @@
         <url>jdbc:hsqldb:hsql://&lt;server&gt;[:&lt;1476&gt;]</url>
     </Bean>
     <Bean Class="net.sourceforge.squirrel_sql.fw.sql.SQLDriver">
-        <driverClassName>oracle.jdbc.driver.OracleDriver</driverClassName>
-        <identifier Class="net.sourceforge.squirrel_sql.fw.id.UidIdentifier">
-            <string>-2</string>
-        </identifier>
-        <jarFileName/>
-        <jarFileNames Indexed="true"/>
-        <name>Oracle (OCI driver)</name>
-        <url>jdbc:oracle:oci8:@&lt;database_name&gt;</url>
-    </Bean>
-    <Bean Class="net.sourceforge.squirrel_sql.fw.sql.SQLDriver">
         <driverClassName>com.mckoi.JDBCDriver</driverClassName>
         <identifier Class="net.sourceforge.squirrel_sql.fw.id.UidIdentifier">
             <string>-15</string>
@@ -282,14 +272,14 @@
         <url>jdbc:mckoi://&lt;host&gt;[:9157][/&lt;schema&gt;]/</url>
     </Bean>
     <Bean Class="net.sourceforge.squirrel_sql.fw.sql.SQLDriver">
-        <driverClassName>uk.co.thinksql.ThinkSQLDriver</driverClassName>
+        <driverClassName>oracle.jdbc.driver.OracleDriver</driverClassName>
         <identifier Class="net.sourceforge.squirrel_sql.fw.id.UidIdentifier">
-            <string>-14</string>
+            <string>-2</string>
         </identifier>
         <jarFileName/>
         <jarFileNames Indexed="true"/>
-        <name>ThinkSQL</name>
-        <url>jdbc:thinksql://&lt;server&gt;:&lt;9075&gt;</url>
+        <name>Oracle (OCI driver)</name>
+        <url>jdbc:oracle:oci8:@&lt;database_name&gt;</url>
     </Bean>
     <Bean Class="net.sourceforge.squirrel_sql.fw.sql.SQLDriver">
         <driverClassName>sun.jdbc.odbc.JdbcOdbcDriver</driverClassName>
@@ -302,14 +292,14 @@
         <url>jdbc:odbc:&lt;alias&gt;</url>
     </Bean>
     <Bean Class="net.sourceforge.squirrel_sql.fw.sql.SQLDriver">
-        <driverClassName>oracle.jdbc.driver.OracleDriver</driverClassName>
+        <driverClassName>uk.co.thinksql.ThinkSQLDriver</driverClassName>
         <identifier Class="net.sourceforge.squirrel_sql.fw.id.UidIdentifier">
-            <string>-4</string>
+            <string>-14</string>
         </identifier>
         <jarFileName/>
         <jarFileNames Indexed="true"/>
-        <name>Oracle (Thin driver)</name>
-        <url>jdbc:oracle:thin:@&lt;server&gt;[:&lt;1521&gt;]:&lt;database_name&gt;</url>
+        <name>ThinkSQL</name>
+        <url>jdbc:thinksql://&lt;server&gt;:&lt;9075&gt;</url>
     </Bean>
     <Bean Class="net.sourceforge.squirrel_sql.fw.sql.SQLDriver">
         <driverClassName>org.hsqldb.jdbcDriver</driverClassName>
@@ -322,14 +312,14 @@
         <url>jdbc:hsqldb:http://&lt;server&gt;[:&lt;1476&gt;]</url>
     </Bean>
     <Bean Class="net.sourceforge.squirrel_sql.fw.sql.SQLDriver">
-        <driverClassName>interbase.interclient.Driver</driverClassName>
+        <driverClassName>oracle.jdbc.driver.OracleDriver</driverClassName>
         <identifier Class="net.sourceforge.squirrel_sql.fw.id.UidIdentifier">
-            <string>-3</string>
+            <string>-4</string>
         </identifier>
         <jarFileName/>
         <jarFileNames Indexed="true"/>
-        <name>InterClient</name>
-        <url>jdbc:interbase://&lt;server&gt;/&lt;full_db_path&gt;</url>
+        <name>Oracle (Thin driver)</name>
+        <url>jdbc:oracle:thin:@&lt;server&gt;[:&lt;1521&gt;]:&lt;database_name&gt;</url>
     </Bean>
     <Bean Class="net.sourceforge.squirrel_sql.fw.sql.SQLDriver">
         <driverClassName>com.internetcds.jdbc.tds.Driver</driverClassName>
@@ -340,6 +330,16 @@
         <jarFileNames Indexed="true"/>
         <name>jTDS (FreeTDS)</name>
         <url>jdbc:freetds:sqlserver://&lt;hostname&gt;[:&lt;4100&gt;]/&lt;dbname&gt;[;&lt;property&gt;=&lt;value&gt;[;...]]</url>
+    </Bean>
+    <Bean Class="net.sourceforge.squirrel_sql.fw.sql.SQLDriver">
+        <driverClassName>interbase.interclient.Driver</driverClassName>
+        <identifier Class="net.sourceforge.squirrel_sql.fw.id.UidIdentifier">
+            <string>-3</string>
+        </identifier>
+        <jarFileName/>
+        <jarFileNames Indexed="true"/>
+        <name>InterClient</name>
+        <url>jdbc:interbase://&lt;server&gt;/&lt;full_db_path&gt;</url>
     </Bean>
     <Bean Class="net.sourceforge.squirrel_sql.fw.sql.SQLDriver">
         <driverClassName>org.enhydra.instantdb.jdbc.idbDriver</driverClassName>

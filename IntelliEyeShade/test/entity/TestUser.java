@@ -21,23 +21,25 @@ public class TestUser {
 	@Test
 	public void testAddUser()
 	{
-		Users user = new Users("1", "ruanhuabin", "ÄÐ", "123456", 30,  15, "Î´°ó¶¨");
-		Users user1 = new Users("2", "hanwenjing", "Å®", "123456", 29,  10, "Î´°ó¶¨");
-		Users user2 = new Users("3", "heconghui", "ÄÐ", "123456", 28,  20, "Î´°ó¶¨");
-		Users user3 = new Users("4", "liyibin", "ÄÐ", "123456", 27,  35, "Î´°ó¶¨");
+		Users user = new Users("1", "ruanhuabin", "ÄÐ", "123456", 30,  15, "Î´°ó¶¨", "device_1", "2016-11-11");
+		Users user1 = new Users("2", "hanwenjing", "Å®", "123456", 29,  10, "Î´°ó¶¨", "device_2", "2016-11-11");
+		Users user2 = new Users("3", "heconghui", "ÄÐ", "123456", 28,  20, "Î´°ó¶¨",  "device_f3", "2016-11-11");
+		Users user3 = new Users("4", "liyibin", "ÄÐ", "123456", 27,  35, "Î´°ó¶¨",  "device_4", "2016-11-11");
 		Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
 		
 		
 		for(int i = 15; i < 30; i ++)
 		{
-			Users userx = new Users("" + i, "ruanhuabin", "ÄÐ", "123456", 30,  15, "Î´°ó¶¨" );
+			Users userx = new Users("" + i, "ruanhuabin", "ÄÐ", "123456", 30,  15, "Î´°ó¶¨", "device_" + i, "2016-11-11");
 			session.save(userx);
 		}
 		
 		tx.commit();
 		MyHibernateSessionFactory.getSessionFactory().close();
 	}
+	
+	
 	
 	@Test
 	public void testDeleteUser()
@@ -49,7 +51,7 @@ public class TestUser {
 		
 		for(int i = 5; i < 100; i ++)
 		{
-			Users userx = new Users("" + i, "ruanhuabin", "ÄÐ", "123456", 30,  15, "Î´°ó¶¨" );
+			Users userx = new Users("" + i, "ruanhuabin", "ÄÐ", "123456", 30,  15, "Î´°ó¶¨", "device_" + i, "2016-11-11");
 			session.delete(userx);
 		}
 		
@@ -61,17 +63,18 @@ public class TestUser {
 	public void testSearchUserCountByCondition()
 	{
 		
-		UsersDAO udao = new UsersDAOImpl();
-		udao.getAllRowCountByCondition("wen");
+		
 	}
 	
 	@Test
 	public void testSearchUserDataByCondition()
 	{
 		
-		UsersDAO udao = new UsersDAOImpl();
-		udao.getAllRowCountByCondition("wen");
+		
 	}
+	
+	
+	
 	
 
 }

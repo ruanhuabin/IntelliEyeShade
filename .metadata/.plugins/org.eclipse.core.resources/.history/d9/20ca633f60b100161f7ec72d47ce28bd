@@ -1,0 +1,9 @@
+package service;
+
+import entity.UserDataPage;
+
+public interface TestInfoPageDAO {	
+	public UserDataPage getTestInfoPageDataByUserID(int pageSize, int page, String condition);
+	
+
+}

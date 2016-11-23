@@ -1,8 +1,0 @@
-package service;
-
-import entity.UserDataPage;
-
-public interface UserDataPageDAO {
-	public UserDataPage getPageBean(int pageSize, int page);
-
-}

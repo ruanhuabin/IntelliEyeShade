@@ -1,19 +1,27 @@
 package action;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
+
+
+import entity.TestInfo;
+import entity.TestInfoPage;
 import entity.UserDataPage;
 import entity.Users;
+import service.TestInfoDAO;
+import service.TestInfoPageDAO;
 import service.UserDataPageDAO;
 import service.UsersDAO;
+import serviceimpl.TestInfoDAOImpl;
+import serviceimpl.TestInfoPageDAOImpl;
 import serviceimpl.UserDataPageDAOImpl;
 import serviceimpl.UsersDAOImpl;
 
@@ -25,11 +33,23 @@ public class UsersAction extends SuperAction {
 	private static final long serialVersionUID = 1L;	    
     private int page;
     private String keyword;
+    private String keywordSelect;
     
-    private static final Logger logger = LogManager.getLogger(UsersAction.class.getName());
+    private static final Logger logger = Logger.getLogger("MyLogger");
     
-    public int getPage()
+    
+    
+    public String getKeywordSelect() {
+		return keywordSelect;
+	}
+
+	public void setKeywordSelect(String keywordSelect) {
+		this.keywordSelect = keywordSelect;
+	}
+
+	public int getPage()
     {
+    	
         return page;
     }
 
@@ -46,36 +66,96 @@ public class UsersAction extends SuperAction {
 		this.keyword = keyword;
 	}
 
-	public String queryByCondition()
+	public String queryByCondition() throws UnsupportedEncodingException
     {
     	UserDataPageDAO userDataDAO = new UserDataPageDAOImpl();
     	String keyword = request.getParameter("keyword");
-    	System.out.println("keyword = " + keyword);
-    	UserDataPage pageBean = userDataDAO.getUserPageDataByCondition(5, page, keyword);
+    	logger.info("keyword = " + keyword);
+    	
+	
+    	//seach by which column
+    	String keywordSelect = request.getParameter("keywordSelect");
+    	UserDataPage pageBean = userDataDAO.getUserPageDataByCondition(5, page, keyword, keywordSelect);
     	request.setAttribute("pageBean", pageBean);
     	request.setAttribute("keyword", keyword);
+    	request.setAttribute("keywordSelect", keywordSelect);
     	        
-        logger.info("In queryByCondition(): pageBean = " + pageBean);
-        logger.info("In queryByCondition(): pageIndex = " + page);
+        logger.info("pageBean = " + pageBean);
+        logger.info("pageIndex = " + page);
     	
-    	return "querybycondition_success";
+    	return "users_querybycondition_success";
     }
+	
+	public String getTestInfo()
+	{
+		String uid = request.getParameter("uid");
+		//UsersDAO userDAO = new UsersDAOImpl();
+		TestInfoPageDAO testInfoPageDAO = new TestInfoPageDAOImpl();
+		
+		TestInfoPage userTestInfo = testInfoPageDAO.getTestInfoPageDataByUserID(5, page, uid);
+		
+		logger.info("userTestInfo = " + userTestInfo);
+		logger.info("uid = " + uid);
+		
+		request.setAttribute("usertestinfo", userTestInfo);
+		request.setAttribute("curuserid", uid);
+		
+				
+		
+		return "users_gettestinfo_success";
+	}
     
     public String queryByPage() throws Exception
-    {
+    {    	
+    	logger.info("Start to show user information page by page");    	
     	UserDataPageDAO userDataPageDAO = new UserDataPageDAOImpl();
         //表示每页显示5条记录，page表示当前网页
         UserDataPage pageBean = userDataPageDAO.getUserPageData(5, page);	        
-        request.setAttribute("pageBean", pageBean);
+        request.setAttribute("pageBean", pageBean);   
+        logger.info("pageBean = " + pageBean);
+        logger.info("pageIndex = " + page);
         
-        System.out.println("pageBean = " + pageBean);
+        return "users_querybypage_success";
+    }
+    
+    public String filterByPage()
+    {
+    	logger.info("Start to filter user information page by page");
+    	String filterType = request.getParameter("UserFilterType");
+    	String startTime = request.getParameter("starttime");
+    	String endTime = request.getParameter("endtime");
+    	
+    	logger.info("filterType = " + filterType + ", startTime = " + startTime + ", endTime" + endTime);
+    	
+    	String bindCondition = "绑定";
+    	if(filterType.equals("unbinded"))
+    	{
+    		bindCondition = "未绑定";
+    	}
+    	logger.info("bindCondition = " + bindCondition);
+    	
+    	
+    	UserDataPageDAO userDataPageDAO = new UserDataPageDAOImpl();
+        //表示每页显示5条记录，page表示当前网页
+        //UserDataPage pageBean = userDataPageDAO.getUserPageData(5, page);	        
+    	
+    	UserDataPage pageBean = null;
+    	
+    	if(filterType.equals("timerange"))
+    	{
+    		pageBean = userDataPageDAO.getUserPageDataByTimeRange(5, page, startTime, endTime);
+    	}
+    	else
+    	{
+    		pageBean = userDataPageDAO.getUserPageDataByBindStatus(5, page, bindCondition);
+    	}
+    	
+        request.setAttribute("pageBean", pageBean);   
+        logger.info("pageBean = " + pageBean);
+        logger.info("pageIndex = " + page);
         
-        System.out.println("====>page = " + page);
-        
-        logger.info("In queryByPage(): pageBean = " + pageBean);
-        logger.info("In queryByPage(): pageIndex = " + page);
-        
-        return "querybypage_success";
+        return "users_filterbypage_success";
+    	
     }
 	
 	

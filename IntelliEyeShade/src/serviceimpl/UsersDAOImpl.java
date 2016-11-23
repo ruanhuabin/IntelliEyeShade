@@ -7,7 +7,9 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import db.MyHibernateSessionFactory;
+import entity.TestInfo;
 import entity.Users;
+import static util.IntelliEyeShadeLogger.logger;
 
 
 import service.UsersDAO;
@@ -395,10 +397,33 @@ public class UsersDAOImpl implements UsersDAO {
 	}
 
 	@Override
-	public int getAllRowCountByCondition(String condition) {
+	public int getAllRowCountByCondition(String columnName, String condition) {
 		// TODO Auto-generated method stub
 		
-		String hql = "from Users as u where u.username like :name";
+		String columnToUsed = "username";
+		
+		if(columnName.equals("gender"))
+		{
+			columnToUsed = "gender";
+		}
+		else if(columnName.equals("age"))
+		{
+			columnToUsed = "age";
+		}
+		else if(columnName.equals("phoneNum"))
+		{
+			columnToUsed = "phoneNum";
+		}
+		else if(columnName.equals("testTimes"))
+		{
+			columnToUsed = "testTimes";
+		}
+			
+		logger.info("column used to search: " +  columnToUsed);
+		
+		//String hql = "from Users as u where u.username like :name";
+		String hql = "from Users as u where u." + columnToUsed + " like :name";
+		logger.info("hql = " + hql);
 		Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
         Transaction tx = null;
         int allRows = 0;
@@ -435,6 +460,51 @@ public class UsersDAOImpl implements UsersDAO {
         
         return allRows;
 		
+	}
+
+	@Override
+	public List<TestInfo> getUserTestInfo(String uid) {
+		// TODO Auto-generated method stub
+		
+		
+		String hql = "from TestInfo as t where t.uid = " + uid;
+		logger.info("hql = " + hql);
+		Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+        Transaction tx = null;
+        
+        List<TestInfo> list = null;
+        try
+        {
+            tx = session.beginTransaction();
+            
+            Query query = session.createQuery(hql);
+            
+            
+            list =query.list();   
+            
+            logger.info("list = " + list);
+            
+            
+            tx.commit();
+            
+        }
+        catch (Exception e)
+        {
+            if(tx != null)
+            {
+                tx.rollback();
+            }
+            
+            e.printStackTrace();
+        }
+        finally
+        {
+            if(tx != null)
+            {
+            	tx = null;
+            }
+        }
+		return list;
 	}
 
 }

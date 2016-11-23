@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- 
+
+  This mapping demonstrates content-based discrimination for the
+  table-per-hierarchy mapping strategy, using a formula
+  discriminator.
+
+-->
+
+<hibernate-mapping>
+	
+	<class name="entity.Devices"  table="DEVICES">
+		
+		<id name="deviceID" type="java.lang.String">
+			<generator class="assigned"/>
+		</id>
+		
+		<property name="deviceVersion" type="java.lang.String"/>
+		<property name="romVersion" type="java.lang.String"/>
+		<property name="deviceStatus" type="java.lang.String"/>
+		<property name="bindingStatus" type="java.lang.String"/>
+		<property name="uid" type="java.lang.String"/>
+		
+		
+		
+		
+
+		
+	</class>
+
+	
+
+
+</hibernate-mapping>
