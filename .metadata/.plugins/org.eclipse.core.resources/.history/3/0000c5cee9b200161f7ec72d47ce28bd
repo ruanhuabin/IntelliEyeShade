@@ -1,0 +1,347 @@
+package action;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+
+
+import entity.TestInfo;
+import entity.TestInfoPage;
+import entity.UserDataPage;
+import entity.Users;
+import service.TestInfoDAO;
+import service.TestInfoPageDAO;
+import service.UserDataPageDAO;
+import service.UsersDAO;
+import serviceimpl.TestInfoDAOImpl;
+import serviceimpl.TestInfoPageDAOImpl;
+import serviceimpl.UserDataPageDAOImpl;
+import serviceimpl.UsersDAOImpl;
+
+public class UsersAction extends SuperAction {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;	    
+    private int page;
+    private String keyword;
+    private String keywordSelect;
+    
+    private static final Logger logger = Logger.getLogger("MyLogger");
+    
+    
+    
+    public String getKeywordSelect() {
+		return keywordSelect;
+	}
+
+	public void setKeywordSelect(String keywordSelect) {
+		this.keywordSelect = keywordSelect;
+	}
+
+	public int getPage()
+    {
+    	
+        return page;
+    }
+
+    public void setPage(int page)
+    {
+        this.page = page;
+    }
+        
+    public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	public String queryByCondition() throws UnsupportedEncodingException
+    {
+    	UserDataPageDAO userDataDAO = new UserDataPageDAOImpl();
+    	String keyword = request.getParameter("keyword");
+    	logger.info("keyword = " + keyword);
+    	
+	
+    	//seach by which column
+    	String keywordSelect = request.getParameter("keywordSelect");
+    	UserDataPage pageBean = userDataDAO.getUserPageDataByCondition(5, page, keyword, keywordSelect);
+    	request.setAttribute("pageBean", pageBean);
+    	request.setAttribute("keyword", keyword);
+    	request.setAttribute("keywordSelect", keywordSelect);
+    	        
+        logger.info("pageBean = " + pageBean);
+        logger.info("pageIndex = " + page);
+    	
+      //这个属性用来标记当前页面是通过点击用户管理链接得到的
+        request.setAttribute("pagetrigger", "users_fromsearchbutton");
+    	return "users_querybycondition_success";
+    }
+	
+	public String getTestInfo()
+	{
+		String uid = request.getParameter("uid");
+		//UsersDAO userDAO = new UsersDAOImpl();
+		TestInfoPageDAO testInfoPageDAO = new TestInfoPageDAOImpl();
+		
+		TestInfoPage userTestInfo = testInfoPageDAO.getTestInfoPageDataByUserID(5, page, uid);
+		
+		logger.info("userTestInfo = " + userTestInfo);
+		logger.info("uid = " + uid);
+		
+		request.setAttribute("usertestinfo", userTestInfo);
+		request.setAttribute("curuserid", uid);
+		
+		request.setAttribute("pagetrigger", "testinfo_fromTestTimes");
+		
+				
+		
+		return "users_gettestinfo_success";
+	}
+    
+    public String queryByPage() throws Exception
+    {    	
+    	logger.info("Start to show user information page by page");    	
+    	UserDataPageDAO userDataPageDAO = new UserDataPageDAOImpl();
+        //表示每页显示5条记录，page表示当前网页
+        UserDataPage pageBean = userDataPageDAO.getUserPageData(5, page);	        
+        request.setAttribute("pageBean", pageBean);   
+        logger.info("pageBean = " + pageBean);
+        logger.info("pageIndex = " + page);
+        
+        //这个属性用来标记当前页面是通过点击用户管理链接得到的
+        request.setAttribute("pagetrigger", "users_fromleftlink");
+        
+        return "users_querybypage_success";
+    }
+    
+    public String filterByPage()
+    {
+    	logger.info("Start to filter user information page by page");
+    	String filterType = request.getParameter("userFilterType");
+    	String startTime = request.getParameter("starttime");
+    	String endTime = request.getParameter("endtime");
+    	
+    	logger.info("filterType = " + filterType + ", startTime = " + startTime + ", endTime" + endTime);
+    	
+    	String bindCondition = "绑定";
+    	if(filterType.equals("unbinded"))
+    	{
+    		bindCondition = "未绑定";
+    	}
+    	logger.info("bindCondition = " + bindCondition);
+    	
+    	
+    	UserDataPageDAO userDataPageDAO = new UserDataPageDAOImpl();
+        //表示每页显示5条记录，page表示当前网页
+        //UserDataPage pageBean = userDataPageDAO.getUserPageData(5, page);	        
+    	
+    	UserDataPage pageBean = null;
+    	
+    	if(filterType.equals("timerange"))
+    	{
+    		pageBean = userDataPageDAO.getUserPageDataByTimeRange(5, page, startTime, endTime);
+    	}
+    	else
+    	{
+    		pageBean = userDataPageDAO.getUserPageDataByBindStatus(5, page, bindCondition);
+    	}
+    	
+        request.setAttribute("pageBean", pageBean);   
+        
+        request.setAttribute("keyword", keyword);
+    	request.setAttribute("userFilterType", filterType);
+    	request.setAttribute("bindCondition", bindCondition);
+    	request.setAttribute("startTime", startTime);
+    	request.setAttribute("endTime", endTime);
+    
+    	
+    	
+        logger.info("pageBean = " + pageBean);
+        logger.info("pageIndex = " + page);
+        
+      //这个属性用来标记当前页面是通过点击用户管理链接得到的
+        request.setAttribute("pagetrigger", "users_fromfilterbutton");
+        
+        return "users_filterbypage_success";
+    	
+    }
+	
+	
+	public String query()
+	{
+		UsersDAO sdao = new UsersDAOImpl();
+		
+		List<Users> list = sdao.queryAllUsers();
+		
+		logger.info("In query(): list = " + list);
+
+		
+		if(list != null && list.size() > 0)
+		{
+			session.setAttribute("users_list", list);
+		}
+		
+		return "query_success";
+	}
+
+	
+	public String delete()
+	{
+		UsersDAO sdao = new UsersDAOImpl();
+		String uid = request.getParameter("uid");
+		String pageNum = request.getParameter("pageNum");
+		
+		
+		logger.info("In delete(): pageIndex = " + pageNum);
+		
+		setPage(Integer.parseInt(pageNum));
+		
+		sdao.deleteUsers(uid);
+		
+		return "delete_success";
+	}
+	
+	public String deleteInSearch()
+	{
+		UsersDAO sdao = new UsersDAOImpl();
+		String uid = request.getParameter("uid");
+		String pageNum = request.getParameter("pageNum");
+		
+//		System.out.println("===>pageNum = " + pageNum);
+		logger.info("In deleteInSearch(): pageIndex = " + pageNum);
+		
+		setPage(Integer.parseInt(pageNum));
+		
+		sdao.deleteUsers(uid);
+		
+		return "deleteinsearch_success";
+	}
+	
+	public String add()
+	{
+		String address = request.getParameter("address");
+		//Date birthday = new Date(request.getParameter("birthday"));
+		String gender = request.getParameter("gender");
+		String name = request.getParameter("sname");
+		
+		String birthday = request.getParameter("birthday");
+		Users stu = new Users();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date;
+		try {
+			date = sdf.parse(birthday);
+			//stu.setBirthday(date);
+			//System.out.println(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//System.out.println("birthday = " + birthday);
+		
+		
+	//	stu.setAddress(address);
+		
+		stu.setGender(gender);
+		//stu.setSname(name);
+		
+		UsersDAO sdao = new UsersDAOImpl();
+		sdao.addUsers(stu);
+		
+		
+		return "add_success";
+	}
+	
+	public String modify()
+	{
+		String sid = request.getParameter("sid");
+		UsersDAO sdao = new UsersDAOImpl();
+		Users stu = sdao.queryUsersBySid(sid);
+		
+		session.setAttribute("modify_Users", stu);
+		return "modify_success";
+	}
+	
+	public String save()
+	{
+		String address = request.getParameter("address");
+		//Date birthday = new Date(request.getParameter("birthday"));
+		String gender = request.getParameter("gender");
+		String name = request.getParameter("sname");
+		
+		String birthday = request.getParameter("birthday");
+		Users stu = new Users();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date;
+		try {
+			date = sdf.parse(birthday);
+			//stu.setBirthday(date);
+			//System.out.println(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//System.out.println("birthday = " + birthday);
+		
+		
+		//stu.setAddress(address);
+		
+		stu.setGender(gender);
+		//stu.setSname(name);
+		//stu.setSid(request.getParameter("sid"));
+		UsersDAO sdao = new UsersDAOImpl();
+		//sdao.updateUsers(stu);
+		
+		return "save_success";		
+	}
+	
+	public String queryInTestInfoPage()
+	{
+		String columnToUsed = "focusValue";
+		String columnSelect = request.getParameter("testInfoColumn");
+		String keyword = request.getParameter("keyword");
+		String uid = request.getParameter("uid");
+		
+		String columns[] = {"focusValue", "relaxValue", "pressIndex", "tiredIndex", "improvedIndex", "heartRate", "heartVariate", "usedPattern", "music", "timeDuration"};
+		
+		for(String item: columns)
+		{
+			if(columnSelect.equals(item))
+			{
+				columnToUsed = item;
+				break;
+			}
+		}
+		
+		logger.info("Column used for search: " + columnToUsed);
+		
+		TestInfoPageDAO testInfoPageDAO = new TestInfoPageDAOImpl();
+				
+		TestInfoPage pageBean = testInfoPageDAO.queryTestInfoByCondition(5, page, uid, keyword, columnToUsed);
+		
+		request.setAttribute("usertestinfo", pageBean);
+		request.setAttribute("keyword", keyword);
+		request.setAttribute("columnSelect", columnSelect);
+		request.setAttribute("curuserid", uid);
+		request.setAttribute("pagetrigger", "testinfo_fromSearchButton");
+		
+		logger.info("page bean = " + pageBean);
+		
+		return "users_query_test_info_success";
+	}
+	
+	public　String filterInTestInfoPage()
+	{
+		
+	}
+}

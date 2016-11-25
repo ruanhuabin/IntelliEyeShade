@@ -137,7 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <select name="keywordSelect">
                 <option value="deviceID" selected>硬件ID</option>
                 <option value="romVersion">固件版本</option>
-                <option value="appVersion">App版本</option>                
+                <option value="deviceVersion">硬件版本</option>                
         </select>
         
         <input type=text name="keyword" size=20/>
@@ -146,11 +146,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </div>
 <div style="width:800px; display:inline-block;">
-<form name = "device_filter" action="devices/Devices_filter">
-<select name="DeviceFilterType" onchange="return checkfilter(this)">
+<form name = "device_filter" action="devices/Devices_filterByPage">
+<select name="deviceFilterType" onchange="return checkfilter(this)">
 <option value="normalStatus" selected>状态正常</option>
 <option value="unormalStatus">状态异常</option>
-<option value="binded">绑定</option>
+<option value="binded">已绑定</option>
 <option value="unbinded">未绑定</option>
 </select>
 <input type="submit" value="筛选"/> 
@@ -196,6 +196,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </table>
 </div>
 
+<s:if test="#request.pagetrigger == \"devices_fromleftlink\"">
  <div align="center">
     
                             共<font color="red"><s:property value="#request.devicepagebean.totalPage"/></font>页&nbsp;&nbsp;
@@ -231,7 +232,97 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <input type="submit" value="跳转">
         </form>
         
+</div>
+</s:if>
+
+
+<s:if test="#request.pagetrigger == \"devices_fromsearchbutton\"">
+
+<div align="center">
+    
+                            共<font color="red"><s:property value="#request.devicepagebean.totalPage"/></font>页&nbsp;&nbsp;
+                           共<font color="red"><s:property value="#request.devicepagebean.allRows"/></font>条记录
+        
+        <s:if test="#request.devicepagebean.currentPage == 1">
+            <font size=2>首页&nbsp;&nbsp;&nbsp;上一页</font>
+        </s:if>
+        
+        <s:else>
+            <a href="Devices_queryByCondition.action?page=0&amp;keyword=<s:property value="#request.keyword"/>&amp;keywordSelect=<s:property value="#request.keywordSelect"/>"><font size=2>首页</font></a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="Devices_queryByCondition.action?page=<s:property value="#request.devicepagebean.currentPage - 1"/>&amp;keyword=<s:property value="#request.keyword"/>&amp;keywordSelect=<s:property value="#request.keywordSelect"/>"><font size=2>上一页</font></a>
+        </s:else>
+        
+        <s:if test="#request.devicepagebean.currentPage != #request.devicepagebean.totalPage">
+            <a href="Devices_queryByCondition.action?page=<s:property value="#request.devicepagebean.currentPage + 1"/>&amp;keyword=<s:property value="#request.keyword"/>&amp;keywordSelect=<s:property value="#request.keywordSelect"/>"><font size=2>下一页</font></a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="Devices_queryByCondition.action?page=<s:property value="#request.devicepagebean.totalPage"/>&amp;keyword=<s:property value="#request.keyword"/>&amp;keywordSelect=<s:property value="#request.keywordSelect"/>"><font size=2>尾页</font></a>
+        </s:if>
+        
+        <s:else>
+            <font size=2>下一页&nbsp;&nbsp;&nbsp;尾页</font>
+        </s:else>
+    
+   </div>
+    
+ <div align="center">
+        
+        <form action="Devices_queryByCondition.action" onsubmit="return validate();">
+            <font size="2">跳转至</font>
+            <input type="hidden" name="keyword" value="<s:property value="#request.keyword"/>">
+            <input type="hidden" name="keywordSelect" value="<s:property value="#request.keywordSelect"/>">
+            <input type="text" size="5" name="page" >页
+            <input type="submit" value="跳转">
+        </form>
+        
     </div>
+
+</s:if>
+
+<s:if test="#request.pagetrigger == \"users_fromfilterbutton\"">
+
+<div align="center">
+    
+                            共<font color="red"><s:property value="#request.devicepagebean.totalPage"/></font>页&nbsp;&nbsp;
+                           共<font color="red"><s:property value="#request.devicepagebean.allRows"/></font>条记录
+        
+        <s:if test="#request.devicepagebean.currentPage == 1">
+            <font size=2>首页&nbsp;&nbsp;&nbsp;上一页</font>
+        </s:if>
+        
+        <s:else>
+            <a href="Devices_filterByPage.action?page=0&amp;deviceFilterType=<s:property value="#request.deviceFilterType"/>"><font size=2>首页</font></a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="Devices_filterByPage.action?page=<s:property value="#request.devicepagebean.currentPage - 1"/>&amp;deviceFilterType=<s:property value="#request.deviceFilterType"/>"><font size=2>上一页</font></a>
+        </s:else>
+        
+        <s:if test="#request.devicepagebean.currentPage != #request.devicepagebean.totalPage">
+            <a href="Devices_filterByPage.action?page=<s:property value="#request.devicepagebean.currentPage + 1"/>&amp;deviceFilterType=<s:property value="#request.deviceFilterType"/>"><font size=2>下一页</font></a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="Devices_filterByPage.action?page=<s:property value="#request.devicepagebean.totalPage"/>&amp;deviceFilterType=<s:property value="#request.deviceFilterType"/>"><font size=2>尾页</font></a>
+        </s:if>
+        
+        <s:else>
+            <font size=2>下一页&nbsp;&nbsp;&nbsp;尾页</font>
+        </s:else>
+    
+   </div>
+    
+ <div align="center">
+        
+        <form action="Devices_filterByPage.action" onsubmit="return validate();">
+            <font size="2">跳转至</font>            
+            <input type="hidden" name="deviceFilterType" value="<s:property value="#request.deviceFilterType"/>">
+            <input type="text" size="5" name="page" >页
+            <input type="submit" value="跳转">
+        </form>
+        
+    </div>
+
+
+
+
+</s:if>
 
 </body>
 </html>

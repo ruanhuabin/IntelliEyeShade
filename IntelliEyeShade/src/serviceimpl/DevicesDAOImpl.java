@@ -10,6 +10,7 @@ import db.MyHibernateSessionFactory;
 import entity.Devices;
 
 import service.DevicesDAO;
+import static util.IntelliEyeShadeLogger.logger;
 
 public class DevicesDAOImpl implements DevicesDAO {
 
@@ -92,10 +93,10 @@ public class DevicesDAOImpl implements DevicesDAO {
 	}
 	
 	@Override
-	public int getAllRowCountByCondition(String condition) {
+	public int getAllRowCountByCondition(String columnToUsed, String condition) {
 		// TODO Auto-generated method stub
 		
-		String hql = "from Devices as d where d.deviceID like :name";
+		String hql = "from Devices as d where d." + columnToUsed + " like :name";
 		Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
         Transaction tx = null;
         int allRows = 0;
@@ -108,7 +109,7 @@ public class DevicesDAOImpl implements DevicesDAO {
             
             List<Devices> list =query.list();
             allRows = list.size();
-            System.out.println("In Search by condition: list = " + list);
+            logger.info("In Search by condition: list = " + list);
             
             tx.commit();
             

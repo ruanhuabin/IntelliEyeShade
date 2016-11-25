@@ -132,7 +132,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </script>
 </head>
 <body>
-<script type="text/javascript" src="../js/Calendar3.js"></script>
+<script type="text/javascript" src="<%=path%>/js/Calendar3.js"></script>
 
 <%-- <div id="navi">
 	<div id='naviDiv'>
@@ -156,36 +156,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div style="width:20px; display:inline-block;">
 </div>
 <div style="width:600px; display:inline-block;">
-<form action="users/Users_queryByCondition.action">
-        <select name="keywordSelect">
-                <option value="username" selected>用户名</option>
-                <option value="gender">性别</option>                
-                <option value="age">年龄</option>
-                <option value="phoneNum">手机号</option>
-                <option value="testTimes">检测情况</option>
+<form action="users/Users_queryInTestInfoPage">
+        <select name="testInfoColumn">                
+                <option value="focusValue" selected>专注度</option>                
+                <option value="relaxValue">放松度</option>
+                <option value="pressIndex">压力指数</option>
+                <option value="tiredIndex">疲劳指数</option>
+                <option value="improvedIndex">精力回升指数</option>
+                <option value="heartRate">心率</option>
+                <option value="heartVariate">心率变异性</option>
+                <option value="usedPattern">使用模式</option>
+                <option value="music">音乐</option>
+                <option value="timeDuration">时长</option>
+                
         </select>
         
         <input type=text name="keyword" size=20/>
         
+        <input type="hidden" name="uid" value="<s:property value="#request.curuserid"/>">
         <input type="submit" value="搜索"/> 
 </form>
 </div>
 <div style="width:800px; display:inline-block;">
-<form name = "user_filter" action="users/Users_filter">
+<form name = "user_filter" action="users/Users_filterInTestInfoPage.action">
 <select name="UserFilterType" onchange="return checkfilter(this)">
 <option value="timerange" selected>时间段</option>
-<option value="binded"> 已绑定</option>
-<option value="unbinded">未绑定</option>
+<!-- <option value="binded"> 已绑定</option> -->
+<!-- <option value="unbinded">未绑定</option> -->
 </select>
-<label id="sl">开始时间：</label><input name="starttime" type="text" id="control_date" size="20"
+<input type="hidden" name="uid" value="<s:property value="#request.curuserid"/>">
+<label id="sl">开始时间：</label><input name="startTime" type="text" id="control_date" size="20"
       maxlength="10" onclick="new Calendar().show(this);" readonly="readonly" />
 
 <label id="el">
-结束时间：</label><input name="endtime" type="text" id="control_date" size="20"
+结束时间：</label><input name="endTime" type="text" id="control_date" size="20"
       maxlength="10" onclick="new Calendar().show(this);" readonly="readonly" />
 <input type="submit" value="筛选"/> 
 
 </form>
+</div>
+
+
+<div align="right" style="width:200px; display:inline-block;">
+<a href="">趋势分析</a>
 </div>
 </p>
 
@@ -196,14 +209,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!-- <table class="default" width="100%"> -->
 <table  width="100%">
-	<col width="10%">
-	<col width="10%">
-	<col width="10%">
-	<col width="10%">
-	<col width="10%">
-	<col width="10%">
-	<col width="10%">
-	<col width="10%"> 
+	<col width="8%">
+	<col width="8%">
+	<col width="8%">
+	<col width="8%">
+	<col width="8%">
+	<col width="8%">
+	<col width="8%">
+	<col width="8%"> 
 	<col width="10%"> 
 	<col width="10%"> 
 	<tr class="title">
@@ -215,9 +228,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<td>疲劳指数</td>
 		<td>精力回升指数</td>
 		<td>心率</td>
+		<td>心率变异性</td>
 		<td>使用模式</td>
 		<td>音乐</td>
 		<td>时长</td>
+		<td>详情</td>
 	</tr>
 	
 	<!-- 遍历开始 -->
@@ -231,16 +246,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<td><s:property value="#usr.tiredIndex"/></td>
 		<td><s:property value="#usr.improvedIndex"/></td>
 		<td><s:property value="#usr.heartRate"/></td>
+		<td><s:property value="#usr.heartVariate"/></td>
 		<td><s:property value="#usr.usedPattern"/></td>
 		<td><s:property value="#usr.music"/></td>
 		<td><s:property value="#usr.timeDuration"/></td>
-		
+		<td><a href="">访问</a></td>
 	</tr>
 	</s:iterator>
 	<!-- 遍历结束 -->
 </table>
 </div>
 
+<s:if test="#request.pagetrigger == \"testinfo_fromTestTimes\"">
 <div align="center">
     
                             共<font color="red"><s:property value="#request.usertestinfo.totalPage"/></font>页&nbsp;&nbsp;
@@ -279,7 +296,98 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
     </div>
 
+</s:if>
 
+
+
+
+<s:if test="#request.pagetrigger == \"testinfo_fromSearchButton\"">
+<div align="center">
+    
+                            共<font color="red"><s:property value="#request.usertestinfo.totalPage"/></font>页&nbsp;&nbsp;
+                           共<font color="red"><s:property value="#request.usertestinfo.allRows"/></font>条记录
+        
+        <s:if test="#request.usertestinfo.currentPage == 1">
+            <font size=2>首页&nbsp;&nbsp;&nbsp;上一页</font>
+        </s:if>
+        
+        <s:else>
+            <a href="Users_queryInTestInfoPage.action?page=0&amp;uid=<s:property value="#request.curuserid"/>&amp;testInfoColumn=<s:property value="#request.columnSelect"/>&amp;keyword=<s:property value="#request.keyword"/>"><font size=2>首页</font></a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="Users_queryInTestInfoPage.action?page=<s:property value="#request.usertestinfo.currentPage - 1"/>&amp;uid=<s:property value="#request.curuserid"/>&amp;testInfoColumn=<s:property value="#request.columnSelect"/>&amp;keyword=<s:property value="#request.keyword"/>"><font size=2>上一页</font></a>
+        </s:else>
+        
+        <s:if test="#request.usertestinfo.currentPage != #request.usertestinfo.totalPage">
+            <a href="Users_queryInTestInfoPage.action?page=<s:property value="#request.usertestinfo.currentPage + 1"/>&amp;uid=<s:property value="#request.curuserid"/>&amp;testInfoColumn=<s:property value="#request.columnSelect"/>&amp;keyword=<s:property value="#request.keyword"/>"><font size=2>下一页</font></a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="Users_queryInTestInfoPage.action?page=<s:property value="#request.usertestinfo.totalPage"/>&amp;uid=<s:property value="#request.curuserid"/>&amp;testInfoColumn=<s:property value="#request.columnSelect"/>&amp;keyword=<s:property value="#request.keyword"/>"><font size=2>尾页</font></a>
+        </s:if>
+        
+        <s:else>
+            <font size=2>下一页&nbsp;&nbsp;&nbsp;尾页</font>
+        </s:else>
+    
+   </div>
+    
+ <div align="center">
+        
+        <form action="Users_queryInTestInfoPage.action" onsubmit="return validate();">
+            <font size="2">跳转至</font>
+            <input type="hidden" name="uid" value="<s:property value="#request.curuserid"/>">
+            <input type="hidden" name="keyword" value="<s:property value="#request.keyword"/>">
+            <input type="hidden" name="testInfoColumn" value="<s:property value="#request.columnSelect"/>">
+            <input type="text" size="5" name="page" >页
+            <input type="submit" value="跳转">
+        </form>
+        
+    </div>
+
+</s:if>
+
+
+
+<s:if test="#request.pagetrigger == \"testinfo_fromFilterButton\"">
+<div align="center">
+    
+                            共<font color="red"><s:property value="#request.usertestinfo.totalPage"/></font>页&nbsp;&nbsp;
+                           共<font color="red"><s:property value="#request.usertestinfo.allRows"/></font>条记录
+        
+        <s:if test="#request.usertestinfo.currentPage == 1">
+            <font size=2>首页&nbsp;&nbsp;&nbsp;上一页</font>
+        </s:if>
+        
+        <s:else>
+            <a href="Users_filterInTestInfoPage.action?page=0&amp;uid=<s:property value="#request.curuserid"/>&amp;startTime=<s:property value="#request.startTime"/>&amp;endTime=<s:property value="#request.endTime"/>"><font size=2>首页</font></a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="Users_filterInTestInfoPage.action?page=<s:property value="#request.usertestinfo.currentPage - 1"/>&amp;uid=<s:property value="#request.curuserid"/>&amp;startTime=<s:property value="#request.startTime"/>&amp;endTime=<s:property value="#request.endTime"/>"><font size=2>上一页</font></a>
+        </s:else>
+        
+        <s:if test="#request.usertestinfo.currentPage != #request.usertestinfo.totalPage">
+            <a href="Users_filterInTestInfoPage.action?page=<s:property value="#request.usertestinfo.currentPage + 1"/>&amp;uid=<s:property value="#request.curuserid"/>&amp;startTime=<s:property value="#request.startTime"/>&amp;endTime=<s:property value="#request.endTime"/>"><font size=2>下一页</font></a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="Users_filterInTestInfoPage.action?page=<s:property value="#request.usertestinfo.totalPage"/>&amp;uid=<s:property value="#request.curuserid"/>&amp;startTime=<s:property value="#request.startTime"/>&amp;endTime=<s:property value="#request.endTime"/>"><font size=2>尾页</font></a>
+        </s:if>
+        
+        <s:else>
+            <font size=2>下一页&nbsp;&nbsp;&nbsp;尾页</font>
+        </s:else>
+    
+   </div>
+    
+ <div align="center">
+        
+        <form action="Users_filterInTestInfoPage.action" onsubmit="return validate();">
+            <font size="2">跳转至</font>
+            <input type="hidden" name="uid" value="<s:property value="#request.curuserid"/>">
+            <input type="hidden" name="startTime" value="<s:property value="#request.startTime"/>">
+            <input type="hidden" name="endTime" value="<s:property value="#request.endTime"/>">
+            <input type="text" size="5" name="page" >页
+            <input type="submit" value="跳转">
+        </form>
+        
+    </div>
+
+</s:if>
 
 <br><br>
 

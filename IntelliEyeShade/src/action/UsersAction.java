@@ -83,6 +83,8 @@ public class UsersAction extends SuperAction {
         logger.info("pageBean = " + pageBean);
         logger.info("pageIndex = " + page);
     	
+      //这个属性用来标记当前页面是通过点击用户管理链接得到的
+        request.setAttribute("pagetrigger", "users_fromsearchbutton");
     	return "users_querybycondition_success";
     }
 	
@@ -100,6 +102,8 @@ public class UsersAction extends SuperAction {
 		request.setAttribute("usertestinfo", userTestInfo);
 		request.setAttribute("curuserid", uid);
 		
+		request.setAttribute("pagetrigger", "testinfo_fromTestTimes");
+		
 				
 		
 		return "users_gettestinfo_success";
@@ -115,13 +119,16 @@ public class UsersAction extends SuperAction {
         logger.info("pageBean = " + pageBean);
         logger.info("pageIndex = " + page);
         
+        //这个属性用来标记当前页面是通过点击用户管理链接得到的
+        request.setAttribute("pagetrigger", "users_fromleftlink");
+        
         return "users_querybypage_success";
     }
     
     public String filterByPage()
     {
     	logger.info("Start to filter user information page by page");
-    	String filterType = request.getParameter("UserFilterType");
+    	String filterType = request.getParameter("userFilterType");
     	String startTime = request.getParameter("starttime");
     	String endTime = request.getParameter("endtime");
     	
@@ -151,8 +158,20 @@ public class UsersAction extends SuperAction {
     	}
     	
         request.setAttribute("pageBean", pageBean);   
+        
+        request.setAttribute("keyword", keyword);
+    	request.setAttribute("userFilterType", filterType);
+    	request.setAttribute("bindCondition", bindCondition);
+    	request.setAttribute("startTime", startTime);
+    	request.setAttribute("endTime", endTime);
+    
+    	
+    	
         logger.info("pageBean = " + pageBean);
         logger.info("pageIndex = " + page);
+        
+      //这个属性用来标记当前页面是通过点击用户管理链接得到的
+        request.setAttribute("pagetrigger", "users_fromfilterbutton");
         
         return "users_filterbypage_success";
     	
@@ -283,8 +302,70 @@ public class UsersAction extends SuperAction {
 		UsersDAO sdao = new UsersDAOImpl();
 		//sdao.updateUsers(stu);
 		
-		return "save_success";
+		return "save_success";		
+	}
+	
+	public String queryInTestInfoPage()
+	{
+		String columnToUsed = "focusValue";
+		String columnSelect = request.getParameter("testInfoColumn");
+		String keyword = request.getParameter("keyword");
+		String uid = request.getParameter("uid");
+		
+		String columns[] = {"focusValue", "relaxValue", "pressIndex", "tiredIndex", "improvedIndex", "heartRate", "heartVariate", "usedPattern", "music", "timeDuration"};
+		
+		for(String item: columns)
+		{
+			if(columnSelect.equals(item))
+			{
+				columnToUsed = item;
+				break;
+			}
+		}
+		
+		logger.info("Column used for search: " + columnToUsed);
+		
+		TestInfoPageDAO testInfoPageDAO = new TestInfoPageDAOImpl();
+				
+		TestInfoPage pageBean = testInfoPageDAO.queryTestInfoByCondition(5, page, uid, keyword, columnToUsed);
+		
+		request.setAttribute("usertestinfo", pageBean);
+		request.setAttribute("keyword", keyword);
+		request.setAttribute("columnSelect", columnSelect);
+		request.setAttribute("curuserid", uid);
+		request.setAttribute("pagetrigger", "testinfo_fromSearchButton");
+		
+		logger.info("page bean = " + pageBean);
+		
+		return "users_query_test_info_success";
+	}
+	
+	public String filterInTestInfoPage()
+	{
+		
+		String columnToUsed = "testDate";
+		String columnSelect = request.getParameter("testInfoColumn");
+		String startTime = request.getParameter("startTime");
+		String endTime = request.getParameter("endTime");
+		String uid = request.getParameter("uid");
+		
+		logger.info("columnToUsed = " + columnToUsed + " startTime = " + startTime + " endTime = " + endTime);
+		
+		TestInfoPageDAO testInfoPageDAO = new TestInfoPageDAOImpl();
+		
+		TestInfoPage pageBean = testInfoPageDAO.filterTestInfoByCondition(5, page, uid, startTime, endTime, columnToUsed);
+		
+		request.setAttribute("usertestinfo", pageBean);
+		request.setAttribute("startTime", startTime);
+		request.setAttribute("endTime", endTime);
+		
+		request.setAttribute("curuserid", uid);
+		request.setAttribute("pagetrigger", "testinfo_fromFilterButton");		
+		logger.info("page bean = " + pageBean);
 		
 		
+		
+		
+		return "users_filter_test_info_success";
 	}
 }

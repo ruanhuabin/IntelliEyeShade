@@ -28,7 +28,7 @@ public class TestTestInfo {
 		
 		for(int i = 15; i < 30; i ++)
 		{
-			TestInfo testinfo = new TestInfo("" + 15, new Date(), i + 60, i + 60, i + 60, i + 60, i + 60, i + 60, i + 60, "1", "1");
+			TestInfo testinfo = new TestInfo("" + 15, new Date(), i + 60, i + 60, i + 60, i + 60, i + 60, i + 60, i + 60, i + 60, "1", "1");
 			session.save(testinfo);
 		}
 		

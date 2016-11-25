@@ -174,7 +174,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <div style="width:800px; display:inline-block;">
 <form name = "user_filter" action="users/Users_filterByPage.action">
-<select name="UserFilterType" onchange="return checkfilter(this)">
+<select name="userFilterType" onchange="return checkfilter(this)">
 
 <option value="timerange" selected>时间段</option>
 <option value="binded"> 已绑定</option>
@@ -240,7 +240,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- 遍历结束 -->
 </table>
 </div>
-
+<s:if test="#request.pagetrigger == \"users_fromleftlink\"">
  <div align="center">
     
                             共<font color="red"><s:property value="#request.pageBean.totalPage"/></font>页&nbsp;&nbsp;
@@ -267,16 +267,104 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </s:else>
     
    </div>
-    
- <div align="center">
+   
+   <div align="center">
         
         <form action="Users_queryByPage.action" onsubmit="return validate();">
-            <font size="2">跳转至</font>
+            <font size="2">跳转至</font>            
             <input type="text" size="5" name="page" >页
             <input type="submit" value="跳转">
         </form>
         
     </div>
+</s:if>  
+
+<s:if test="#request.pagetrigger == \"users_fromsearchbutton\"">
+<div align="center">
+    
+                            共<font color="red"><s:property value="#request.pageBean.totalPage"/></font>页&nbsp;&nbsp;
+                           共<font color="red"><s:property value="#request.pageBean.allRows"/></font>条记录
+        
+        <s:if test="#request.pageBean.currentPage == 1">
+            <font size=2>首页&nbsp;&nbsp;&nbsp;上一页</font>
+        </s:if>
+        
+        <s:else>
+            <a href="Users_queryByCondition.action?page=0&amp;keyword=<s:property value="#request.keyword"/>&amp;keywordSelect=<s:property value="#request.keywordSelect"/>"><font size=2>首页</font></a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="Users_queryByCondition.action?page=<s:property value="#request.pageBean.currentPage - 1"/>&amp;keyword=<s:property value="#request.keyword"/>&amp;keywordSelect=<s:property value="#request.keywordSelect"/>"><font size=2>上一页</font></a>
+        </s:else>
+        
+        <s:if test="#request.pageBean.currentPage != #request.pageBean.totalPage">
+            <a href="Users_queryByCondition.action?page=<s:property value="#request.pageBean.currentPage + 1"/>&amp;keyword=<s:property value="#request.keyword"/>&amp;keywordSelect=<s:property value="#request.keywordSelect"/>"><font size=2>下一页</font></a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="Users_queryByCondition.action?page=<s:property value="#request.pageBean.totalPage"/>&amp;keyword=<s:property value="#request.keyword"/>&amp;keywordSelect=<s:property value="#request.keywordSelect"/>"><font size=2>尾页</font></a>
+        </s:if>
+        
+        <s:else>
+            <font size=2>下一页&nbsp;&nbsp;&nbsp;尾页</font>
+        </s:else>
+    
+   </div>
+   
+   <div align="center">
+        
+        <form action="Users_queryByCondition.action" onsubmit="return validate();">
+            <font size="2">跳转至</font>
+            <input type="hidden" name="keyword" value="<s:property value="#request.keyword"/>">
+            <input type="hidden" name="keywordSelect" value="<s:property value="#request.keywordSelect"/>">
+            <input type="text" size="5" name="page" >页
+            <input type="submit" value="跳转">
+        </form>
+        
+    </div>
+</s:if>
+
+
+<s:if test="#request.pagetrigger == \"users_fromfilterbutton\"">
+<div align="center">
+    
+                            共<font color="red"><s:property value="#request.pageBean.totalPage"/></font>页&nbsp;&nbsp;
+                           共<font color="red"><s:property value="#request.pageBean.allRows"/></font>条记录
+        
+        <s:if test="#request.pageBean.currentPage == 1">
+            <font size=2>首页&nbsp;&nbsp;&nbsp;上一页</font>
+        </s:if>
+        
+        <s:else>
+            <a href="Users_filterByPage.action?page=0&amp;userFilterType=<s:property value="#request.userFilterType"/>&amp;starttime=<s:property value="#request.startTime"/>&amp;endtime=<s:property value="#request.endTime"/>&amp;bindCondition=<s:property value="#request.bindCondition"/>"><font size=2>首页</font></a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="Users_filterByPage.action?page=<s:property value="#request.pageBean.currentPage - 1"/>&amp;keyword=<s:property value="#request.keyword"/>&amp;userFilterType=<s:property value="#request.userFilterType"/>&amp;starttime=<s:property value="#request.startTime"/>&amp;endtime=<s:property value="#request.endTime"/>&amp;bindCondition=<s:property value="#request.bindCondition"/>"><font size=2>上一页</font></a>
+        </s:else>
+        
+        <s:if test="#request.pageBean.currentPage != #request.pageBean.totalPage">
+            <a href="Users_filterByPage.action?page=<s:property value="#request.pageBean.currentPage + 1"/>&amp;userFilterType=<s:property value="#request.userFilterType"/>&amp;starttime=<s:property value="#request.startTime"/>&amp;endtime=<s:property value="#request.endTime"/>&amp;bindCondition=<s:property value="#request.bindCondition"/>"><font size=2>下一页</font></a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="Users_filterByPage.action?page=<s:property value="#request.pageBean.totalPage"/>&amp;userFilterType=<s:property value="#request.userFilterType"/>&amp;starttime=<s:property value="#request.startTime"/>&amp;endtime=<s:property value="#request.endTime"/>&amp;bindCondition=<s:property value="#request.bindCondition"/>"><font size=2>尾页</font></a>
+        </s:if>
+        
+        <s:else>
+            <font size=2>下一页&nbsp;&nbsp;&nbsp;尾页</font>
+        </s:else>
+    
+   </div>
+   
+   <div align="center">
+        
+        <form action="Users_filterByPage.action" onsubmit="return validate();">
+            <font size="2">跳转至</font>
+            <input type="hidden" name="userFilterType" value="<s:property value="#request.userFilterType"/>">
+            <input type="hidden" name="starttime" value="<s:property value="#request.startTime"/>">
+            <input type="hidden" name="endtime" value="<s:property value="#request.endTime"/>">
+            <input type="hidden" name="bindCondition" value="<s:property value="#request.bindCondition"/>">
+            <input type="text" size="5" name="page" >页
+            <input type="submit" value="跳转">
+        </form>
+        
+    </div>
+</s:if>
+
+
 
 </body>
 </html>

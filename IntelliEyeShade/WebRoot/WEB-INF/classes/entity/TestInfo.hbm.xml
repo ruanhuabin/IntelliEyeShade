@@ -30,6 +30,7 @@
 		<property name="tiredIndex" type="int"/>
 		<property name="improvedIndex" type="int"/>
 		<property name="heartRate" type="int"/>
+		<property name="heartVariate" type="int"/>
 		<property name="timeDuration" type="int"/>
 		
 		

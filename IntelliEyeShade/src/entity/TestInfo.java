@@ -13,6 +13,7 @@ public class TestInfo {
 	private int tiredIndex;
 	private int improvedIndex;
 	private int heartRate;
+	private int heartVariate;
 	private int timeDuration;
 	private String usedPattern;
 	private String music;
@@ -72,6 +73,14 @@ public class TestInfo {
 	public void setHeartRate(int heartRate) {
 		this.heartRate = heartRate;
 	}
+	
+	
+	public int getHeartVariate() {
+		return heartVariate;
+	}
+	public void setHeartVariate(int heartVariate) {
+		this.heartVariate = heartVariate;
+	}
 	public int getTimeDuration() {
 		return timeDuration;
 	}
@@ -92,19 +101,20 @@ public class TestInfo {
 	}
 	@Override
 	public String toString() {
-		return "TestInfo [tid=" + tid + ", uid=" + uid + ", date=" + testDate
-				+ ", focusValue=" + focusValue + ", relaxValue=" + relaxValue
-				+ ", pressIndex=" + pressIndex + ", tiredIndex=" + tiredIndex
-				+ ", improvedIndex=" + improvedIndex + ", heartRate="
-				+ heartRate + ", timeDuration=" + timeDuration
-				+ ", usedPattern=" + usedPattern + ", music=" + music + "]";
+		return "TestInfo [tid=" + tid + ", uid=" + uid + ", testDate="
+				+ testDate + ", focusValue=" + focusValue + ", relaxValue="
+				+ relaxValue + ", pressIndex=" + pressIndex + ", tiredIndex="
+				+ tiredIndex + ", improvedIndex=" + improvedIndex
+				+ ", heartRate=" + heartRate + ", heartVariate=" + heartVariate
+				+ ", timeDuration=" + timeDuration + ", usedPattern="
+				+ usedPattern + ", music=" + music + "]";
 	}
 	public TestInfo() {
 		
 	}
 	public TestInfo(String uid, Date date, int focusValue,
 			int relaxValue, int pressIndex, int tiredIndex, int improvedIndex,
-			int heartRate, int timeDuration, String usedPattern, String music) {
+			int heartRate, int heartVariate, int timeDuration, String usedPattern, String music) {
 		
 		
 		this.uid = uid;
@@ -115,6 +125,7 @@ public class TestInfo {
 		this.tiredIndex = tiredIndex;
 		this.improvedIndex = improvedIndex;
 		this.heartRate = heartRate;
+		this.heartVariate = heartVariate;
 		this.timeDuration = timeDuration;
 		this.usedPattern = usedPattern;
 		this.music = music;

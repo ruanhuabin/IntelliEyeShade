@@ -11,7 +11,7 @@ public interface DevicesDAO {
 
 	int getAllRowCount(String hql);
 
-	int getAllRowCountByCondition(String condition);
+	int getAllRowCountByCondition(String columnToUsed, String keyword);
 
 	List<Devices> queryByCondition(String hql, String condition, int offset,
 			int pageSize);
