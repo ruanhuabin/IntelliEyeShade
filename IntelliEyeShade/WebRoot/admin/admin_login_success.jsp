@@ -12,23 +12,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="../css/index.css" />
 </head>
 <body>
+
+
 <div id="wrapper">
 	<div id="header">
-		<div id="logo">LOGO</div>
-		<div id="title">智能眼罩后台管理系统</div>
-		<div id="menu" style="left: 858px; width: 314px;">
-			<div id="menu_container">
-				<ul id="menu_items">
-					<li class="menu_item on" style="border-radius:8px 0 0 8px" onmouseout="this.style.backgroundColor=''" onmouseover="this.style.backgroundColor='#77D1F6';this.style.borderRadius='8px 0 0 8px'"><a>用户管理</a></li>
-					<li class="menu_item" onmouseout="this.style.backgroundColor='';this.style.fontWeight='normal'" onmouseover="this.style.backgroundColor='#77D1F6';this.style.fontWeight='bold'"><a>硬件管理</a></li>
-					<li class="menu_item" onmouseout="this.style.backgroundColor='';this.style.fontWeight='normal'" onmouseover="this.style.backgroundColor='#77D1F6';this.style.fontWeight='bold'"><a>统计管理</a></li>
-					<!-- <li class="menu_item" onmouseout="this.style.backgroundColor='';this.style.fontWeight='normal'" onmouseover="this.style.backgroundColor='#77D1F6';this.style.fontWeight='bold'"><a>网盘管理</a></li>
-					<li class="menu_item" onmouseout="this.style.backgroundColor='';this.style.fontWeight='normal'" onmouseover="this.style.backgroundColor='#77D1F6';this.style.fontWeight='bold'"><a>相册管理</a></li>
-					 <li class="menu_item" style="border-radius:8px 0 0 8px;border:0px;" onmouseout="this.style.backgroundColor='';this.style.fontWeight='normal'" onmouseover="this.style.backgroundColor='#77D1F6';this.style.borderRadius='0 8px 8px 0';this.style.fontWeight='bold'"><a>邮件管理</a></li>
-					-->
-				</ul>
-			</div>
-		</div>
+		<div id="logo" style="width:750px; display:inline-block;"></div>
+		
+		
+		<div id="title" style="width:400px display:inline-block">智能眼罩后台管理系统</div>
+<!-- 		<div id="menu" style="left: 858px; width: 314px;">
+<!-- 			<div id="menu_container"> -->
+<!-- 				<ul id="menu_items"> -->
+<!-- 					<li class="menu_item on" style="border-radius:8px 0 0 8px" onmouseout="this.style.backgroundColor=''" onmouseover="this.style.backgroundColor='#77D1F6';this.style.borderRadius='8px 0 0 8px'"><a>用户管理</a></li> -->
+<!-- 					<li class="menu_item" onmouseout="this.style.backgroundColor='';this.style.fontWeight='normal'" onmouseover="this.style.backgroundColor='#77D1F6';this.style.fontWeight='bold'"><a>硬件管理</a></li> -->
+<!-- 					<li class="menu_item" onmouseout="this.style.backgroundColor='';this.style.fontWeight='normal'" onmouseover="this.style.backgroundColor='#77D1F6';this.style.fontWeight='bold'"><a>统计管理</a></li> -->
+<!-- 					<li class="menu_item" onmouseout="this.style.backgroundColor='';this.style.fontWeight='normal'" onmouseover="this.style.backgroundColor='#77D1F6';this.style.fontWeight='bold'"><a>网盘管理</a></li>
+<!-- 					<li class="menu_item" onmouseout="this.style.backgroundColor='';this.style.fontWeight='normal'" onmouseover="this.style.backgroundColor='#77D1F6';this.style.fontWeight='bold'"><a>相册管理</a></li> -->
+<!-- 					 <li class="menu_item" style="border-radius:8px 0 0 8px;border:0px;" onmouseout="this.style.backgroundColor='';this.style.fontWeight='normal'" onmouseover="this.style.backgroundColor='#77D1F6';this.style.borderRadius='0 8px 8px 0';this.style.fontWeight='bold'"><a>邮件管理</a></li> -->
+<!-- 					--> 
+<!-- 				</ul> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+
+
 		<div id="user_info">
 			<div id="welcome">欢迎 ${sessionScope.loginUserName} 使用本系统</div>
 			<div id="logout"><a href="<%=path%>/admin/Administrator_logout.action">安全退出</a></div>

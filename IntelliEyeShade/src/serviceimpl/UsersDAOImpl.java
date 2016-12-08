@@ -507,4 +507,41 @@ public class UsersDAOImpl implements UsersDAO {
 		return list;
 	}
 
+	@Override
+	public List<Users> queryByHQL(String hql) {
+		Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+        Transaction tx = null;
+        int allRows = 0;
+        List<Users> users = null;
+        try
+        {
+            tx = session.beginTransaction();
+            
+            Query query = session.createQuery(hql);
+            
+            users = query.list();
+            
+            tx.commit();
+            
+        }
+        catch (Exception e)
+        {
+            if(tx != null)
+            {
+                tx.rollback();
+            }
+            
+            e.printStackTrace();
+        }
+        finally
+        {
+            if(tx != null)
+            {
+            	tx = null;
+            }
+        }
+        
+        return users;
+	}
+
 }

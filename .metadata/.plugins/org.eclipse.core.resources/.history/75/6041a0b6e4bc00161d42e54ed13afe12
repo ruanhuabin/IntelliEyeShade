@@ -1,0 +1,88 @@
+package entity;
+
+public class StatisticsInfo {
+	private int totalUsers;
+	private int avgRegisterUsers;
+	private int avgLoginUsers;
+	private int totalTestTimes;
+	private int totalTestMiniutes;
+	
+	//单用户平均使用次数
+	private int avgUsedTimes;
+	//单用户平均使用时长
+	private int avgUsedDuration;
+	//男性比例
+	//女性比例
+	//平均男性人数
+	//平均女性人数
+	//男性平均时长
+	//女性平均时长
+	//用户年龄段
+	private int userAgeGroup[] = new int[20];
+	//相应年龄段人数
+	private int userAgeGroupNum[] = new int[20];
+	//相应年龄段使用时长
+	private int userAgeGroupDuration[] = new int[20];
+	
+	
+	//用户年龄段
+	private int userTimeGroup[] = new int[20];
+	//相应年龄段人数
+	private int userAgeGroupNum[] = new int[20];
+	//相应年龄段使用时长
+	private int userAgeGroupDuration[] = new int[20];
+	public int getTotalUsers() {
+		return totalUsers;
+	}
+	public void setTotalUsers(int totalUsers) {
+		this.totalUsers = totalUsers;
+	}
+	public int getAvgRegisterUsers() {
+		return avgRegisterUsers;
+	}
+	public void setAvgRegisterUsers(int avgRegisterUsers) {
+		this.avgRegisterUsers = avgRegisterUsers;
+	}
+	public int getAvgLoginUsers() {
+		return avgLoginUsers;
+	}
+	public void setAvgLoginUsers(int avgLoginUsers) {
+		this.avgLoginUsers = avgLoginUsers;
+	}
+	public int getTotalTestTimes() {
+		return totalTestTimes;
+	}
+	public void setTotalTestTimes(int totalTestTimes) {
+		this.totalTestTimes = totalTestTimes;
+	}
+	public int getTotalTestMiniutes() {
+		return totalTestMiniutes;
+	}
+	public void setTotalTestMiniutes(int totalTestMiniutes) {
+		this.totalTestMiniutes = totalTestMiniutes;
+	}
+	@Override
+	public String toString() {
+		return "StatisticsInfo [totalUsers=" + totalUsers
+				+ ", avgRegisterUsers=" + avgRegisterUsers + ", avgLoginUsers="
+				+ avgLoginUsers + ", totalTestTimes=" + totalTestTimes
+				+ ", totalTestMiniutes=" + totalTestMiniutes + "]";
+	}
+	public StatisticsInfo(int totalUsers, int avgRegisterUsers,
+			int avgLoginUsers, int totalTestTimes, int totalTestMiniutes) {
+		
+		this.totalUsers = totalUsers;
+		this.avgRegisterUsers = avgRegisterUsers;
+		this.avgLoginUsers = avgLoginUsers;
+		this.totalTestTimes = totalTestTimes;
+		this.totalTestMiniutes = totalTestMiniutes;
+	}
+	public StatisticsInfo() {
+		
+	}
+	
+	
+	
+	
+
+}

@@ -148,6 +148,147 @@ function getSelectFilter(sel)
 <br>
 <label id="totalMiniutes">总时长：<s:property value="#request.statisticsinfo.totalTestMiniutes"/></label>
 <br>
+
+<br>
+<label id="usageInfo">使用统计:</label>
+<br>
+<br>
+<label  id="totalTimes">单用户使用次数： <s:property value="#request.statisticsinfo.avgUsedTimes"/></label>
+<br>
+<label id="totalMiniutes">单用户平均时长：<s:property value="#request.statisticsinfo.avgUsedDuration"/></label>
+<br>
+
+
+<br>
+<label id="usageInfo">用户性别以及使用时长:</label>
+<br>
+<br>
+<label  id="totalTimes">男性比例： <s:property value="#request.statisticsinfo.maleRatio"/></label>
+<br>
+<label  id="totalTimes">男性人数： <s:property value="#request.statisticsinfo.maleNum"/></label>
+<br>
+<label id="totalMiniutes">男性平均时长：<s:property value="#request.statisticsinfo.maleAvgDuration"/></label>
+<br>
+
+<label  id="totalTimes">女性比例： <s:property value="#request.statisticsinfo.femaleRatio"/></label>
+<br>
+<label  id="totalTimes">女性人数： <s:property value="#request.statisticsinfo.femaleNum"/></label>
+<br>
+<label id="totalMiniutes">女性平均时长：<s:property value="#request.statisticsinfo.femaleAvgDuration"/></label>
+<br>
+
+<br>
+<label id="usageInfo">用户年龄段以及使用时长:</label>
+<br>
+
+
+<table  width="100%">
+	<tr>
+		<td>年龄段</td>
+		<td>人数</td>
+		<td>百分比</td>
+		<td>平均时长</td>
+	</tr>
+	
+	<tr>
+		<td>16-20</td>
+		<td><s:property value="#request.statisticsinfo.ageGroupNum[3]"/></td>
+		<td><s:property value="#request.statisticsinfo.ageGroupRatio[3]"/></td>
+		<td><s:property value="#request.statisticsinfo.ageGroupAvgDuration[3]"/></td>
+	</tr>	
+	<tr>
+		<td>21-25</td>
+		<td><s:property value="#request.statisticsinfo.ageGroupNum[4]"/></td>
+		<td><s:property value="#request.statisticsinfo.ageGroupRatio[4]"/></td>
+		<td><s:property value="#request.statisticsinfo.ageGroupAvgDuration[4]"/></td>
+	</tr>
+	<tr>
+		<td>26-30</td>
+		<td><s:property value="#request.statisticsinfo.ageGroupNum[5]"/></td>
+		<td><s:property value="#request.statisticsinfo.ageGroupRatio[5]"/></td>
+		<td><s:property value="#request.statisticsinfo.ageGroupAvgDuration[5]"/></td>
+	</tr>
+	<tr>
+		<td>31-35</td>
+		<td><s:property value="#request.statisticsinfo.ageGroupNum[6]"/></td>
+		<td><s:property value="#request.statisticsinfo.ageGroupRatio[6]"/></td>
+		<td><s:property value="#request.statisticsinfo.ageGroupAvgDuration[6]"/></td>
+	</tr>
+	<tr>
+		<td>36-40</td>
+		<td><s:property value="#request.statisticsinfo.ageGroupNum[7]"/></td>
+		<td><s:property value="#request.statisticsinfo.ageGroupRatio[7]"/></td>
+		<td><s:property value="#request.statisticsinfo.ageGroupAvgDuration[7]"/></td>
+	</tr>
+	<tr>
+		<td>41-45</td>
+		<td><s:property value="#request.statisticsinfo.ageGroupNum[8]"/></td>
+		<td><s:property value="#request.statisticsinfo.ageGroupRatio[8]"/></td>
+		<td><s:property value="#request.statisticsinfo.ageGroupAvgDuration[8]"/></td>
+	</tr>
+	<tr>
+		<td>46-50</td>
+		<td><s:property value="#request.statisticsinfo.ageGroupNum[9]"/></td>
+		<td><s:property value="#request.statisticsinfo.ageGroupRatio[9]"/></td>
+		<td><s:property value="#request.statisticsinfo.ageGroupAvgDuration[9]"/></td>
+	</tr>
+	
+	<tr>
+		<td>51-55</td>
+		<td><s:property value="#request.statisticsinfo.ageGroupNum[10]"/></td>
+		<td><s:property value="#request.statisticsinfo.ageGroupRatio[10]"/></td>
+		<td><s:property value="#request.statisticsinfo.ageGroupAvgDuration[10]"/></td>
+	</tr>
+	<tr>
+		<td>56-60</td>
+		<td><s:property value="#request.statisticsinfo.ageGroupNum[11]"/></td>
+		<td><s:property value="#request.statisticsinfo.ageGroupRatio[11]"/></td>
+		<td><s:property value="#request.statisticsinfo.ageGroupAvgDuration[11]"/></td>
+	</tr>
+	
+</table>
+
+
+<br>
+<label id="usageInfo">用户使用时间段以及使用时长:</label>
+<br>
+
+
+<table  width="100%">
+	<tr>
+		<td>时间段</td>
+		<td>人数</td>
+		<td>百分比</td>
+		<td>平均时长</td>
+	</tr>
+	
+	<tr>
+		<td>1-6</td>
+		<td><s:property value="#request.statisticsinfo.timeGroupNum[0]"/></td>
+		<td><s:property value="#request.statisticsinfo.timeGroupRatio[0]"/></td>
+		<td><s:property value="#request.statisticsinfo.timeGroupAvgDuration[0]"/></td>
+	</tr>	
+	<tr>
+		<td>7-12</td>
+		<td><s:property value="#request.statisticsinfo.timeGroupNum[1]"/></td>
+		<td><s:property value="#request.statisticsinfo.timeGroupRatio[1]"/></td>
+		<td><s:property value="#request.statisticsinfo.timeGroupAvgDuration[1]"/></td>
+	</tr>
+	<tr>
+		<td>13-18</td>
+		<td><s:property value="#request.statisticsinfo.timeGroupNum[2]"/></td>
+		<td><s:property value="#request.statisticsinfo.timeGroupRatio[2]"/></td>
+		<td><s:property value="#request.statisticsinfo.timeGroupAvgDuration[2]"/></td>
+	</tr>
+	<tr>
+		<td>19-24</td>
+		<td><s:property value="#request.statisticsinfo.timeGroupNum[3]"/></td>
+		<td><s:property value="#request.statisticsinfo.timeGroupRatio[3]"/></td>
+		<td><s:property value="#request.statisticsinfo.timeGroupAvgDuration[3]"/></td>
+	</tr>
+	
+</table>
+
 </div>
 
 </s:else>

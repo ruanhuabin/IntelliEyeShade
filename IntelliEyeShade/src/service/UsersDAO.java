@@ -8,6 +8,7 @@ import entity.Users;
 public interface UsersDAO {
 
 	public List<Users> queryAllUsers();
+	public List<Users> queryByHQL(String hql);
 	
 	public Users queryUsersBySid(String sid);
 	

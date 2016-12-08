@@ -26,5 +26,7 @@ public interface TestInfoDAO {
 
 	List<TestInfo> queryByCondition(String uid, String startTime,
 			String endTime, String columnToUsed, int offset, int pageSize);
+	
+	List<TestInfo> queryByHQL(String hql);
 
 }

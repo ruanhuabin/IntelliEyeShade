@@ -360,4 +360,42 @@ public class TestInfoDAOImpl implements TestInfoDAO {
 		
 	}
 
+
+	@Override
+	public List<TestInfo> queryByHQL(String hql) {
+		Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+        Transaction tx = null;
+        int allRows = 0;
+        List<TestInfo> tis = null;
+        try
+        {
+            tx = session.beginTransaction();
+            
+            Query query = session.createQuery(hql);
+            
+            tis = query.list();
+            
+            tx.commit();
+            
+        }
+        catch (Exception e)
+        {
+            if(tx != null)
+            {
+                tx.rollback();
+            }
+            
+            e.printStackTrace();
+        }
+        finally
+        {
+            if(tx != null)
+            {
+            	tx = null;
+            }
+        }
+        
+        return tis;
+	}
+
 }
