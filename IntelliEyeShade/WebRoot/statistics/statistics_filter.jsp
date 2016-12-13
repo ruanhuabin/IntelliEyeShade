@@ -27,7 +27,7 @@ function check()
 		
 	}
 	
-	 if(startDate!="" && endDate!="" && t1 >=t2)  
+	 if(startDate!="" && endDate!="" && t1 >t2)  
 	 {  
 		  alert("开始时间不能大于结束时间！");  
 		  return false;  
@@ -140,14 +140,14 @@ function getSelectFilter(sel)
 <br>
 <label  id="avgLoginUsers">日人均登录人数：<s:property value="#request.statisticsinfo.avgLoginUsers"/></label>
 <br>
-<br>
-<label id="usageInfo">使用统计：</label>
-<br>
-<br>
-<label  id="totalTimes">总次数： <s:property value="#request.statisticsinfo.totalTestTimes"/></label>
-<br>
-<label id="totalMiniutes">总时长：<s:property value="#request.statisticsinfo.totalTestMiniutes"/></label>
-<br>
+<%--<br>--%>
+<%--<label id="usageInfo">使用统计：</label>--%>
+<%--<br>--%>
+<%--<br>--%>
+<%--<label  id="totalTimes">总次数： <s:property value="#request.statisticsinfo.totalTestTimes"/></label>--%>
+<%--<br>--%>
+<%--<label id="totalMiniutes">总时长：<s:property value="#request.statisticsinfo.totalTestMiniutes"/></label>--%>
+<%--<br>--%>
 
 <br>
 <label id="usageInfo">使用统计:</label>

@@ -1,5 +1,8 @@
 package action;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -30,6 +33,7 @@ public class StatisticsAction extends SuperAction {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	
 	public String query()
 	{
@@ -38,6 +42,24 @@ public class StatisticsAction extends SuperAction {
 		
 		logger.info("startTime = " + startTime);
 		logger.info("endTime = " + endTime);
+		
+		int diffInDays = 1;
+		
+		
+		
+		try {
+			Date startDate = dateFormat.parse(startTime);
+			Date endDate = dateFormat.parse(endTime);
+			
+			diffInDays = (int)((endDate.getTime() - startDate.getTime()) /(1000 * 60 * 60 * 24)) ; 
+			diffInDays = diffInDays  + 1;// +1以保证同一天也能处理
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+		
 		
 		
 		UsersDAOImpl userDAO = new UsersDAOImpl();
@@ -49,6 +71,17 @@ public class StatisticsAction extends SuperAction {
 		
 		StatisticsInfo si = new StatisticsInfo();
 		si.setTotalUsers(totalUsers);
+		
+		int avgRegisterUsers = totalUsers / diffInDays;
+		if(avgRegisterUsers == 0)
+			avgRegisterUsers = 1;
+		
+		si.setAvgRegisterUsers(avgRegisterUsers);
+		logger.info("Diff in days = " + diffInDays);
+		logger.info("Average Registger Users = " + avgRegisterUsers);
+		
+		
+		
 		
 		int totalTestTimes = 0;
 		for(Users user: users)
@@ -139,8 +172,8 @@ public class StatisticsAction extends SuperAction {
 		
 		logger.info("totalMaleDuration = " + totalMaleDuration);
 		logger.info("totalFemaleDuration = " + totalFemaleDuration);
-		maleAvgDuration = (totalUsers == 0) ? 0: totalMaleDuration / totalMaleNum;
-		femaleAvgDuration = (totalUsers == 0) ? 0: totalFemaleDuration / totalFemaleNum;
+		maleAvgDuration = (totalUsers == 0 || totalMaleNum == 0) ? 0: totalMaleDuration / totalMaleNum;
+		femaleAvgDuration = (totalUsers == 0 || totalFemaleNum == 0) ? 0: totalFemaleDuration / totalFemaleNum;
 		si.setMaleNum(totalMaleNum);
 		si.setFemaleNum(totalFemaleNum);
 		si.setMaleRatio(maleRatio);

@@ -31,6 +31,21 @@
     	</action>
     </package>
     
+    <constant name="struts.multipart.maxSize" value="100000000"/>
+    <constant name="struts.multipart.saveDir" value="d:\abc\"></constant>
+    <package name="usersx" namespace="/usersx" extends="default">
+    	<action name="*_*" class="action.{1}Action" method="{2}">
+    	
+    	<interceptor-ref name="defaultStack">
+    	<param name="fileUpload.maximumSize">80000000</param>
+    	</interceptor-ref>
+    	<result name="success">/users/upload_success.jsp</result>
+    	<result name="input">/users/upload.jsp</result>
+    	
+    	<param name="uploadDir">/WEB-INF/UploadFiles/</param>
+    	
+    	</action>
+    </package>
     
     
     <package name="users" namespace="/users" extends="default">
@@ -52,7 +67,21 @@
     	
     		<result name="users_query_test_info_success">/users/users_test_info.jsp</result>
     		<result name="users_filter_test_info_success">/users/users_test_info.jsp</result>
+    		
+    		<result name="users_verify_success">/users/users_verify_success.jsp</result>
+    		<result name="users_verify_failed">/users/users_verify_failed.jsp</result>
     	
+    		
+    		
+    		
+    		<interceptor-ref name="defaultStack">
+    		<param name="fileUpload.maximumSize">80000000</param>
+    		</interceptor-ref>
+    		
+    		<result name="users_upload_success">/users/upload_success.jsp</result>
+    		<result name="input">/users/upload.jsp</result>
+    	
+    		<param name="uploadDir">/WEB-INF/UploadFiles/</param>
     	
     	</action>
     </package>
@@ -84,6 +113,14 @@
     	</action>
     </package>
      -->
+     
+     
+     
+    
+        
+    
+     
+     
 
     
 

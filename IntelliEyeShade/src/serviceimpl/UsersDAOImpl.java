@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 
 import db.MyHibernateSessionFactory;
 import entity.TestInfo;
+import entity.UserVerifyInfo;
 import entity.Users;
 import static util.IntelliEyeShadeLogger.logger;
 
@@ -542,6 +543,38 @@ public class UsersDAOImpl implements UsersDAO {
         }
         
         return users;
+	}
+
+	@Override
+	public UserVerifyInfo getUserVeryfiInfo(String phoneNum) {
+		
+		Transaction tx = null;		
+		UserVerifyInfo uvi = null;
+		
+		try{
+			
+			Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+		    uvi = (UserVerifyInfo) session.get(UserVerifyInfo.class, phoneNum);
+			tx.commit();
+			return uvi;
+			
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+			tx.commit();
+			return uvi;
+			
+		}
+		finally
+		{
+			if(tx != null)
+			{
+				tx = null;
+			}
+		}
+		
+	
 	}
 
 }

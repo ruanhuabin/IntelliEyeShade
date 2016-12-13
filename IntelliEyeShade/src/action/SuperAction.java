@@ -45,6 +45,8 @@ public class SuperAction extends ActionSupport implements ServletContextAware,
 		
 		this.application = application;
 		
+		
+		
 	}
 
 	

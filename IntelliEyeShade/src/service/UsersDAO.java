@@ -3,6 +3,7 @@ package service;
 import java.util.List;
 
 import entity.TestInfo;
+import entity.UserVerifyInfo;
 import entity.Users;
 
 public interface UsersDAO {
@@ -27,4 +28,5 @@ public interface UsersDAO {
 			int offset, int pageSize);
 	
 	public List<TestInfo> getUserTestInfo(String uid);
+	public UserVerifyInfo getUserVeryfiInfo(String phoneNum);
 }
