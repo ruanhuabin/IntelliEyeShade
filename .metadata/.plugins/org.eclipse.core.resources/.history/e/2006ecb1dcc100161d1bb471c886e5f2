@@ -1,0 +1,70 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+<session-factory>
+	<!-- Database connection settings -->
+	<property name="connection.driver_class">
+		com.mysql.jdbc.Driver
+	</property>
+	<!-- 
+		<property name="connection.url">jdbc:mysql:///test?useUnicode=true&amp;characterEncoding=UTF-8</property>
+	-->
+	<property name="connection.url">
+		jdbc:mysql://localhost:3306/intellieyeshade
+	</property>
+	<property name="connection.username">root</property>
+	<property name="connection.password">123456</property>
+	
+	
+	
+	<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+    <property name="hibernate.c3p0.timeout">600</property>
+    <property name="hibernate.c3p0.maxIdleTimeExcessConnections">20</property>
+
+     
+    <property name="hibernate.c3p0.validate">false</property>
+    <property name="hibernate.c3p0.idle_test_period">30</property>
+    <property name="hibernate.c3p0.automaticTestTable">conTestTable</property>
+	
+	
+<!-- 	<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property> -->
+<!--         <property name="hibernate.c3p0.max_size">20</property> -->
+<!--         <property name="hibernate.c3p0.min_size">5</property> -->
+<!--         <property name="hibernate.c3p0.timeout">120</property> -->
+<!--         <property name="automaticTestTable">Test</property> -->
+<!--         <property name="hibernate.c3p0.max_statements">100</property> -->
+<!--         <property name="hibernate.c3p0.idle_test_period">120</property> -->
+<!--         <property name="hibernate.c3p0.acquire_increment">1</property> -->
+<!--         <property name="c3p0.testConnectionOnCheckout">true</property> -->
+<!--         <property name="c3p0.idleConnectionTestPeriod">18000</property> -->
+<!--         <property name="c3p0.maxIdleTime">25000</property> -->
+<!--         <property name="c3p0.idle_test_period">120</property> -->
+
+	<!-- SQL dialect -->
+	<property name="dialect">
+		org.hibernate.dialect.MySQLDialect
+	</property>
+
+	<!-- Enable Hibernate's automatic session context management -->
+	<property name="current_session_context_class">thread</property>
+
+	<property name="format_sql">true</property>
+
+	<!-- Echo all executed SQL to stdout -->
+	<property name="show_sql">true</property>
+
+	<!-- Drop and re-create the database schema on startup -->
+	<property name="hbm2ddl.auto">update</property>
+	 
+	<mapping resource="entity/Users.hbm.xml" />
+	 
+	<mapping resource="entity/Administrator.hbm.xml" />
+	
+	<mapping resource="entity/Devices.hbm.xml" />
+	<mapping resource="entity/TestInfo.hbm.xml" />
+	<mapping resource="entity/UserVerifyInfo.hbm.xml" />
+
+</session-factory>
+</hibernate-configuration>

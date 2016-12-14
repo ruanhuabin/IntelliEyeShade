@@ -11,11 +11,12 @@ public class Users {
 	private String bindingStatus;
 	private String deviceID;
 	private String registerDate;
+	private String userIconURL;
 	
 	public Users(String uid, String username, String gender, String phoneNum,
 			int age, int testTimes, String bindingStatus, String deviceID,
 			String registerDate) {
-		super();
+		
 		this.uid = uid;
 		this.username = username;
 		this.gender = gender;
@@ -25,6 +26,33 @@ public class Users {
 		this.bindingStatus = bindingStatus;
 		this.deviceID = deviceID;
 		this.registerDate = registerDate;
+	}
+
+
+	public Users(String uid, String username, String gender, String phoneNum,
+			int age, int testTimes, String bindingStatus, String deviceID,
+			String registerDate, String userIconURL) {
+		
+		this.uid = uid;
+		this.username = username;
+		this.gender = gender;
+		this.phoneNum = phoneNum;
+		this.age = age;
+		this.testTimes = testTimes;
+		this.bindingStatus = bindingStatus;
+		this.deviceID = deviceID;
+		this.registerDate = registerDate;
+		this.userIconURL = userIconURL;
+	}
+
+
+	public String getUserIconURL() {
+		return userIconURL;
+	}
+
+
+	public void setUserIconURL(String userIconURL) {
+		this.userIconURL = userIconURL;
 	}
 
 

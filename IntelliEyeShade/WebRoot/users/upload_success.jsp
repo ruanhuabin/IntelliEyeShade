@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -23,7 +24,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    上传成功 <br>
+  
+  <div align="center">
+  上传成功 
+  <br>
+  <a href="http://127.0.0.1:8080<s:property value="#request.UserIconURL"/>"> 下载头像文件</a>
+  </div>
+    <br>
   
     
     

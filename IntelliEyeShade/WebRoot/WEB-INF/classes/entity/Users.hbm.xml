@@ -25,13 +25,9 @@
 		<property name="deviceID" type="java.lang.String"/>
 		<property name="phoneNum" type="java.lang.String"/>
 		<property name="registerDate" type="java.lang.String"/>
+		<property name="userIconURL" type="java.lang.String"/>		
 		<property name="testTimes" type="int"/>
 		<property name="age" type="int"/>
-		
-		
-		
-
-		
 	</class>
 
 	

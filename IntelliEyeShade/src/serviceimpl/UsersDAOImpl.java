@@ -107,7 +107,6 @@ public class UsersDAOImpl implements UsersDAO {
 		//s.setUid(getStuID());
 		Transaction tx = null;
 		
-		String hql = "";
 		try{
 			Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
 			tx = session.beginTransaction();

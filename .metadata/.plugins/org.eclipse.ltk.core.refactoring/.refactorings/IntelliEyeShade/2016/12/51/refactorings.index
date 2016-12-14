@@ -7,3 +7,10 @@
 1481623978604	Rename local variable 's'
 1481624138808	Copy file
 1481624160104	Copy file
+1481689901274	Rename field 'userIconFileFileName'
+1481689911649	Rename field 'userIconFileContentType'
+1481689918789	Rename field 'userIconFile'
+1481690027678	Rename field 'UserIconFileFileName'
+1481690033221	Rename field 'UserIconFileContentType'
+1481690039419	Rename field 'UserIconFile'
+1481690044596	Rename field 'uuserIconFile'

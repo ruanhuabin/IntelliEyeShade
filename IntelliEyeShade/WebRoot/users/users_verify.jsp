@@ -29,7 +29,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <input type="text" name="phoneNum"/>
   <input type="submit" value="验证"/> 
   </form>  
+  
+  
+  
+  
+  <form action="users/Users_uploadUserInfo.action" enctype="multipart/form-data" method="post">
+  用户ID：<input type="text" name="UserID" value="3"/>
+  用户姓名：<input type="text" name="UserName" value="zhangsan"/>
+  用户年龄：<input type="text" name="UserAge" value="15"/>
+ 用户性别 <input type="text" name="UserGender" value="男"/>
+ 头像文件 <input type="file" name="UserIconFile"/>
+  <input type="submit" value="上传用户信息"/> 
+  </form>  
     
-    
+ 
+ 
+ 
   </body>
 </html>
