@@ -661,12 +661,12 @@ public class UsersAction extends SuperAction {
 
 		UsersDAO udao = new UsersDAOImpl();
 		
-		Users isUserExist = udao.queryUsersBySid(userID);
+		boolean isUserExist = udao.isUserExist(userID);
 	
 		boolean insertResult = false;
 		boolean updateResult = false;
 		boolean insertVerifyResult = false;
-		if(isUserExist == null)
+		if(isUserExist == false)
 		{
 			insertResult = udao.addUsers(user);
 			
@@ -685,8 +685,7 @@ public class UsersAction extends SuperAction {
 			insertVerifyResult = udao.updateUserVerifyInfo(uvi);
 		
 			
-			user.setRegisterDate(isUserExist.getRegisterDate());
-			user.setTestTimes(isUserExist.getTestTimes());
+			
 			updateResult = udao.updateUsers(user);
 		}
 		

@@ -656,7 +656,7 @@ Transaction tx = null;
 		try{
 			Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
 			tx = session.beginTransaction();
-			session.update(uvi);
+			session.save(uvi);
 			tx.commit();
 			return true;
 			

@@ -32,5 +32,4 @@ public interface UsersDAO {
 	boolean isUserExist(String uid);
 	
 	boolean addUserVerifyInfo(UserVerifyInfo uvi);
-	public boolean updateUserVerifyInfo(UserVerifyInfo uvi);
 }

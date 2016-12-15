@@ -685,8 +685,7 @@ public class UsersAction extends SuperAction {
 			insertVerifyResult = udao.updateUserVerifyInfo(uvi);
 		
 			
-			user.setRegisterDate(isUserExist.getRegisterDate());
-			user.setTestTimes(isUserExist.getTestTimes());
+			user.setRegisterDate(isUserExist)
 			updateResult = udao.updateUsers(user);
 		}
 		

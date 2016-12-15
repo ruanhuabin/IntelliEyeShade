@@ -686,7 +686,6 @@ public class UsersAction extends SuperAction {
 		
 			
 			user.setRegisterDate(isUserExist.getRegisterDate());
-			user.setTestTimes(isUserExist.getTestTimes());
 			updateResult = udao.updateUsers(user);
 		}
 		

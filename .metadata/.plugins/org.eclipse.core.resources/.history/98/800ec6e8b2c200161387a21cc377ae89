@@ -651,33 +651,8 @@ public class UsersDAOImpl implements UsersDAO {
 
 	@Override
 	public boolean updateUserVerifyInfo(UserVerifyInfo uvi) {
-Transaction tx = null;
-		
-		try{
-			Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
-			tx = session.beginTransaction();
-			session.update(uvi);
-			tx.commit();
-			return true;
-			
-		}
-		catch(Exception ex)
-		{
-			ex.printStackTrace();
-			tx.commit();
-			return false;
-			
-		}
-		
-		finally
-		{
-			if(tx != null)
-			{
-				tx = null;
-			}
-			
-			
-		}
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
