@@ -74,6 +74,25 @@ public class TestUser {
 	}
 	
 	
+	@Test
+	public void testIsUserExist()
+	{
+		String uid="3";
+		UsersDAO udao = new UsersDAOImpl();
+		
+		Users u = udao.queryUsersBySid(uid);
+		
+		if(u == null)
+		{
+			System.out.println("user is not exist");
+		}
+		else
+		{
+			System.out.println("user is exist");
+		}
+	}
+	
+	
 	
 	
 

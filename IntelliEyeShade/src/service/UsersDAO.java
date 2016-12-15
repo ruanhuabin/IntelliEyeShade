@@ -29,4 +29,7 @@ public interface UsersDAO {
 	
 	public List<TestInfo> getUserTestInfo(String uid);
 	public UserVerifyInfo getUserVeryfiInfo(String phoneNum);
+	boolean isUserExist(String uid);
+	
+	boolean addUserVerifyInfo(UserVerifyInfo uvi);
 }

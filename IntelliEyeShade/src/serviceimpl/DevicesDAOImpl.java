@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 
 import db.MyHibernateSessionFactory;
 import entity.Devices;
+import entity.Users;
 
 import service.DevicesDAO;
 import static util.IntelliEyeShadeLogger.logger;
@@ -216,6 +217,82 @@ public class DevicesDAOImpl implements DevicesDAO {
         
         return list;
 	}
+
+	@Override
+	public boolean addDevice(Devices newDevice)
+	{
+		
+		Transaction tx = null;
+		
+		try{
+			Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+			
+			session.save(newDevice);
+			
+			tx.commit();
+			
+			return true;
+			
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+			tx.commit();
+			return false;
+			
+		}
+		
+		finally
+		{
+			if(tx != null)
+			{
+				tx = null;
+			}
+			
+			
+		}
+		
+		
+		
+	}
+
+	@Override
+	public boolean updateDevice(Devices device) {
+		
+		Transaction tx = null;		
+		
+		try{
+			Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+			
+			session.update(device);
+			
+			tx.commit();
+			
+			return true;
+			
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+			tx.commit();
+			return false;
+			
+		}
+		
+		finally
+		{
+			if(tx != null)
+			{
+				tx = null;
+			}
+		}
+		
+	}
+	
+	
+	
 	
 
 

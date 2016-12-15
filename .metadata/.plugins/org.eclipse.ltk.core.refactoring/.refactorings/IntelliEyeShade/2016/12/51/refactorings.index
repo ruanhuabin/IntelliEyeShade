@@ -14,3 +14,12 @@
 1481690033221	Rename field 'UserIconFileContentType'
 1481690039419	Rename field 'UserIconFile'
 1481690044596	Rename field 'uuserIconFile'
+1481765944631	Rename local variable 'result'
+1481771331955	Copy file
+1481771347725	Rename resource 'users_verify.jsp'
+1481771512959	Copy file
+1481771534530	Rename resource 'users_verify_success.jsp'
+1481790305780	Copy file
+1481790899095	Copy file
+1481791339877	Rename resource 'users_verify_success.jsp'
+1481793519967	Rename resource 'users_uploadinfo_success.jsp'

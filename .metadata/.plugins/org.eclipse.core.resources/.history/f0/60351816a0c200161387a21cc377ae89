@@ -1,0 +1,10 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<html>  
+  <body>
+  设备信息上传结果：<s:property value="#request.DeviceUploadResult"/>
+  
+    
+    
+  </body>
+</html>

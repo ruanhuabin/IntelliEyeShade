@@ -65,18 +65,15 @@ public class UsersDAOImpl implements UsersDAO {
 		// TODO Auto-generated method stub
 		
 		Transaction tx = null;
-		List<Users> list = null;
-		String hql = "";
 		Users s = null;
-		
 		try{
 			
 			Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
 			tx = session.beginTransaction();
-			
 			s = (Users) session.get(Users.class, sid);
-			
 			tx.commit();
+			
+			
 			
 			return s;
 			
@@ -97,6 +94,47 @@ public class UsersDAOImpl implements UsersDAO {
 				tx = null;
 			}
 		}
+		
+	}
+	@Override
+	public boolean isUserExist(String uid)
+	{
+		Transaction tx = null;
+		Users s = null;
+		try{
+			
+			Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+			s = (Users) session.get(Users.class, uid);
+			tx.commit();
+			
+			if(s != null)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+			
+			
+			
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+			tx.commit();
+			return false;
+			
+		}
+		finally
+		{
+			if(tx != null)
+			{
+				
+				tx = null;
+			}
+		}
+		
 		
 	}
 
@@ -132,7 +170,10 @@ public class UsersDAOImpl implements UsersDAO {
 			{
 				tx = null;
 			}
+			
+			
 		}
+		
 		
 		
 		
@@ -142,9 +183,8 @@ public class UsersDAOImpl implements UsersDAO {
 	public boolean updateUsers(Users s) {
 		// TODO Auto-generated method stub\
 		
-		Transaction tx = null;
+		Transaction tx = null;		
 		
-		String hql = "";
 		try{
 			Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
 			tx = session.beginTransaction();
@@ -574,6 +614,39 @@ public class UsersDAOImpl implements UsersDAO {
 		}
 		
 	
+	}
+
+	@Override
+	public boolean addUserVerifyInfo(UserVerifyInfo uvi) {
+		// TODO Auto-generated method stub
+		Transaction tx = null;
+		
+		try{
+			Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+			session.save(uvi);
+			tx.commit();
+			return true;
+			
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+			tx.commit();
+			return false;
+			
+		}
+		
+		finally
+		{
+			if(tx != null)
+			{
+				tx = null;
+			}
+			
+			
+		}
+		
 	}
 
 }

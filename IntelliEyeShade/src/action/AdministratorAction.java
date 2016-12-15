@@ -1,5 +1,7 @@
 package action;
 
+import java.util.logging.Logger;
+
 import org.apache.struts2.interceptor.validation.SkipValidation;
 
 import service.AdministratorDAO;
@@ -19,14 +21,20 @@ public class AdministratorAction extends SuperAction implements ModelDriven<Admi
 	private static final long serialVersionUID = 1L;
 	
 	Administrator user = new Administrator();
+	private static final Logger logger = Logger.getLogger("MyLogger");
 
 	public String login()
 	{
+		
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		logger.info("username = " + username);
 		AdministratorDAO udao = new AdministratorDAOImpl();
 		
 		if(udao.adminLogin(user))
 		{
 			session.setAttribute("loginUserName", user.getUsername());
+			
 			return "admin_login_success";
 		}
 		else

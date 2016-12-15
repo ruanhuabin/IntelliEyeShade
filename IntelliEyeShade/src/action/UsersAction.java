@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -536,14 +537,19 @@ public class UsersAction extends SuperAction {
 
 		String phoneNum = request.getParameter("phoneNum");
 		if (phoneNum == null)
+		{
 			phoneNum = "null";
+		}
 
 		logger.info("phone num = " + phoneNum);
 		UsersDAO userDAO = new UsersDAOImpl();
 
 		UserVerifyInfo uvi = userDAO.getUserVeryfiInfo(phoneNum);
 
-		logger.info("time stamp = " + uvi.getTimeStamp());
+		if(uvi != null)
+		{
+			logger.info("time stamp = " + uvi.getTimeStamp());
+		}
 
 		Users user = null;
 
@@ -588,15 +594,30 @@ public class UsersAction extends SuperAction {
 		String userName = request.getParameter("UserName");
 		String userAge = request.getParameter("UserAge");
 		String userGender = request.getParameter("UserGender");
+		String timeStamp = request.getParameter("TimeStamp");
 
 		logger.info("userID = " + userID);
 		logger.info("userName = " + userName);
 		logger.info("userAge = " + userAge);
 		logger.info("userGender = " + userGender);
+		logger.info("timeStamp = " + timeStamp);
+		
+		if(timeStamp == null)
+		{
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			Date date = new Date();
+			timeStamp = dateFormat.format(date); 
+		}	
 
+		logger.info("final timeStamp = " + timeStamp);
 		int age = Integer.parseInt(userAge);
 
 		logger.info("UserIconFileName = " + this.userIconFileFileName);
+		
+		if(this.userIconFileFileName == null)
+		{
+			this.userIconFileFileName = "blank.jpg";
+		}
 		int pos = this.userIconFileFileName.indexOf('.');
 
 		if (pos == -1)
@@ -605,9 +626,19 @@ public class UsersAction extends SuperAction {
 		String fileSuffix = this.userIconFileFileName.substring(pos);
 
 		String newFileName = userID + fileSuffix;
-		saveUploadFile(newFileName);
+		
+		//用户只有在上传头像文件的情况下才保存文件
+		if(this.userIconFileFileName.equals("blank.jpg") == false)
+		{
+			saveUploadFile(newFileName);
+		}
 		String userIconURL = "/IntelliEyeShade/users/download.action?f="
 				+ newFileName;
+		
+		if(this.userIconFileFileName.equals("blank.jpg"))
+		{
+			userIconURL = "/IntelliEyeShade/users/download.action?f=blank.jpg";
+		}
 
 		request.setAttribute("UserIconURL", userIconURL);
 
@@ -620,16 +651,127 @@ public class UsersAction extends SuperAction {
 		user.setUserIconURL(userIconURL);
 
 		UsersDAO udao = new UsersDAOImpl();
-
-		boolean result = udao.addUsers(user);
-
-		if (result) {
-			request.setAttribute("UserUploadResult", "success");
-		} else {
-			request.setAttribute("UserUploadResult", "failed");
+		
+		boolean isUserExist = udao.isUserExist(userID);
+	
+		boolean insertResult = false;
+		boolean updateResult = false;
+		boolean insertVerifyResult = false;
+		if(isUserExist == false)
+		{
+			insertResult = udao.addUsers(user);
+			
+			//同时在用户验证表中添加一条验证信息
+			UserVerifyInfo uvi = new UserVerifyInfo();
+			uvi.setPhoneNum(userID);
+			uvi.setTimeStamp(timeStamp);
+			insertVerifyResult = udao.addUserVerifyInfo(uvi);
+			
+		}
+		else
+		{
+			updateResult = udao.updateUsers(user);
+		}
+		
+		if(insertResult == true && updateResult == false)
+		{
+			request.setAttribute("UserUploadResult", "Success_Insert");			
+		}
+		else if(insertResult == false && updateResult == true)
+		{
+			request.setAttribute("UserUploadResult", "Success_Update");
+		}
+		else
+		{
+			request.setAttribute("UserUploadResult", "Falied");
 		}
 
 		return "users_upload_userinfo_success";
 	}
 
+	
+	public String bindDevice()
+	{
+		String uid = request.getParameter("UserID");
+		UsersDAO udao = new UsersDAOImpl();
+		
+		Users u = new Users();
+		u.setUid(uid);
+		u.setBindingStatus("已绑定");
+		
+		Users isUserExist = udao.queryUsersBySid(uid);
+		
+		if(isUserExist == null)
+		{
+			request.setAttribute("bindDeviceResult", "Failed_User_Not_Exist");
+		}
+		else
+		{
+			u.setAge(isUserExist.getAge());
+			u.setGender(isUserExist.getGender());
+			u.setDeviceID(isUserExist.getDeviceID());
+			u.setPhoneNum(isUserExist.getPhoneNum());
+			u.setRegisterDate(isUserExist.getRegisterDate());
+			u.setTestTimes(isUserExist.getTestTimes());
+			u.setUserIconURL(isUserExist.getUserIconURL());
+			u.setUsername(isUserExist.getUsername());
+			
+			boolean updateResult = udao.updateUsers(u);
+			
+			if(updateResult == true)
+			{
+				request.setAttribute("bindDeviceResult", "Success");
+			}
+			else
+			{
+				request.setAttribute("bindDeviceResult", "Failed");
+			}
+		}
+		
+		
+		
+		
+		return "users_bind_device_success";
+	}
+	
+	public String unBindDevice()
+	{
+		String uid = request.getParameter("UserID");
+		UsersDAO udao = new UsersDAOImpl();
+		
+		Users u = new Users();
+		u.setUid(uid);
+		u.setBindingStatus("未绑定");
+		
+		Users isUserExist = udao.queryUsersBySid(uid);
+		
+		if(isUserExist == null)
+		{
+			request.setAttribute("bindDeviceResult", "Failed_User_Not_Exist");
+		}
+		else
+		{
+			u.setAge(isUserExist.getAge());
+			u.setGender(isUserExist.getGender());
+			u.setDeviceID(isUserExist.getDeviceID());
+			u.setPhoneNum(isUserExist.getPhoneNum());
+			u.setRegisterDate(isUserExist.getRegisterDate());
+			u.setTestTimes(isUserExist.getTestTimes());
+			u.setUserIconURL(isUserExist.getUserIconURL());
+			u.setUsername(isUserExist.getUsername());
+			
+			boolean updateResult = udao.updateUsers(u);
+			
+			if(updateResult == true)
+			{
+				request.setAttribute("bindDeviceResult", "Success");
+			}
+			else
+			{
+				request.setAttribute("bindDeviceResult", "Failed");
+			}
+		}
+		
+		return "users_unbind_device_success";
+	}
 }

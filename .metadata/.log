@@ -11927,3 +11927,84 @@ Java Model Exception: Java Model Status [Unknown javadoc format for InputSecretT
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
 !SUBENTRY 1 org.eclipse.jdt.core 4 1009 2016-12-13 16:53:48.369
 !MESSAGE Unknown javadoc format for InputSecretTag [in InputSecretTag.class [in com.sun.faces.taglib.html_basic [in D:\MyEclipse10\Common\plugins\com.genuitec.eclipse.j2eedt.core_10.0.0.me201110301321\data\libraryset\EE_6\jsf-impl.jar]]]
+!SESSION 2016-12-15 09:34:09.849 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_13
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-12-15 09:34:44.328
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jst.jsp.core 4 4 2016-12-15 09:34:49.143
+!MESSAGE A workspace crash was detected. The previous session did not exit normally. Not using saved taglib indexes.
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2016-12-15 09:35:19.729
+!MESSAGE Unable to update index for central|http://repo1.maven.org/maven2: C:\Users\ruanhuabin\.m2\repository\.cache\m2e\1.0.0\d9d714e11cb097b3ffcec91cccc65d3e\nexus-maven-repository-index.zip (系统找不到指定的文件。)
+
+!ENTRY com.genuitec.eclipse.struts2 1 0 2016-12-15 09:35:52.091
+!MESSAGE 
+!STACK 0
+java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:129)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:218)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:258)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:317)
+	at sun.net.www.http.HttpClient.parseHTTPHeader(HttpClient.java:687)
+	at sun.net.www.http.HttpClient.parseHTTP(HttpClient.java:632)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1064)
+	at org.apache.xerces.impl.XMLEntityManager.setupCurrentEntity(Unknown Source)
+	at org.apache.xerces.impl.XMLEntityManager.startEntity(Unknown Source)
+	at org.apache.xerces.impl.XMLEntityManager.startDTDEntity(Unknown Source)
+	at org.apache.xerces.impl.XMLDTDScannerImpl.setInputSource(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentScannerImpl$DTDDispatcher.dispatch(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XMLParser.parse(Unknown Source)
+	at org.apache.xerces.parsers.DOMParser.parse(Unknown Source)
+	at org.apache.xerces.jaxp.DocumentBuilderImpl.parse(Unknown Source)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:124)
+	at com.genuitec.eclipse.struts2.model.Struts2XMLFile.getDocument(Struts2XMLFile.java:186)
+	at com.genuitec.eclipse.struts2.model.Struts2XMLFile.parse(Struts2XMLFile.java:224)
+	at com.genuitec.eclipse.struts2.model.Struts2XMLFile.processConfigFile(Struts2XMLFile.java:421)
+	at com.genuitec.eclipse.struts2.model.Struts2XMLFile.processIncludedConfig(Struts2XMLFile.java:395)
+	at com.genuitec.eclipse.struts2.model.Struts2Project.synchronize(Struts2Project.java:125)
+	at com.genuitec.eclipse.struts2.model.Struts2Project.access$1(Struts2Project.java:116)
+	at com.genuitec.eclipse.struts2.model.Struts2Project$StrutsModelJob.run(Struts2Project.java:539)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.genuitec.eclipse.struts2 1 0 2016-12-15 09:36:29.877
+!MESSAGE 
+!STACK 0
+java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:129)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:218)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:258)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:317)
+	at sun.net.www.http.HttpClient.parseHTTPHeader(HttpClient.java:687)
+	at sun.net.www.http.HttpClient.parseHTTP(HttpClient.java:632)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1064)
+	at org.apache.xerces.impl.XMLEntityManager.setupCurrentEntity(Unknown Source)
+	at org.apache.xerces.impl.XMLEntityManager.startEntity(Unknown Source)
+	at org.apache.xerces.impl.XMLEntityManager.startDTDEntity(Unknown Source)
+	at org.apache.xerces.impl.XMLDTDScannerImpl.setInputSource(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentScannerImpl$DTDDispatcher.dispatch(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XMLParser.parse(Unknown Source)
+	at org.apache.xerces.parsers.DOMParser.parse(Unknown Source)
+	at org.apache.xerces.jaxp.DocumentBuilderImpl.parse(Unknown Source)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:124)
+	at com.genuitec.eclipse.struts2.model.Struts2XMLFile.getDocument(Struts2XMLFile.java:186)
+	at com.genuitec.eclipse.struts2.model.Struts2XMLFile.parse(Struts2XMLFile.java:224)
+	at com.genuitec.eclipse.struts2.model.Struts2XMLFile.processConfigFile(Struts2XMLFile.java:421)
+	at com.genuitec.eclipse.struts2.model.Struts2XMLFile.processIncludedConfig(Struts2XMLFile.java:395)
+	at com.genuitec.eclipse.struts2.model.Struts2Project.synchronize(Struts2Project.java:125)
+	at com.genuitec.eclipse.struts2.model.Struts2Project.access$1(Struts2Project.java:116)
+	at com.genuitec.eclipse.struts2.model.Struts2Project$StrutsModelJob.run(Struts2Project.java:539)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)

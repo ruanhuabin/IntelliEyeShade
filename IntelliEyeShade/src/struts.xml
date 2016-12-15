@@ -26,7 +26,9 @@
     		<result name="device_querybypage_success">/devices/devices_query_success.jsp</result>
     		<result name="devices_querybycondition_success">/devices/devices_query_success.jsp</result>
     		<result name="devices_filterbypage_success">/devices/devices_query_success.jsp</result>
+    		<result name="devices_upload_deviceinfo_success">/devices/devices_uploadinfo_result.jsp</result>
     		
+    	
     	
     	</action>
     </package>
@@ -65,11 +67,15 @@
     		<result name="users_query_test_info_success">/users/users_test_info.jsp</result>
     		<result name="users_filter_test_info_success">/users/users_test_info.jsp</result>
     		
-    		<result name="users_verify_success">/users/users_verify_success.jsp</result>
-    		<result name="users_verify_failed">/users/users_verify_failed.jsp</result>
+    		<result name="users_verify_success">/users/users_verify_result.jsp</result>
+    		<result name="users_verify_failed">/users/users_verify_result.jsp</result>
     	
     		
-    		<result name="users_upload_userinfo_success">/users/upload_success.jsp</result>
+    		
+    		<result name="users_unbind_device_success">/users/users_unbind_success.jsp</result>
+    		<result name="users_bind_device_success">/users/users_bind_success.jsp</result>
+    		
+    		<result name="users_upload_userinfo_success">/users/users_uploadinfo_result.jsp</result>
     		<interceptor-ref name="defaultStack">
     			<param name="fileUpload.maximumSize">80000000</param>
     		</interceptor-ref>

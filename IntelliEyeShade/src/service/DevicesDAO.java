@@ -17,6 +17,10 @@ public interface DevicesDAO {
 			int pageSize);
 
 	List<Devices> queryByPage(String hql, int offset, int pageSize);
+
+	public boolean addDevice(Devices newDevice);
+
+	public boolean updateDevice(Devices device);
 	
 
 //	public List<Users> queryAllUsers();

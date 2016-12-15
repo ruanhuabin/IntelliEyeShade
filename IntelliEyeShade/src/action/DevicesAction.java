@@ -185,5 +185,67 @@ public class DevicesAction extends SuperAction {
     	
     }
 	
+	
+	
+	public String uploadDeviceInfo()
+	{
+		String deviceID = request.getParameter("DeviceID");
+		String userID = request.getParameter("UserID");
+		String deviceVersion = request.getParameter("DeviceVersion");
+		String romVersion = request.getParameter("RomVersion");
+		
+		logger.info("deviceID = " +deviceID);
+		logger.info("userID = " + userID);
+		logger.info("deviceVersion = " + deviceVersion);
+		logger.info("romVersion = " + romVersion);
+		
+		UsersDAO udao = new UsersDAOImpl();
+		Users user = udao.queryUsersBySid(userID);
+		
+		if(user == null)
+		{
+			request.setAttribute("DeviceUploadResult", "Failed_User_Not_Exist");
+		}
+		else
+		{
+			String bindStatus = user.getBindingStatus();
+			
+			if(bindStatus == null || bindStatus.equals("Î´°ó¶¨"))
+			{
+				request.setAttribute("DeviceUploadResult", "Failed_Device_Not_Bind");
+			}
+			else
+			{
+				
+				DevicesDAO deviceDAO = new DevicesDAOImpl();
+				Devices device = deviceDAO.getDeviceInfo(deviceID);
+				
+				if(device == null)
+				{
+					Devices newDevice = new Devices();
+					newDevice.setDeviceID(deviceID);
+					newDevice.setDeviceVersion(deviceVersion);
+					newDevice.setRomVersion(romVersion);
+					newDevice.setUid(userID);
+					newDevice.setBindingStatus(user.getBindingStatus());
+					newDevice.setDeviceStatus("Õý³£");
+					deviceDAO.addDevice(newDevice);
+					request.setAttribute("DeviceUploadResult", "Success_Insert");
+					
+				}
+				else
+				{
+					device.setUid(userID);
+					device.setDeviceVersion(deviceVersion);
+					device.setRomVersion(romVersion);
+					deviceDAO.updateDevice(device);
+					request.setAttribute("DeviceUploadResult", "Success_Update");
+				}
+				
+			}
+		}
+		return "devices_upload_deviceinfo_success";
+	}
+	
 
 }
