@@ -247,5 +247,7 @@ public class DevicesAction extends SuperAction {
 		return "devices_upload_deviceinfo_success";
 	}
 	
+	
+	
 
 }

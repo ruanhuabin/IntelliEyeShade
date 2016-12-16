@@ -1,0 +1,17 @@
+package entity;
+
+import org.hibernate.annotations.Entity;
+import org.hibernate.annotations.Table;
+
+@Entity
+@Table()
+public class FocusDegree {
+	
+	//检测信息的ID
+	private int tid;
+	
+	//专注度序列
+	private String focusValues;
+	
+
+}

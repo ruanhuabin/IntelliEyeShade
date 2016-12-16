@@ -1,0 +1,10 @@
+package action;
+
+public class DeviceTestAction extends SuperAction {
+	
+	public String uploadDeviceTestInfo()
+	{
+		return null;
+	}
+
+}

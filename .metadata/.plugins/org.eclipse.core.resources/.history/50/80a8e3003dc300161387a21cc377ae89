@@ -1,0 +1,19 @@
+package entity;
+
+import org.junit.Test;
+
+public class TestFocusDegree {
+	
+	@Test
+	public void testInsertFocusDegree()
+	{
+		int tid = 4321;
+		String fds = "12 34 56 78 90";
+		
+		FocusDegree fd = new FocusDegree();
+		
+		fd.setTid(tid);
+		
+	}
+
+}

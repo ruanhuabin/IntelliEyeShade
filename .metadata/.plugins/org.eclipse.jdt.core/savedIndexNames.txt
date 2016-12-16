@@ -76,7 +76,6 @@ INDEX VERSION 1.126+C:\workspace-eyeshade\.metadata\.plugins\org.eclipse.jdt.cor
 267488028.index
 3148877049.index
 2583658952.index
-1739525050.index
 757035043.index
 661135593.index
 210973864.index

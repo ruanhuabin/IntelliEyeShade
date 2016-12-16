@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="TestFocusDegree.testInsertFocusDegree" project="IntelliEyeShade" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testcase name="testInsertFocusDegree" classname="entity.TestFocusDegree" time="1.405"/>
+</testrun>

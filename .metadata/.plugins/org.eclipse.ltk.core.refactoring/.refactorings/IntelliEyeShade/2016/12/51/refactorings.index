@@ -23,3 +23,11 @@
 1481790899095	Copy file
 1481791339877	Rename resource 'users_verify_success.jsp'
 1481793519967	Rename resource 'users_uploadinfo_success.jsp'
+1481856547776	Copy file
+1481862272218	Rename type 'DeviceTestAction'
+1481862357858	Rename field 'testFileUploadDir'
+1481865263812	Rename resource 'detect'
+1481865266582	Copy file
+1481865562865	Rename local variable 'tid'
+1481865650987	Copy file
+1481865670983	Rename resource 'users_uploadinfo_result.jsp'

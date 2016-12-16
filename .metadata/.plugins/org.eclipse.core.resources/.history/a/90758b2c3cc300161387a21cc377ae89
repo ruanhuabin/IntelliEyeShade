@@ -1,0 +1,20 @@
+package serviceimpl;
+
+import entity.FocusDegree;
+import service.FocusDegreeDAO;
+
+public class FocusDegreeDAOImpl implements FocusDegreeDAO {
+
+	@Override
+	public FocusDegree getFocusDegreeInfo(String tid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean insertFocusDegreeInfo(FocusDegree fd) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

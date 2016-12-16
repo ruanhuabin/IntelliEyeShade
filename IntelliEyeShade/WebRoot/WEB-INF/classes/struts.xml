@@ -33,6 +33,23 @@
     	</action>
     </package>
     
+    
+    <package name="detects" namespace="/detects" extends="default">
+    	<action name="*_*" class="action.{1}Action" method="{2}">
+    		<result name="detects_upload_detectinfo_success">/detects/detects_upload_detectinfo_result.jsp</result>
+    		<result name="detects_upload_detectinfo_failed">/detects/detects_upload_detectinfo_result.jsp</result>
+    		
+    		
+    		
+    		<interceptor-ref name="defaultStack">
+    			<param name="fileUpload.maximumSize">80000000</param>
+    		</interceptor-ref>
+    		
+    		<result name="input">/users/upload.jsp</result>
+    		<param name="detectFileUploadDir">/WEB-INF/DetectFileUploadDir/</param>
+    	</action>
+    </package>
+    
     <constant name="struts.multipart.maxSize" value="100000000"/>
     <constant name="struts.multipart.saveDir" value="/WEB-INF/tmp/"></constant>
     <package name="usersx" namespace="/usersx" extends="default">

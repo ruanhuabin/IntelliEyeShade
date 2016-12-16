@@ -1,0 +1,14 @@
+package entity;
+
+import org.junit.Test;
+
+public class TestFocusDegree {
+	
+	@Test
+	public void testInsertFocusDegree()
+	{
+		int tid = 4321;
+		
+	}
+
+}

@@ -1,0 +1,23 @@
+package entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+
+
+@Entity
+@Table(name="focusdegree")
+public class FocusDegree {
+	
+	//检测信息的ID
+	private int tid;
+	
+	//专注度序列
+	@Column(name="focusdegree" , length=5120)
+	private String focusValues;
+	
+	
+	
+
+}

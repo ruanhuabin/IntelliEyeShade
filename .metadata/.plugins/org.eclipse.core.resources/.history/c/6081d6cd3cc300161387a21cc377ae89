@@ -1,0 +1,10 @@
+package entity;
+
+public class TestFocusDegree {
+	
+	public void testInsertFocusDegree()
+	{
+		
+	}
+
+}

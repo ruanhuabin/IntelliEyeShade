@@ -1,0 +1,9 @@
+package service;
+
+import entity.FocusDegree;
+
+public class FocusDegreeDAO {
+	
+	public FocusDegree getFocusDegreeInfo(String tid);
+
+}

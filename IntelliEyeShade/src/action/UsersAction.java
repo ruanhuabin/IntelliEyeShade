@@ -595,7 +595,7 @@ public class UsersAction extends SuperAction {
 		String userAge = request.getParameter("UserAge");
 		String userGender = request.getParameter("UserGender");
 		String timeStamp = request.getParameter("TimeStamp");
-		String bindStatus = request.getParameter("BindStatus");
+		String bindStatus = "ÒÑ°ó¶¨";//request.getParameter("BindStatus");
 
 		logger.info("userID = " + userID);
 		logger.info("userName = " + userName);
@@ -612,10 +612,7 @@ public class UsersAction extends SuperAction {
 
 		logger.info("final timeStamp = " + timeStamp);
 		
-		if(bindStatus == null)
-		{
-			bindStatus = "Î´°ó¶¨";
-		}
+		
 		int age = Integer.parseInt(userAge);
 
 		logger.info("UserIconFileName = " + this.userIconFileFileName);

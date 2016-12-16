@@ -1,0 +1,62 @@
+package action;
+
+import java.io.File;
+import java.util.logging.Logger;
+
+public class DeviceTestAction extends SuperAction {
+	
+	//Attributes for test info upload
+	private String userTestFileFileName;
+	private String userTestFileContentType;
+	private File userTestFile;
+
+	
+	private static final Logger logger = Logger.getLogger("MyLogger");
+
+	
+	public String getUserTestFileFileName() {
+		return userTestFileFileName;
+	}
+
+
+
+	public void setUserTestFileFileName(String userTestFileFileName) {
+		this.userTestFileFileName = userTestFileFileName;
+	}
+
+
+
+	public String getUserTestFileContentType() {
+		return userTestFileContentType;
+	}
+
+
+
+	public void setUserTestFileContentType(String userTestFileContentType) {
+		this.userTestFileContentType = userTestFileContentType;
+	}
+
+
+
+	public File getUserTestFile() {
+		return userTestFile;
+	}
+
+
+
+	public void setUserTestFile(File userTestFile) {
+		this.userTestFile = userTestFile;
+	}
+
+
+
+	public String uploadDeviceTestInfo()
+	{
+		
+		String tid = request.getParameter("tid");
+		logger.info("tid = " + tid);
+		logger.info("testFileFilename = " + this.userTestFileFileName);
+		return null;
+	}
+
+}
