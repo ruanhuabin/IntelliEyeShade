@@ -66,6 +66,7 @@
 	<mapping resource="entity/TestInfo.hbm.xml" />
 	<mapping resource="entity/UserVerifyInfo.hbm.xml" />
 	<mapping resource="entity/FocusDegree.hbm.xml" />
+	<mapping resource="entity/DetectDetail.hbm.xml" />
 
 </session-factory>
 </hibernate-configuration>

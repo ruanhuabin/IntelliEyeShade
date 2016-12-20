@@ -1,0 +1,12 @@
+package service;
+
+import entity.DetectDetail;
+import entity.FocusDegree;
+
+public interface DetectDetailDAO {
+	
+	public DetectDetail getDetectDetail(String detectID);
+	public boolean insertFocusDegreeInfo(FocusDegree fd);
+	public boolean updateFocusDegreeInfo(FocusDegree focusDegree);
+
+}

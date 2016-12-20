@@ -4,14 +4,21 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 import java.util.logging.Logger;
 
 import org.apache.struts2.ServletActionContext;
 
+import entity.DetectDetail;
 import entity.FocusDegree;
 
+import service.DetectDetailDAO;
 import service.FocusDegreeDAO;
+import serviceimpl.DetectDetailDAOImpl;
 import serviceimpl.FocusDegreeDAOImpl;
 
 public class UserDetectAction extends SuperAction {
@@ -137,16 +144,26 @@ public class UserDetectAction extends SuperAction {
 		String detectID = request.getParameter("DetectID");
 		logger.info("tid = " + detectID);
 		logger.info("DetectFileFilename = " + this.userDetectFileFileName);
+		String userID = request.getParameter("UserID");
+		logger.info("userID = " + userID);
 		
 		
 		if(detectID == null)
 		{
-			request.setAttribute("DetectFileUploadResult", "Failed_TID_IS_NULL");
+			request.setAttribute("DetectFileUploadResult", "Failed_DETECT_ID_IS_NULL");
 			return "detects_upload_detectinfo_failed";
 		}
-		String newFileName = detectID;
+		
+		if(userID == null)
+		{
+			request.setAttribute("DetectFileUploadResult", "Failed_USER_ID_IS_NULL");
+			return "detects_upload_detectinfo_failed";
+		}
+		String newFileName = userID + "_" + detectID + ".dat";
 		
 		saveUploadFile(newFileName);
+		
+		
 		
 		String path = ServletActionContext.getServletContext().getRealPath(
 				detectFileUploadDir);
@@ -154,35 +171,77 @@ public class UserDetectAction extends SuperAction {
 		
 		logger.info("fileToRead = " + fileToRead);
 		
-		FocusDegreeDAO fdao = new FocusDegreeDAOImpl();
-		
-		FocusDegree fd = fdao.getFocusDegreeInfo(detectID);
-		
-		
-		if(fd == null)
-		{
-			FocusDegree focusDegree = new FocusDegree();
-			focusDegree.setTid(detectID);
-			focusDegree.setFocusValues("123 456 789");
+		//从本地文件系统中读取上传的用户检测数据
+		Properties prop = new Properties();
+		String focusDegrees = null;
+		String relaxDegrees = null;
+		String heartRates = null;
+		String heartRateVariations = null;
+		String brainRawData = null;
+		InputStream input = null;
+		try {
 			
-			fdao.insertFocusDegreeInfo(focusDegree);			
+			input = new FileInputStream(fileToRead);
+			prop.load(input);
+			
+			focusDegrees = prop.getProperty("FocusDegree");
+			relaxDegrees = prop.getProperty("RelaxDegree");
+			heartRates = prop.getProperty("HeartRate");
+			heartRateVariations = prop.getProperty("HeartRateVariation");
+			brainRawData = prop.getProperty("BrainRawData");
+			logger.info("focusDegrees = " + focusDegrees);
+			logger.info("relaxDegrees = " + relaxDegrees);
+			logger.info("heartRates = " + heartRates);
+			logger.info("heartRateVariations = " + heartRateVariations);
+			logger.info("brainRawData = " + brainRawData);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		}
+	}
+		
+		
+		DetectDetailDAO fdao = new DetectDetailDAOImpl();
+		
+		DetectDetail detectDetail = fdao.getDetectDetail(detectID);
+		
+		
+		if(detectDetail == null)
+		{
+			DetectDetail dd = new DetectDetail();
+			dd.setDid(detectID);
+			dd.setUid(userID);
+			dd.setFocusDegrees(focusDegrees);
+			dd.setRelaxDegrees(relaxDegrees);
+			dd.setHeartRates(heartRates);
+			dd.setHeartRateVariations(heartRateVariations);
+			dd.setBrainRawData(brainRawData);
+			
+			fdao.insertDetectDetailInfo(dd);			
 			request.setAttribute("DetectFileUploadResult", "Success_Insert");
 			
 		}
 		else
 		{
-			FocusDegree focusDegree = new FocusDegree();
-			focusDegree.setTid(detectID);
-			focusDegree.setFocusValues("abc def hig");
-			
-			fdao.updateFocusDegreeInfo(focusDegree);			
+			DetectDetail dd = new DetectDetail();
+			dd.setDid(detectDetail.getDid());
+			dd.setUid(detectDetail.getUid());			
+			dd.setFocusDegrees(focusDegrees);
+			dd.setRelaxDegrees(relaxDegrees);
+			dd.setHeartRates(heartRates);
+			dd.setHeartRateVariations(heartRateVariations);
+			dd.setBrainRawData(brainRawData);			
+			fdao.updateDetectDetail(dd);			
 			request.setAttribute("DetectFileUploadResult", "Success_Update");
 		}
-		
-		
-		
-		
-		
 		return "detects_upload_detectinfo_success";
 		
 		
