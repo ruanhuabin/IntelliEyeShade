@@ -1,5 +1,7 @@
 package serviceimpl;
 
+import static util.IntelliEyeShadeLogger.logger;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -100,6 +102,38 @@ public class DetectDetailDAOImpl implements DetectDetailDAO {
 			}
 			
 			
+		}
+		
+	}
+
+	@Override
+	public void deleteDetectDetail(String did) {
+		Transaction tx = null;
+		
+		try{
+			
+			Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+			Query query = session.createQuery("delete from DetectDetail where tid = '" + did + "'");
+			query.executeUpdate();
+			tx.commit();
+			
+			logger.info("Delete DetectDetail Item Success, tid = " + did);
+			
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+			tx.commit();
+			logger.info("Delete DetectDetail Item Failed, tid = " + did);
+			
+			
+		}
+		finally
+		{
+			if(tx != null)
+			{				
+				tx = null;
+			}
 		}
 		
 	}

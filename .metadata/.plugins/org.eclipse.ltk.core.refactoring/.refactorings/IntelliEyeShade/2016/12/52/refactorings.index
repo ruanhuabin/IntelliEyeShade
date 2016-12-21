@@ -3,3 +3,11 @@
 1482222308721	Rename local variable 'fd'
 1482222565350	Rename local variable 'focusDegree'
 1482224483335	Rename local variable 'fd'
+1482285269416	Rename local variable 'fdao'
+1482286320045	Rename local variable 'tis'
+1482289828735	Extract method 'updateTestInfoTable'
+1482290102941	Rename method 'queryUsersBySid'
+1482304808992	Copy file
+1482308385886	Delete element
+1482309374114	Rename method 'GetDataset'
+1482309617922	Rename local variable 'mDataset'

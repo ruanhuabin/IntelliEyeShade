@@ -8,18 +8,30 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import java.util.Properties;
+import java.util.UUID;
 import java.util.logging.Logger;
+
+import javax.swing.text.DefaultEditorKit.InsertTabAction;
 
 import org.apache.struts2.ServletActionContext;
 
 import entity.DetectDetail;
 import entity.FocusDegree;
+import entity.TestInfo;
+import entity.Users;
 
 import service.DetectDetailDAO;
 import service.FocusDegreeDAO;
+import service.TestInfoDAO;
+import service.UsersDAO;
 import serviceimpl.DetectDetailDAOImpl;
 import serviceimpl.FocusDegreeDAOImpl;
+import serviceimpl.TestInfoDAOImpl;
+import serviceimpl.UsersDAOImpl;
 
 public class UserDetectAction extends SuperAction {
 	
@@ -138,25 +150,43 @@ public class UserDetectAction extends SuperAction {
 
 	}
 
+	private int calAvg(String values)
+	{
+		int avg = 0;
+		int sum = 0;
+		String[] strNums = values.split(" ");
+		
+		for(String num: strNums)
+		{
+			int intNum = Integer.parseInt(num);
+			sum += intNum;
+		}
+		
+		avg = sum / strNums.length;
+		return  avg;
+	}
 	public String uploadDeviceDetectInfo()
 	{
 		
-		String detectID = request.getParameter("DetectID");
+		//String detectID = request.getParameter("DetectID");
+		String detectID = UUID.randomUUID().toString();
 		logger.info("tid = " + detectID);
 		logger.info("DetectFileFilename = " + this.userDetectFileFileName);
 		String userID = request.getParameter("UserID");
 		logger.info("userID = " + userID);
+		String duration = request.getParameter("TimeDuration");
+		logger.info("duration = " + duration);
 		
-		
-		if(detectID == null)
-		{
-			request.setAttribute("DetectFileUploadResult", "Failed_DETECT_ID_IS_NULL");
-			return "detects_upload_detectinfo_failed";
-		}
 		
 		if(userID == null)
 		{
 			request.setAttribute("DetectFileUploadResult", "Failed_USER_ID_IS_NULL");
+			return "detects_upload_detectinfo_failed";
+		}
+		
+		if(duration == null)
+		{
+			request.setAttribute("DetectFileUploadResult", "Failed_TIME_DURATION_IS_NULL");
 			return "detects_upload_detectinfo_failed";
 		}
 		String newFileName = userID + "_" + detectID + ".dat";
@@ -205,48 +235,108 @@ public class UserDetectAction extends SuperAction {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+			}	
 		}
-	}
 		
 		
-		DetectDetailDAO fdao = new DetectDetailDAOImpl();
+		//只有在用户存在的前提下才进行相关表的插入或者更新操作
+		UsersDAO uDAO = new UsersDAOImpl();
+		Users user = uDAO.getUserByID(userID);
 		
-		DetectDetail detectDetail = fdao.getDetectDetail(detectID);
-		
-		
-		if(detectDetail == null)
+		if(user == null)
 		{
-			DetectDetail dd = new DetectDetail();
-			dd.setDid(detectID);
-			dd.setUid(userID);
-			dd.setFocusDegrees(focusDegrees);
-			dd.setRelaxDegrees(relaxDegrees);
-			dd.setHeartRates(heartRates);
-			dd.setHeartRateVariations(heartRateVariations);
-			dd.setBrainRawData(brainRawData);
-			
-			fdao.insertDetectDetailInfo(dd);			
-			request.setAttribute("DetectFileUploadResult", "Success_Insert");
-			
+			request.setAttribute("DetectFileUploadResult", "FAILED_USER_IS_NOT_EXIST");		
+			return "detects_upload_detectinfo_failed";
+		}
+		
+		
+		DetectDetailDAO ddDAO = new DetectDetailDAOImpl();
+		
+		
+		DetectDetail dd = new DetectDetail();
+		dd.setDid(detectID);
+		dd.setUid(userID);
+		dd.setFocusDegrees(focusDegrees);
+		dd.setRelaxDegrees(relaxDegrees);
+		dd.setHeartRates(heartRates);
+		dd.setHeartRateVariations(heartRateVariations);
+		dd.setBrainRawData(brainRawData);
+		
+		boolean insertDetectDetailResult = ddDAO.insertDetectDetailInfo(dd);
+		if(insertDetectDetailResult == false)
+		{
+			request.setAttribute("DetectFileUploadResult", "FAILED_INSERT_DETECT_DETECT");
+			return "detects_upload_detectinfo_failed";
+		}
+		
+		
+		boolean insertTestInfoResult = updateTestInfoTable(detectID, userID, duration, focusDegrees,
+					relaxDegrees, heartRates, heartRateVariations);
+		
+		
+		if(insertTestInfoResult == false)
+		{
+			request.setAttribute("DetectFileUploadResult", "FAILED_INSERT_TEST_INFO");
+			return "detects_upload_detectinfo_failed";
+		}
+		
+		//更新user表中的testTimes字段
+		int testTimes = user.getTestTimes();
+		testTimes += 1;
+		user.setTestTimes(testTimes);
+		uDAO.updateUsers(user);
+		
+		request.setAttribute("DetectFileUploadResult", "SUCCESS");
+		return "detects_upload_detectinfo_success";
+
+		
+		
+		
+	}
+
+
+
+	private boolean updateTestInfoTable(String detectID, String userID,
+			String duration, String focusDegrees, String relaxDegrees,
+			String heartRates, String heartRateVariations) 
+	{
+		//计算这次检测专注度的平均值
+		int avgFocusDegree = calAvg(focusDegrees);
+		int avgRelaxDegree = calAvg(relaxDegrees);
+		int avgHeartRate = calAvg(heartRates);
+		int avgHeartRateVariation = calAvg(heartRateVariations);
+		
+		int timeDuration = Integer.parseInt(duration);
+		
+		
+		Date now = new Date();
+		
+		String hql = "from TestInfo where uid = '" + userID + "' and tid = '" + detectID + "'";
+		TestInfoDAO tiDAO = new TestInfoDAOImpl();
+		TestInfo ti = tiDAO.uniqueQueryByHQL(hql);
+		if(ti == null)
+		{
+			TestInfo testInfo = new TestInfo();
+			testInfo.setTid(detectID);
+			testInfo.setUid(userID);
+			testInfo.setFocusValue(avgFocusDegree);
+			testInfo.setRelaxValue(avgRelaxDegree);
+			testInfo.setHeartRate(avgHeartRate);
+			testInfo.setHeartVariate(avgHeartRateVariation);
+			testInfo.setTestDate(now);
+			testInfo.setTimeDuration(timeDuration);			
+			tiDAO.insertTestInfo(testInfo);
 		}
 		else
 		{
-			DetectDetail dd = new DetectDetail();
-			dd.setDid(detectDetail.getDid());
-			dd.setUid(detectDetail.getUid());			
-			dd.setFocusDegrees(focusDegrees);
-			dd.setRelaxDegrees(relaxDegrees);
-			dd.setHeartRates(heartRates);
-			dd.setHeartRateVariations(heartRateVariations);
-			dd.setBrainRawData(brainRawData);			
-			fdao.updateDetectDetail(dd);			
-			request.setAttribute("DetectFileUploadResult", "Success_Update");
+			//正常来说这条记录是不应该存在的，因为没上传一次，就要往testinfo表中插入一条数据，这里就直接返回错误的视图吧
+			request.setAttribute("DetectFileUploadResult", "Failed_TEST_INFO_EXISTED");
+			//return "detects_upload_detectinfo_failed";
+			return false;
+			
 		}
-		return "detects_upload_detectinfo_success";
 		
-		
-		
-		
+		return true;
 	}
 
 }

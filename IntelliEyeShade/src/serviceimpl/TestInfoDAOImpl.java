@@ -397,5 +397,106 @@ public class TestInfoDAOImpl implements TestInfoDAO {
         
         return tis;
 	}
+	
+	
+	@Override
+	public TestInfo uniqueQueryByHQL(String hql) {
+		Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+        Transaction tx = null;
+        int allRows = 0;
+        TestInfo ti = null;
+        try
+        {
+            tx = session.beginTransaction();            
+            Query query = session.createQuery(hql);            
+            ti = (TestInfo) query.uniqueResult();            
+            tx.commit();            
+        }
+        catch (Exception e)
+        {
+            if(tx != null)
+            {
+                tx.rollback();
+            }
+            
+            e.printStackTrace();
+        }
+        finally
+        {
+            if(tx != null)
+            {
+            	tx = null;
+            }
+        }
+        
+        return ti;
+	}
+
+
+	@Override
+	public boolean insertTestInfo(TestInfo testInfo) {
+		Transaction tx = null;
+		
+		try{
+			Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();			
+			session.save(testInfo);
+			tx.commit();
+			return true;
+			
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+			tx.commit();
+			return false;
+			
+		}
+		
+		finally
+		{
+			if(tx != null)
+			{
+				tx = null;
+				
+			}
+			
+			
+		}
+		
+	}
+
+
+	@Override
+	public void deleteTestInfo(String did) {
+		
+		Transaction tx = null;
+		
+		try{
+			
+			Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+			Query query = session.createQuery("delete from TestInfo where tid = '" + did + "'");
+			query.executeUpdate();
+			tx.commit();
+			
+			logger.info("Delete Test Info Item Success, tid = " + did);
+			
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+			tx.commit();
+			logger.info("Delete Test Info Item Failed, tid = " + did);
+			
+		}
+		finally
+		{
+			if(tx != null)
+			{				
+				tx = null;
+			}
+		}
+		
+	}
 
 }

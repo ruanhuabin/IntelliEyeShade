@@ -61,7 +61,7 @@ public class UsersDAOImpl implements UsersDAO {
 	}
 
 	@Override
-	public Users queryUsersBySid(String sid) {
+	public Users getUserByID(String sid) {
 		// TODO Auto-generated method stub
 		
 		Transaction tx = null;
@@ -221,7 +221,7 @@ public class UsersDAOImpl implements UsersDAO {
 		
 		Transaction tx = null;
 		
-		String hql = "";
+		
 		try{
 			Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
 			tx = session.beginTransaction();
@@ -507,7 +507,7 @@ public class UsersDAOImpl implements UsersDAO {
 		// TODO Auto-generated method stub
 		
 		
-		String hql = "from TestInfo as t where t.uid = " + uid;
+		String hql = "from TestInfo as t where t.uid = '" + uid + "'";
 		logger.info("hql = " + hql);
 		Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
         Transaction tx = null;
@@ -623,7 +623,7 @@ public class UsersDAOImpl implements UsersDAO {
 		
 		try{
 			Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
-			tx = session.beginTransaction();
+			tx = session.beginTransaction();			
 			session.save(uvi);
 			tx.commit();
 			return true;
@@ -642,6 +642,7 @@ public class UsersDAOImpl implements UsersDAO {
 			if(tx != null)
 			{
 				tx = null;
+				
 			}
 			
 			
@@ -651,7 +652,7 @@ public class UsersDAOImpl implements UsersDAO {
 
 	@Override
 	public boolean updateUserVerifyInfo(UserVerifyInfo uvi) {
-Transaction tx = null;
+		Transaction tx = null;
 		
 		try{
 			Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();

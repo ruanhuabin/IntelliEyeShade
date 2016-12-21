@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class TestInfo {
 	
-	private int tid;
+	private String tid;
 	private String uid;
 	private Date testDate;
 	private int focusValue;
@@ -19,10 +19,10 @@ public class TestInfo {
 	private String music;
 	
 	
-	public int getTid() {
+	public String getTid() {
 		return tid;
 	}
-	public void setTid(int tid) {
+	public void setTid(String tid) {
 		this.tid = tid;
 	}
 	public String getUid() {

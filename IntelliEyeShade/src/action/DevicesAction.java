@@ -51,7 +51,7 @@ public class DevicesAction extends SuperAction {
 		Devices deviceInfo = deviceDAO.getDeviceInfo(deviceID);
 
 		UsersDAO userDAO = new UsersDAOImpl();
-		Users userInfo = userDAO.queryUsersBySid(uid);
+		Users userInfo = userDAO.getUserByID(uid);
 
 		request.setAttribute("deviceinfo", deviceInfo);
 		request.setAttribute("userinfo", userInfo);
@@ -200,7 +200,7 @@ public class DevicesAction extends SuperAction {
 		logger.info("romVersion = " + romVersion);
 		
 		UsersDAO udao = new UsersDAOImpl();
-		Users user = udao.queryUsersBySid(userID);
+		Users user = udao.getUserByID(userID);
 		
 		if(user == null)
 		{

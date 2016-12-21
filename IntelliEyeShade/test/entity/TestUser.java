@@ -12,6 +12,8 @@ import org.hibernate.service.ServiceRegistryBuilder;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.junit.Test;
 
+import action.UsersAction;
+
 import service.UsersDAO;
 import serviceimpl.UsersDAOImpl;
 
@@ -80,7 +82,7 @@ public class TestUser {
 		String uid="3";
 		UsersDAO udao = new UsersDAOImpl();
 		
-		Users u = udao.queryUsersBySid(uid);
+		Users u = udao.getUserByID(uid);
 		
 		if(u == null)
 		{
@@ -92,6 +94,14 @@ public class TestUser {
 		}
 	}
 	
+	
+	@Test
+	public void testTrendAanlysis()
+	{
+		String userID = "def";
+		UsersDAO udao = new UsersDAOImpl();
+		//UsersAction.trendAnalysis();
+	}
 	
 	
 	

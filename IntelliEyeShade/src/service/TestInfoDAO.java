@@ -29,4 +29,10 @@ public interface TestInfoDAO {
 	
 	List<TestInfo> queryByHQL(String hql);
 
+	TestInfo uniqueQueryByHQL(String hql);
+
+	boolean insertTestInfo(TestInfo testInfo);
+
+	void deleteTestInfo(String detectID);
+
 }

@@ -198,7 +198,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 <div align="right" style="width:200px; display:inline-block;">
-<a href="">趋势分析</a>
+<a href="<%=path%>/users/Users_trendAnalysis.action?UserID=<s:property value="#request.curuserid"/>">趋势分析</a>
 </div>
 </p>
 
@@ -250,7 +250,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<td><s:property value="#usr.usedPattern"/></td>
 		<td><s:property value="#usr.music"/></td>
 		<td><s:property value="#usr.timeDuration"/></td>
-		<td><a href="">访问</a></td>
+		<td><a href="/users/Users_getDetectInfoDetail.action?DetectID=<s:property value="#usr.tid"/>">访问</a></td>
 	</tr>
 	</s:iterator>
 	<!-- 遍历结束 -->

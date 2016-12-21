@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.struts2.ServletActionContext;
+import org.jfree.data.category.CategoryDataset;
 
 import entity.TestInfo;
 import entity.TestInfoPage;
@@ -31,6 +32,7 @@ import serviceimpl.TestInfoDAOImpl;
 import serviceimpl.TestInfoPageDAOImpl;
 import serviceimpl.UserDataPageDAOImpl;
 import serviceimpl.UsersDAOImpl;
+import util.Utils;
 
 public class UsersAction extends SuperAction {
 
@@ -76,6 +78,7 @@ public class UsersAction extends SuperAction {
 	}
 
 	private String uploadDir;
+	private String chartDir;
 
 	public String getUploadDir() {
 		return uploadDir;
@@ -313,7 +316,7 @@ public class UsersAction extends SuperAction {
 	public String modify() {
 		String sid = request.getParameter("sid");
 		UsersDAO sdao = new UsersDAOImpl();
-		Users stu = sdao.queryUsersBySid(sid);
+		Users stu = sdao.getUserByID(sid);
 
 		session.setAttribute("modify_Users", stu);
 		return "modify_success";
@@ -554,7 +557,7 @@ public class UsersAction extends SuperAction {
 		Users user = null;
 
 		if (uvi != null) {
-			user = userDAO.queryUsersBySid(phoneNum);
+			user = userDAO.getUserByID(phoneNum);
 		}
 
 		logger.info("user info = " + user);
@@ -658,7 +661,7 @@ public class UsersAction extends SuperAction {
 
 		UsersDAO udao = new UsersDAOImpl();
 		
-		Users isUserExist = udao.queryUsersBySid(userID);
+		Users isUserExist = udao.getUserByID(userID);
 	
 		boolean insertResult = false;
 		boolean updateResult = false;
@@ -713,7 +716,7 @@ public class UsersAction extends SuperAction {
 		u.setUid(uid);
 		u.setBindingStatus("已绑定");
 		
-		Users isUserExist = udao.queryUsersBySid(uid);
+		Users isUserExist = udao.getUserByID(uid);
 		
 		if(isUserExist == null)
 		{
@@ -757,7 +760,7 @@ public class UsersAction extends SuperAction {
 		u.setUid(uid);
 		u.setBindingStatus("未绑定");
 		
-		Users isUserExist = udao.queryUsersBySid(uid);
+		Users isUserExist = udao.getUserByID(uid);
 		
 		if(isUserExist == null)
 		{
@@ -787,5 +790,62 @@ public class UsersAction extends SuperAction {
 		}
 		
 		return "users_unbind_device_success";
+	}
+	
+	public String getChartDir() {
+		return chartDir;
+	}
+
+	public void setChartDir(String chartDir) {
+		this.chartDir = chartDir;
+	}
+
+	public  String trendAnalysis()
+	{
+		String chartPath = ServletActionContext.getServletContext().getRealPath(
+				chartDir);
+		logger.info("chartPath = " + chartPath);
+		
+		String fdFilename = chartPath + File.separator + "fd.jpg";
+		String rdFilename = chartPath + File.separator + "rd.jpg";
+		String hrFilename = chartPath + File.separator + "hr.jpg";
+		String hrvFilename = chartPath + File.separator + "hrv.jpg";
+		
+		logger.info("fdFilename = " + fdFilename);
+		
+		String userID = request.getParameter("UserID");
+		logger.info("UserID: " + userID);
+		
+		UsersDAO udao = new UsersDAOImpl();
+		List<TestInfo> tis = udao.getUserTestInfo(userID);
+		
+		logger.info("tis = " + tis);
+		
+		int focusDegrees[] = new int[tis.size()];
+		int relaxDegrees[] = new int[tis.size()];
+		int heartRates[] = new int[tis.size()];
+		int heartRateVariations[] = new int[tis.size()];
+		
+		for(int i = 0; i < tis.size(); i ++)
+		{
+			TestInfo ti = tis.get(i);
+			focusDegrees[i] = ti.getFocusValue();
+			relaxDegrees[i] = ti.getRelaxValue();
+			heartRates[i] = ti.getHeartRate();
+			heartRateVariations[i] = ti.getHeartVariate();
+		}
+		
+		CategoryDataset fdds = Utils.createDataSet(focusDegrees, "专注度");
+		Utils.genLineChart(fdds, "专注度随时间变化", "时间", "专注度", fdFilename);
+		
+		CategoryDataset rdds = Utils.createDataSet(relaxDegrees, "放松度");
+		Utils.genLineChart(rdds, "放松度随时间变化", "时间", "放松度", rdFilename);
+		
+		CategoryDataset hrds = Utils.createDataSet(heartRates, "心率");
+		Utils.genLineChart(hrds, "心率随时间变化", "时间", "心率", hrFilename);
+		
+		CategoryDataset hrvds = Utils.createDataSet(heartRateVariations, "心率变异性");
+		Utils.genLineChart(hrvds, "心率变异性随时间变化", "时间", "心率变异性", hrvFilename);
+		return "users_trend_analysis_success";
 	}
 }

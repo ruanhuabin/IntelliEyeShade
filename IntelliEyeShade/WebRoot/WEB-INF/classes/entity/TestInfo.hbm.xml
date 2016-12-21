@@ -15,8 +15,8 @@
 	
 	<class name="entity.TestInfo"  table="TESTINFO">
 		
-		<id name="tid" type="int">
-			<generator class="increment"/>
+		<id name="tid" type="java.lang.String">
+			<generator class="assigned"/>
 		</id>
 		
 		<property name="uid" type="java.lang.String"/>

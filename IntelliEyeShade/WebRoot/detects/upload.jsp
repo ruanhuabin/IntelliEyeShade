@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   
   <form action="detects/UserDetect_uploadDeviceDetectInfo.action" enctype="multipart/form-data" method="post">
-  <input type="text" name="DetectID" value="abc">
+  <input type="text" name="TimeDuration" value="15">
   <input type="text" name="UserID" value="def">  
   <input type="file" name="userDetectFile"/>
   <input type="submit" value="上传"/> 

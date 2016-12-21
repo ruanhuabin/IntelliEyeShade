@@ -11,7 +11,7 @@ public interface UsersDAO {
 	public List<Users> queryAllUsers();
 	public List<Users> queryByHQL(String hql);
 	
-	public Users queryUsersBySid(String sid);
+	public Users getUserByID(String sid);
 	
 	public boolean addUsers(Users s);
 	
