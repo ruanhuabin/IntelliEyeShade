@@ -10,9 +10,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <body>
 <img src="<%=basePath%>/ChartFiles/fd.jpg"/>
-<img src="<%=basePath%>/ChartFiles/rd.jpg"/>
-<img src="<%=basePath%>/ChartFiles/hr.jpg"/>
-<img src="<%=basePath%>/ChartFiles/hrv.jpg"/>
 
+
+<a href="<%=basePath%>/ChartFiles/fd.jpg"> lianjie</a>>
 </body>
 </html>
