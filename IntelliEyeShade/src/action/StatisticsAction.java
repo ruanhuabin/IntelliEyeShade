@@ -1,5 +1,6 @@
 package action;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,7 +10,9 @@ import java.util.GregorianCalendar;
 import java.util.Hashtable;
 import java.util.List;
 
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
+import org.jfree.data.general.PieDataset;
 
 import service.AdministratorDAO;
 import service.TestInfoDAO;
@@ -17,6 +20,7 @@ import service.UsersDAO;
 import serviceimpl.AdministratorDAOImpl;
 import serviceimpl.TestInfoDAOImpl;
 import serviceimpl.UsersDAOImpl;
+import util.Utils;
 import static util.IntelliEyeShadeLogger.logger;
 
 
@@ -34,7 +38,16 @@ public class StatisticsAction extends SuperAction {
 	 */
 	private static final long serialVersionUID = 1L;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	private String chartDir;
 	
+	public String getChartDir() {
+		return chartDir;
+	}
+
+	public void setChartDir(String chartDir) {
+		this.chartDir = chartDir;
+	}
+
 	public String query()
 	{
 		String startTime = request.getParameter("starttime");
@@ -181,6 +194,20 @@ public class StatisticsAction extends SuperAction {
 		si.setMaleAvgDuration(maleAvgDuration);
 		si.setFemaleAvgDuration(femaleAvgDuration);
 		
+		//这边生成用户性别及使用时长的图表
+		
+		float genderChartValues[] = {maleRatio, femaleRatio};
+		String genderChartLabels[] = {"男 " + (int)(maleRatio * 100) + "%\n"+ totalMaleNum + " 人 " + "\n" + "平均时长 " + maleAvgDuration + "分钟 ",
+				"女 " + (int)(femaleRatio * 100) + "%\n"+ totalFemaleNum + " 人 " + "\n" + "平均时长 " + femaleAvgDuration + "分钟 "
+		};
+		String chartPath = ServletActionContext.getServletContext().getRealPath(chartDir);
+		logger.info("chartPath = " + chartPath);
+		
+		String genderChartFilename = chartPath + File.separator + "stat_gender.jpg";
+		PieDataset genderChartDataSet = Utils.createPieChartDataSet(genderChartValues, genderChartLabels);
+		Utils.genPieChart(genderChartDataSet, "用户性别及使用时长", genderChartFilename);
+		
+		
 		
 		
 		//用户年龄段以及使用时长统计
@@ -244,6 +271,30 @@ public class StatisticsAction extends SuperAction {
 		si.setAgeGroupNum(ageGroupNum);
 		si.setAgeGroupAvgDuration(ageGroupAvgDuration);
 		si.setAgeGroupRatio(ageGroupRatio);
+		
+		
+		//生成用户年龄段以及使用时长的图表
+		
+		String ageGrps[] = {"1-5岁", "6-10岁", "11-15岁", "16-20岁", "21-25岁", "26-30岁", "31-35岁", "36-40岁",
+				             "41-45岁", "46-50岁", "51-55岁", "56-60岁", "61-65岁", "66-70岁", "71-75岁", "76-80岁",
+				             "81-85岁", "86-90岁", "91-95岁", "96-100岁"};
+		
+		String ageLabels[] = new String[20];
+		for(int i = 0; i < 20; i ++)
+		{
+			ageLabels[i] = ageGrps[i] + (int)(ageGroupRatio[i] * 100) + "%\n" + 
+		                   ageGroupNum[i] + "人\n" + 
+					      "平均时长 " + ageGroupAvgDuration[i] + "分钟";
+		}		
+		
+		String ageChartFilename = chartPath + File.separator + "stat_age.jpg";
+		PieDataset ageDataSet = Utils.createPieChartDataSet(ageGroupRatio, ageLabels);
+		Utils.genPieChart(ageDataSet, "用户使用时间段及使用时长", ageChartFilename);
+		
+		logger.info("ageChartFilename = " + ageChartFilename);
+		
+		
+		
 		
 		request.setAttribute("statisticsinfo", si);
 		
@@ -337,6 +388,29 @@ public class StatisticsAction extends SuperAction {
 		si.setTimeGroupNum(timeGroupNum);
 		si.setTimeGroupRatio(timeGroupRatio);
 		
+		//生成用户使用时间段即使用时长的图标
+		String  timeLabel1 = "1-6点" + (int)(timeGroupRatio[0] * 100) + "%\n" +
+		                     timeGroupNum[0] + " 人\n" + 
+				             "平均时长  " + timeGroupAvgDuration[0] + " 分钟"; 
+		
+		String  timeLabel2 = "7-12点" + (int)(timeGroupRatio[1] * 100) + "%\n" +
+                timeGroupNum[1] + " 人\n" + 
+	             "平均时长  " + timeGroupAvgDuration[1] + " 分钟";
+		
+		String  timeLabel3 = "13-18点" + (int)(timeGroupRatio[2] * 100) + "%\n" +
+                timeGroupNum[2] + " 人\n" + 
+	             "平均时长  " + timeGroupAvgDuration[2] + " 分钟";
+		
+		String  timeLabel4 = "19-24点" + (int)(timeGroupRatio[3] * 100) + "%\n" +
+                timeGroupNum[3] + " 人\n" + 
+	             "平均时长  " + timeGroupAvgDuration[3] + " 分钟";
+		String timeLabels[] = {timeLabel1, timeLabel2, timeLabel3, timeLabel4};
+		String timeChartFilename = chartPath + File.separator + "stat_time.jpg";
+		PieDataset timeDataSet = Utils.createPieChartDataSet(timeGroupRatio, timeLabels);
+		Utils.genPieChart(timeDataSet, "用户使用时间段及使用时长", timeChartFilename);
+		logger.info("genderChartFilename = " + genderChartFilename);
+		logger.info("timeChartFilename = " + timeChartFilename);
+		logger.info("timeLabel1 = " + timeLabel1);
 		
 		logger.info("timeGroupNum = " + timeGroupNum);
 		for(int i = 0; i < 4; i ++)

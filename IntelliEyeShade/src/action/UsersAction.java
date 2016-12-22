@@ -18,16 +18,20 @@ import java.util.logging.Logger;
 
 import org.apache.struts2.ServletActionContext;
 import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.general.PieDataset;
 
+import entity.DetectDetail;
 import entity.TestInfo;
 import entity.TestInfoPage;
 import entity.UserDataPage;
 import entity.UserVerifyInfo;
 import entity.Users;
+import service.DetectDetailDAO;
 import service.TestInfoDAO;
 import service.TestInfoPageDAO;
 import service.UserDataPageDAO;
 import service.UsersDAO;
+import serviceimpl.DetectDetailDAOImpl;
 import serviceimpl.TestInfoDAOImpl;
 import serviceimpl.TestInfoPageDAOImpl;
 import serviceimpl.UserDataPageDAOImpl;
@@ -806,10 +810,10 @@ public class UsersAction extends SuperAction {
 				chartDir);
 		logger.info("chartPath = " + chartPath);
 		
-		String fdFilename = chartPath + File.separator + "fd.jpg";
-		String rdFilename = chartPath + File.separator + "rd.jpg";
-		String hrFilename = chartPath + File.separator + "hr.jpg";
-		String hrvFilename = chartPath + File.separator + "hrv.jpg";
+		String fdFilename = chartPath + File.separator + "trend_fd.jpg";
+		String rdFilename = chartPath + File.separator + "trend_rd.jpg";
+		String hrFilename = chartPath + File.separator + "trend_hr.jpg";
+		String hrvFilename = chartPath + File.separator + "trend_hrv.jpg";
 		
 		logger.info("fdFilename = " + fdFilename);
 		
@@ -835,17 +839,96 @@ public class UsersAction extends SuperAction {
 			heartRateVariations[i] = ti.getHeartVariate();
 		}
 		
-		CategoryDataset fdds = Utils.createDataSet(focusDegrees, "专注度");
+		CategoryDataset fdds = Utils.createLineChartDataSet(focusDegrees, "专注度");
 		Utils.genLineChart(fdds, "专注度随时间变化", "时间", "专注度", fdFilename);
 		
-		CategoryDataset rdds = Utils.createDataSet(relaxDegrees, "放松度");
+		CategoryDataset rdds = Utils.createLineChartDataSet(relaxDegrees, "放松度");
 		Utils.genLineChart(rdds, "放松度随时间变化", "时间", "放松度", rdFilename);
 		
-		CategoryDataset hrds = Utils.createDataSet(heartRates, "心率");
+		CategoryDataset hrds = Utils.createLineChartDataSet(heartRates, "心率");
 		Utils.genLineChart(hrds, "心率随时间变化", "时间", "心率", hrFilename);
 		
-		CategoryDataset hrvds = Utils.createDataSet(heartRateVariations, "心率变异性");
+		CategoryDataset hrvds = Utils.createLineChartDataSet(heartRateVariations, "心率变异性");
 		Utils.genLineChart(hrvds, "心率变异性随时间变化", "时间", "心率变异性", hrvFilename);
 		return "users_trend_analysis_success";
+	}
+	
+	public String getDetectInfoDetail()
+	              
+	{
+		String detectID = request.getParameter("DetectID");
+		logger.info("detectID = " + detectID);
+		
+		DetectDetailDAO ddDAO = new DetectDetailDAOImpl();
+		DetectDetail detectDetail = ddDAO.getDetectDetail(detectID);
+		
+		String focusDegrees = detectDetail.getFocusDegrees();
+		String relaxDegrees = detectDetail.getRelaxDegrees();
+		String heartRates = detectDetail.getHeartRates();
+		String heartRateVariations = detectDetail.getHeartRateVariations();
+		
+		String fdsStr[] = focusDegrees.split(" ");
+		String rdsStr[] = relaxDegrees.split(" ");
+		String hrsStr[] = heartRates.split(" ");
+		String hrvsStr[] = heartRateVariations.split(" ");
+		
+		int fdLen = fdsStr.length;
+		int rdLen = rdsStr.length;
+		int hrLen = hrsStr.length;
+		int hrvLen = hrvsStr.length;
+		
+		logger.info("fdLen = " + fdLen);
+		logger.info("rdLen = " + rdLen);
+		logger.info("hrLen = " + hrLen);
+		logger.info("hrvLen = " + hrvLen);
+		
+		int fds[] = new int[fdLen];
+		int rds[] = new int[rdLen];
+		int hrs[] = new int[hrLen];
+		int hrvs[] = new int[hrvLen];
+		
+		for(int i = 0; i < fdLen; i ++)
+		{
+			fds[i] = Integer.parseInt(fdsStr[i]);
+		}
+		
+		for(int i = 0; i < rdLen; i ++)
+		{
+			rds[i] = Integer.parseInt(rdsStr[i]);
+		}
+		
+		for(int i = 0; i < hrLen; i ++)
+		{
+			hrs[i] = Integer.parseInt(hrsStr[i]);
+		}
+		
+		for(int i = 0; i < hrvLen; i ++)
+		{
+			hrvs[i] = Integer.parseInt(hrvsStr[i]);
+		}
+		
+		String chartPath = ServletActionContext.getServletContext().getRealPath(
+				chartDir);
+		logger.info("chartPath = " + chartPath);
+		
+		String fdFilename = chartPath + File.separator + "detail_fd.jpg";
+		String rdFilename = chartPath + File.separator + "detail_rd.jpg";
+		String hrFilename = chartPath + File.separator + "detail_hr.jpg";
+		String hrvFilename = chartPath + File.separator + "detail_hrv.jpg";
+		
+		
+		CategoryDataset fdds = Utils.createLineChartDataSet(fds, "专注度");
+		Utils.genLineChart(fdds, "专注度序列变化", "时间", "专注度", fdFilename);
+		
+		CategoryDataset rdds = Utils.createLineChartDataSet(rds, "放松度");
+		Utils.genLineChart(rdds, "放松度序列变化", "时间", "放松度", rdFilename);
+		
+		CategoryDataset hrds = Utils.createLineChartDataSet(hrs, "心率");
+		Utils.genLineChart(hrds, "心率序列变化", "时间", "心率", hrFilename);
+		
+		CategoryDataset hrvds = Utils.createLineChartDataSet(hrvs, "心率变异性");
+		Utils.genLineChart(hrvds, "心率变异性序列变化", "时间", "心率变异性", hrvFilename);
+		
+		return "users_detail_analysis_success";
 	}
 }

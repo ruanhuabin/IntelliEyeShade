@@ -158,7 +158,7 @@ function getSelectFilter(sel)
 <label id="totalMiniutes">单用户平均时长：<s:property value="#request.statisticsinfo.avgUsedDuration"/></label>
 <br>
 
-
+<div style="width:500px; display:inline-block;">
 <br>
 <label id="usageInfo">用户性别以及使用时长:</label>
 <br>
@@ -176,7 +176,11 @@ function getSelectFilter(sel)
 <br>
 <label id="totalMiniutes">女性平均时长：<s:property value="#request.statisticsinfo.femaleAvgDuration"/></label>
 <br>
+</div>
 
+<div style="width:500px; display:inline-block;">
+<img src="<%=basePath%>/ChartFiles/stat_gender.jpg"/>
+</div>
 <br>
 <label id="usageInfo">用户年龄段以及使用时长:</label>
 <br>
@@ -248,6 +252,7 @@ function getSelectFilter(sel)
 	
 </table>
 
+<img src="<%=basePath%>/ChartFiles/stat_age.jpg"/>
 
 <br>
 <label id="usageInfo">用户使用时间段以及使用时长:</label>
@@ -288,7 +293,7 @@ function getSelectFilter(sel)
 	</tr>
 	
 </table>
-
+<img src="<%=basePath%>/ChartFiles/stat_time.jpg"/>
 </div>
 
 </s:else>

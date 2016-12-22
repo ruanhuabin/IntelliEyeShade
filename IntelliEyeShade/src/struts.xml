@@ -87,6 +87,7 @@
     		<result name="users_verify_success">/users/users_verify_result.jsp</result>
     		<result name="users_verify_failed">/users/users_verify_result.jsp</result>
     		<result name="users_trend_analysis_success">/users/users_trend_analysis_result.jsp</result>
+    		<result name="users_detail_analysis_success">/users/users_detail_analysis_result.jsp</result>
     	
     	
     		
@@ -118,6 +119,7 @@
     <package name="statistics" namespace="/statistics" extends="default">
     	<action name="*_*" class="action.{1}Action" method="{2}">
     		<result name="statistics_query_success">/statistics/statistics_filter.jsp</result>
+    		<param name="chartDir">/ChartFiles/</param>
     	</action>
     </package>
 
