@@ -9,6 +9,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <html>
 <body>
+<div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户共检测了&nbsp;<s:property value="#request.UserTestTimes"/>&nbsp;次
+</div>
 <img src="<%=basePath%>/ChartFiles/trend_fd.jpg"/>
 <img src="<%=basePath%>/ChartFiles/trend_rd.jpg"/>
 <img src="<%=basePath%>/ChartFiles/trend_hr.jpg"/>

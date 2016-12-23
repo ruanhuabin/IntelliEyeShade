@@ -11,7 +11,9 @@ import java.net.URLDecoder;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -840,19 +842,37 @@ public class UsersAction extends SuperAction {
 		}
 		
 		CategoryDataset fdds = Utils.createLineChartDataSet(focusDegrees, "专注度");
-		Utils.genLineChart(fdds, "专注度随时间变化", "时间", "专注度", fdFilename);
+		Utils.genLineChart(fdds, "专注度随次数变化", "次数", "专注度", fdFilename);
 		
 		CategoryDataset rdds = Utils.createLineChartDataSet(relaxDegrees, "放松度");
-		Utils.genLineChart(rdds, "放松度随时间变化", "时间", "放松度", rdFilename);
+		Utils.genLineChart(rdds, "放松度随次数变化", "次数", "放松度", rdFilename);
 		
 		CategoryDataset hrds = Utils.createLineChartDataSet(heartRates, "心率");
-		Utils.genLineChart(hrds, "心率随时间变化", "时间", "心率", hrFilename);
+		Utils.genLineChart(hrds, "心率随次数变化", "次数", "心率", hrFilename);
 		
 		CategoryDataset hrvds = Utils.createLineChartDataSet(heartRateVariations, "心率变异性");
-		Utils.genLineChart(hrvds, "心率变异性随时间变化", "时间", "心率变异性", hrvFilename);
+		Utils.genLineChart(hrvds, "心率变异性随时间变化", "次数", "心率变异性", hrvFilename);
+		
+		request.setAttribute("UserTestTimes", tis.size());
 		return "users_trend_analysis_success";
 	}
 	
+	private int calAvg(int[] vals)
+	{
+		int avg= 0;
+		
+		int sum = 0;
+		
+		for(int  item: vals)
+		{
+			sum += item;
+		}
+		
+		if(vals.length != 0)
+			avg = sum / vals.length;
+		
+		return avg;
+	}
 	public String getDetectInfoDetail()
 	              
 	{
@@ -918,16 +938,60 @@ public class UsersAction extends SuperAction {
 		
 		
 		CategoryDataset fdds = Utils.createLineChartDataSet(fds, "专注度");
-		Utils.genLineChart(fdds, "专注度序列变化", "时间", "专注度", fdFilename);
+		Utils.genLineChart(fdds, "专注度随时间变化", "时间", "专注度", fdFilename);
 		
 		CategoryDataset rdds = Utils.createLineChartDataSet(rds, "放松度");
-		Utils.genLineChart(rdds, "放松度序列变化", "时间", "放松度", rdFilename);
+		Utils.genLineChart(rdds, "放松度随时间变化", "时间", "放松度", rdFilename);
 		
 		CategoryDataset hrds = Utils.createLineChartDataSet(hrs, "心率");
-		Utils.genLineChart(hrds, "心率序列变化", "时间", "心率", hrFilename);
+		Utils.genLineChart(hrds, "心率随时间变化", "时间", "心率", hrFilename);
 		
 		CategoryDataset hrvds = Utils.createLineChartDataSet(hrvs, "心率变异性");
-		Utils.genLineChart(hrvds, "心率变异性序列变化", "时间", "心率变异性", hrvFilename);
+		Utils.genLineChart(hrvds, "心率变异性随时间变化", "时间", "心率变异性", hrvFilename);
+		
+		
+		int avgFD = calAvg(fds);
+		int avgRD = calAvg(rds);
+		int avgHR = calAvg(hrs);
+		int avgHRV = calAvg(hrvs);
+		
+		TestInfoDAO tiDAO = new TestInfoDAOImpl();
+		TestInfo ti = tiDAO.uniqueQueryByHQL("from TestInfo where tid = '" + detectID + "'");
+		
+		String usedPattern = "未知";
+		String musicType = "未知";
+		int timeDuration = 0;
+		Date testDate = null;
+		String testTime = "null";
+		
+		if(ti != null)
+		{
+			usedPattern = ti.getUsedPattern();
+			musicType = ti.getMusic();
+			timeDuration = ti.getTimeDuration();
+			testDate = ti.getTestDate();
+			Calendar calendar = new GregorianCalendar();
+			calendar.setTime(testDate);
+			
+			testTime = calendar.get(Calendar.YEAR) + "." + (calendar.get(Calendar.MONTH) + 1) + "." + calendar.get(Calendar.DAY_OF_MONTH) + "  " + calendar.get(Calendar.HOUR_OF_DAY)
+					+ ":" + calendar.get(Calendar.MINUTE) + " - " + calendar.get(Calendar.HOUR_OF_DAY) + ":" + (calendar.get(Calendar.MINUTE) + timeDuration);
+		}
+		
+		logger.info("testTime = " + testTime);
+		
+		request.setAttribute("TestTime", testTime);
+		request.setAttribute("TimeDuration", timeDuration);
+		request.setAttribute("UsedPattern", usedPattern);
+		request.setAttribute("UsedMusic", musicType);
+		
+		request.setAttribute("AvgFD", avgFD);
+		request.setAttribute("AvgRD", avgRD);
+		request.setAttribute("AvgHR", avgHR);
+		request.setAttribute("AvgHRV", avgHRV);
+		
+		
+		
+		
 		
 		return "users_detail_analysis_success";
 	}
