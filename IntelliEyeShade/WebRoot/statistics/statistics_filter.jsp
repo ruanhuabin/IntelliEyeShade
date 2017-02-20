@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="../css/default.css" />
 <head>
 <script type="text/javascript">
-function check()
+function check() 
 {
 	//alert("check body");
 	

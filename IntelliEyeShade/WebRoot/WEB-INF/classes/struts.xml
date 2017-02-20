@@ -48,6 +48,20 @@
     		<result name="input">/users/upload.jsp</result>
     		<param name="detectFileUploadDir">/WEB-INF/DetectFileUploadDir/</param>
     	</action>
+    	
+    	
+    	<action name="download" class="action.DownloadAction">	    		
+	    	<param name="downloadDir">/FileToBeDownloaded/</param>    	
+	    	<result type="stream">
+	    		<param name="inputName">detectDetailTarget</param>
+	    		
+	    		<!-- filename 用于指定下载时候，在下载对话框中显示的文件名 -->
+	    		<param name="contentDisposition">attachment;filename=${outputFilename}</param>    		
+	    	</result>
+    	</action>  
+    	
+    	
+    	
     </package>
     
     <constant name="struts.multipart.maxSize" value="100000000"/>

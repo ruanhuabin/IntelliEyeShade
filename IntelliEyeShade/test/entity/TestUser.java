@@ -1,7 +1,10 @@
 package entity;
 
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Date;
+import java.util.Properties;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -103,6 +106,25 @@ public class TestUser {
 		//UsersAction.trendAnalysis();
 	}
 	
+	
+	@Test
+	public void testProp()
+	{
+		try {
+			FileInputStream fis = new FileInputStream("D:\\testdata\\detectdetail.txt");
+			Properties prop = new Properties();
+			prop.load(fis);
+			
+			String focusData = prop.getProperty("FocusDegree");
+			String relaxData = prop.getProperty("relaxDegree");
+			
+			System.out.println("focusData = " + focusData);
+			System.out.println("relaxData = " + relaxData);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	
 

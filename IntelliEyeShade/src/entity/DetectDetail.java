@@ -16,6 +16,23 @@ public class DetectDetail {
 	public String heartRateVariations;
 	//脑电原始数据
 	public String brainRawData;
+	//脉搏波数据
+	public String pulseWaveData;
+	//生成该检测数据的时间
+	public String timeStamp;
+	
+	public String getTimeStamp() {
+		return timeStamp;
+	}
+	public void setTimeStamp(String timeStamp) {
+		this.timeStamp = timeStamp;
+	}
+	public String getPulseWaveData() {
+		return pulseWaveData;
+	}
+	public void setPulseWaveData(String pulseWaveData) {
+		this.pulseWaveData = pulseWaveData;
+	}
 	public String getDid() {
 		return did;
 	}
@@ -60,17 +77,19 @@ public class DetectDetail {
 	}
 	@Override
 	public String toString() {
-		return "DetectDetail [did=" + did + ", uid=" + uid + ", focusDegrees="
+		return "[did=" + did +  ", focusDegrees="
 				+ focusDegrees + ", relaxDegrees=" + relaxDegrees
 				+ ", heartRates=" + heartRates + ", heartRateVariations="
-				+ heartRateVariations + ", brainRawData=" + brainRawData + "]";
+				+ heartRateVariations + ", brainRawData=" + brainRawData
+				+ ", pulseWaveData=" + pulseWaveData + ", timeStamp="
+				+ timeStamp + "]";
 	}
 	public DetectDetail() {
 		
 	}
 	public DetectDetail(String did, String uid, String focusDegrees,
 			String relaxDegrees, String heartRates, String heartRateVariations,
-			String brainRawData) {
+			String brainRawData, String pulseWaveData, String timeStamp) {
 		
 		this.did = did;
 		this.uid = uid;
@@ -79,6 +98,8 @@ public class DetectDetail {
 		this.heartRates = heartRates;
 		this.heartRateVariations = heartRateVariations;
 		this.brainRawData = brainRawData;
+		this.pulseWaveData = pulseWaveData;
+		this.timeStamp = timeStamp;
 	}
 	
 	

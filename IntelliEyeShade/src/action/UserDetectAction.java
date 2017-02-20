@@ -19,6 +19,8 @@ import javax.swing.text.DefaultEditorKit.InsertTabAction;
 
 import org.apache.struts2.ServletActionContext;
 
+import config.Constant;
+
 import entity.DetectDetail;
 import entity.FocusDegree;
 import entity.TestInfo;
@@ -208,22 +210,68 @@ public class UserDetectAction extends SuperAction {
 		String heartRates = null;
 		String heartRateVariations = null;
 		String brainRawData = null;
+		String pulseWaveData = null;
+		String timeStamp = null;
 		InputStream input = null;
 		try {
 			
 			input = new FileInputStream(fileToRead);
 			prop.load(input);
 			
-			focusDegrees = prop.getProperty("FocusDegree");
-			relaxDegrees = prop.getProperty("RelaxDegree");
-			heartRates = prop.getProperty("HeartRate");
-			heartRateVariations = prop.getProperty("HeartRateVariation");
-			brainRawData = prop.getProperty("BrainRawData");
+			focusDegrees = prop.getProperty(Constant.focusDegree);
+			relaxDegrees = prop.getProperty(Constant.relaxDegree);
+			heartRates = prop.getProperty(Constant.heartRate);
+			heartRateVariations = prop.getProperty(Constant.heartRateVariation);
+			brainRawData = prop.getProperty(Constant.brainRawData);
+			pulseWaveData = prop.getProperty(Constant.pulseWaveData);
+			timeStamp = prop.getProperty(Constant.timeStamp);
 			logger.info("focusDegrees = " + focusDegrees);
 			logger.info("relaxDegrees = " + relaxDegrees);
 			logger.info("heartRates = " + heartRates);
 			logger.info("heartRateVariations = " + heartRateVariations);
 			logger.info("brainRawData = " + brainRawData);
+			
+			if(focusDegrees == null)
+			{
+				request.setAttribute("DetectFileUploadResult", "FAILED_FOCUS_DEGREE_IS_NOT_FOUND");
+				return "detects_upload_detectinfo_failed";
+			}
+			
+			if(relaxDegrees == null)
+			{
+				request.setAttribute("DetectFileUploadResult", "FAILED_RELAX_DEGREE_IS_NOT_FOUND");
+				return "detects_upload_detectinfo_failed";
+			}
+			
+			if(heartRates == null)
+			{
+				request.setAttribute("DetectFileUploadResult", "FAILED_HEART_RATE_IS_NOT_FOUND");
+				return "detects_upload_detectinfo_failed";
+			}
+			
+			if(heartRateVariations == null)
+			{
+				request.setAttribute("DetectFileUploadResult", "FAILED_HEART_RATE_VARIATION_IS_NOT_FOUND");
+				return "detects_upload_detectinfo_failed";
+			}
+			
+			if(brainRawData == null)
+			{
+				request.setAttribute("DetectFileUploadResult", "FAILED_BRAIN_RAW_DATA_IS_NOT_FOUND");
+				return "detects_upload_detectinfo_failed";
+			}
+			
+			if(pulseWaveData == null)
+			{
+				request.setAttribute("DetectFileUploadResult", "FAILED_PULSE_WAVE_DATA_IS_NOT_FOUND");
+				return "detects_upload_detectinfo_failed";
+			}
+			
+			if(timeStamp == null)
+			{
+				request.setAttribute("DetectFileUploadResult", "FAILED_TIMESTAMP_IS_NOT_FOUND");
+				return "detects_upload_detectinfo_failed";
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -261,11 +309,13 @@ public class UserDetectAction extends SuperAction {
 		dd.setHeartRates(heartRates);
 		dd.setHeartRateVariations(heartRateVariations);
 		dd.setBrainRawData(brainRawData);
+		dd.setPulseWaveData(pulseWaveData);
+		dd.setTimeStamp(timeStamp);
 		
 		boolean insertDetectDetailResult = ddDAO.insertDetectDetailInfo(dd);
 		if(insertDetectDetailResult == false)
 		{
-			request.setAttribute("DetectFileUploadResult", "FAILED_INSERT_DETECT_DETECT");
+			request.setAttribute("DetectFileUploadResult", "FAILED_INSERT_DETECT_DETAIL");
 			return "detects_upload_detectinfo_failed";
 		}
 		

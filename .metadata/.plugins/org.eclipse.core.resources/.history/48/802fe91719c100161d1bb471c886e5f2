@@ -1,7 +1,0 @@
-package entity;
-
-public class UserVerifyInfo {
-	private String phoneNum;
-	private String timeStamp;
-
-}

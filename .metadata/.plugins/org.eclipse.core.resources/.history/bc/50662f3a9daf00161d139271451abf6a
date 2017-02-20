@@ -1,9 +1,0 @@
-package service;
-
-import entity.UserDataPage;
-
-public interface DeviceDataPageDAO {
-	public UserDataPage getDevicePageData(int pageSize, int page);
-	public UserDataPage getDevicePageDataByCondition(int pageSize, int page, String condition);
-
-}

@@ -1,6 +1,9 @@
 package serviceimpl;
 
 import static util.IntelliEyeShadeLogger.logger;
+
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -8,6 +11,7 @@ import org.hibernate.Transaction;
 import db.MyHibernateSessionFactory;
 import entity.DetectDetail;
 import entity.FocusDegree;
+import entity.Users;
 import service.DetectDetailDAO;
 
 public class DetectDetailDAOImpl implements DetectDetailDAO {
@@ -132,6 +136,45 @@ public class DetectDetailDAOImpl implements DetectDetailDAO {
 		{
 			if(tx != null)
 			{				
+				tx = null;
+			}
+		}
+		
+	}
+
+	@Override
+	public List<DetectDetail> getAllDetectDetail() {
+		Transaction tx = null;
+		List<DetectDetail> list = null;
+		String hql = "";
+		
+		try{
+			
+			Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+			hql = "from DetectDetail";
+			
+			Query query = session.createQuery(hql);
+			list = query.list();
+			tx.commit();			
+			System.out.println("list = " + list);
+			
+			return list;
+			
+			
+			
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+			tx.commit();
+			return list;
+			
+		}
+		finally
+		{
+			if(tx != null)
+			{
+				
 				tx = null;
 			}
 		}
