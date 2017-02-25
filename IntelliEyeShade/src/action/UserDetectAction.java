@@ -158,8 +158,16 @@ public class UserDetectAction extends SuperAction {
 		int sum = 0;
 		String[] strNums = values.split(" ");
 		
+		//logger.info("strNums len = " + strNums.length + ", strNums = " + strNums + ", values = " + values);
+		
+		
 		for(String num: strNums)
 		{
+			if(num.equals(""))
+			{
+				//logger.info("====>num is space");
+				continue;
+			}
 			int intNum = Integer.parseInt(num);
 			sum += intNum;
 		}

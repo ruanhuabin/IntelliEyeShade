@@ -19,12 +19,12 @@
 			<generator class="assigned"/>
 		</id>
 		
-		<property name="focusDegrees" type="java.lang.String" length="5120"/>
-		<property name="relaxDegrees" type="java.lang.String" length="5120"/>
-		<property name="heartRates" type="java.lang.String" length="5120"/>
-		<property name="heartRateVariations" type="java.lang.String" length="5120"/>
-		<property name="brainRawData" type="java.lang.String" length="5120"/>
-		<property name="pulseWaveData" type="java.lang.String" length="5120"/>
+		<property name="focusDegrees" type="java.lang.String" length="1048576"/>
+		<property name="relaxDegrees" type="java.lang.String" length="1048576"/>
+		<property name="heartRates" type="java.lang.String" length="1048576"/>
+		<property name="heartRateVariations" type="java.lang.String" length="1048576"/>
+		<property name="brainRawData" type="java.lang.String" length="1048576"/>
+		<property name="pulseWaveData" type="java.lang.String" length="1048576"/>
 		<property name="timeStamp" type="java.lang.String" length="128"/>
 		
 	</class>
